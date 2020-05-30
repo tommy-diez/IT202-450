@@ -14,6 +14,7 @@ try {
                 PRIMARY KEY ('id')
                 ) CHARACTER SET utf8 COLLATE utf8_general_ci";
     $stmt = $db->prepare($query);
+    echo var_export($stmt->errorInfo());
     $r = $stmt->execute();
     echo var_export($r);
 
