@@ -16,16 +16,15 @@ try {
     $stmt = $db->prepare($query);
     echo var_export($stmt->errorInfo());
     $r = $stmt->execute();
-    echo var_export($r);
+    echo var_export($r, true);
 
-    echo "connected";
+    //echo "connected";
+
 }
-catch(exception $e){
+catch(exception $e) {
     echo $e->getMessage();
+
 }
-
-
-
 ?>
 
 
