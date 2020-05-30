@@ -7,7 +7,7 @@ try {
     $db = new PDO($con_string, $dbuser, $dbpass);
 }
 catch(exception $e){
-    echo $e;
+    echo $e->getMEssage();
 }
 
 
