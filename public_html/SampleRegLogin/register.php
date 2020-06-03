@@ -24,6 +24,8 @@ if (isset($POST["register"])){
     if (isset($_POST["password"]) && isset ($_POST["cpassword"])) {
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
+        echo $password;
+        echo $cpassword;
         if ($password == $cpassword){
             echo "<br>Passwords match!";
         }
