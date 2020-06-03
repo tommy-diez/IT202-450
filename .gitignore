@@ -1,2 +1,5 @@
 config php
 .idea
+
+echo .DS_Store >> .gitignore
+
