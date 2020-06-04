@@ -20,8 +20,8 @@ echo var_export($_POST, true);
 echo var_export($_REQUEST, true);
 
 
-if (isset($POST["register"])){
-    if (isset($_POST["password"]) && isset ($_POST["cpassword"])) {
+
+if (isset($_POST["password"]) && isset ($_POST["cpassword"])) {
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
         echo $password;
@@ -32,7 +32,7 @@ if (isset($POST["register"])){
         else{
             echo "<br>Passwords do not match!";
         }
-    }
+
 }
 
 ?>
