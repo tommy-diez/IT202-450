@@ -12,11 +12,7 @@
 </html>
 
 <?php
-/*
-echo var_export($_GET);
-echo var_export($_POST, true);
-echo var_export($_REQUEST, true);
-*/
+session_start();
 
 if (isset($_POST["login"])) {
     if (isset($_POST["password"]) && isset ($_POST["email"])) {
@@ -39,6 +35,14 @@ if (isset($_POST["login"])) {
                         $rpassword = $result["password"];
                         if(password_verify($password, $rpassword)){
                             echo "<div>Login credentials valid. You are logged in";
+                            $_SESSION['user'] = array(
+                                    "id"=>$result['id'],
+                                    "email"=>$result["email"],
+                                    "first_name"=>$result["first_name"],
+                                    "last_name"=>$result["last_name"]
+
+                            );
+                            echo var_export($_SESSION, true);
                         }
                         else{
                             echo "<div>Invalid password";
