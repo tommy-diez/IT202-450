@@ -20,20 +20,19 @@ echo var_export($_POST, true);
 echo var_export($_REQUEST, true);
 
 
-
-if (isset($_POST["password"]) && isset ($_POST["cpassword"])) {
+if (isset($_POST["register"])) {
+    if (isset($_POST["password"]) && isset ($_POST["cpassword"])) {
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
         echo $password;
         echo $cpassword;
-        if ($password == $cpassword){
+        if ($password == $cpassword) {
             echo "<br>Passwords match!";
-        }
-        else{
+        } else {
             echo "<br>Passwords do not match!";
         }
 
+    }
 }
-
 ?>
 
