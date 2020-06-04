@@ -37,6 +37,7 @@ if (isset($_POST["register"])) {
                 $stmt = $db->prepare("INSERT INTO Users (email, password) VALUES (:email, :password)");
                 $stmt->bindValue(':email', $email);
                 $stmt->bindValue('password', $password);
+                $stmt->execute();
                 $e = $stmt->errorInfo();
                 if ($e[0] != "00000"){
                     echo var_export($e, true);
