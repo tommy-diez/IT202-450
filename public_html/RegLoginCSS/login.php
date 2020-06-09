@@ -1,3 +1,7 @@
+<?php
+
+include('header.php');
+?>
 
 <html>
 <form method="POST">
@@ -18,7 +22,7 @@ if (isset($_POST["login"])) {
     if (isset($_POST["password"]) && isset ($_POST["email"])) {
         $password = $_POST["password"];
         $email = $_POST["email"];
-        require 'config.php';
+        //require 'config.php';
             $con_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             try{
                 $db = new PDO($con_string, $dbuser, $dbpass);
@@ -43,7 +47,7 @@ if (isset($_POST["login"])) {
 
                             );
                             echo var_export($_SESSION, true);
-                            echo "<a href='home.php'>Go to home page!</a>";
+                            header('Location: home.php');
                         }
                         else{
                             echo "<div>Invalid password";

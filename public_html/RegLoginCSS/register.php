@@ -1,4 +1,7 @@
+<?php
+include('header.php');
 
+?>
 <html>
 <form method="POST">
     <label for ="email">Email
