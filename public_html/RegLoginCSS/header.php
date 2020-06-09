@@ -1,8 +1,9 @@
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
+    <nav id="navbar">
         <ul>
             <li><a href="home.php">Home</a></li>
             <li><a href="login.php">Login</a></li>
