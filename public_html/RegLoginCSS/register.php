@@ -3,7 +3,7 @@ include('header.php');
 
 ?>
 <html>
-<div class="container">
+<div id="reg-form" class="container">
 <form method="POST">
     <label class="row" for ="email">Email
     <input type="email" id="email" name="email"/>
