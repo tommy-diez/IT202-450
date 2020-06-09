@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
-    <nav id="navbar container-fluid">
+    <nav id="navbar" class="container-fluid">
         <div class="row">
             <a class="col-md-3" href="home.php">Home</a></li>
             <a class="col-md-3" href="login.php">Login</a></li>
