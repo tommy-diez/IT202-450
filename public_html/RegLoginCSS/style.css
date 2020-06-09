@@ -21,4 +21,9 @@ form{
 
 .nav-item{
     margin-top: 15px;
+    color: #222831;
+}
+
+.nav-item:hover{
+    
 }
