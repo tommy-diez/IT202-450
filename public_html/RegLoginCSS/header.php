@@ -6,10 +6,11 @@
 <body>
     <nav id="navbar" class="container-fluid">
         <div class="row">
-            <a class="col-md-3" href="home.php">Home</a></li>
-            <a class="col-md-3" href="login.php">Login</a></li>
-            <a class="col-md-3" href="register.php">Register</a></li>
-            <a class="col-md-3" href="logout.php">Logout</a></li>
+            <h1 class="col-md-4">Welcome</h1>
+            <a class="col-md-2" href="home.php">Home</a></li>
+            <a class="col-md-2" href="login.php">Login</a></li>
+            <a class="col-md-2" href="register.php">Register</a></li>
+            <a class="col-md-2" href="logout.php">Logout</a></li>
         </div>
     </nav>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
