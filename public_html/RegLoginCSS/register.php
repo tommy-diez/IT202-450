@@ -4,8 +4,9 @@ include('header.php');
 ?>
 <html>
 <div class="container">
-    <div id="reg-form" class="row">
+    <divclass="row">
         <div class = "col-md-12">
+            <div class="reg-form">
             <form method="POST">
             <label for ="email">Email
             <input type="email" id="email" name="email"/>
@@ -21,6 +22,7 @@ include('header.php');
                 <br>
             <input type="submit" name="register" value="Register"/>
             </form>
+            </div>
         </div>
     </div>
 </div>
