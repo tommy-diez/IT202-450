@@ -10,12 +10,15 @@ include('header.php');
             <label for ="email">Email
             <input type="email" id="email" name="email"/>
             </label>
+                <br>
             <label for="password">Password
             <input type="password" id="password" name ="password"/>
             </label>
+                <br>
             <label for="cpassword">Confirm Password
             <input type="password" id="cpassword" name="cpassword"/>
             </label>
+                <br>
             <input type="submit" name="register" value="Register"/>
             </form>
         </div>
