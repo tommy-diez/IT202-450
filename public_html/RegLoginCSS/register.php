@@ -3,19 +3,23 @@ include('header.php');
 
 ?>
 <html>
-<div id="reg-form" class="row">
-<form method="POST">
-    <label for ="email">Email
-    <input type="email" id="email" name="email"/>
-    </label>
-    <label for="password">Password
-    <input type="password" id="password" name ="password"/>
-    </label>
-    <label for="cpassword">Confirm Password
-    <input type="password" id="cpassword" name="cpassword"/>
-    </label>
-    <input type="submit" name="register" value="Register"/>
-</form>
+<div class="container">
+    <div id="reg-form" class="row">
+        <div class = "col-md-12">
+            <form method="POST">
+            <label for ="email">Email
+            <input type="email" id="email" name="email"/>
+            </label>
+            <label for="password">Password
+            <input type="password" id="password" name ="password"/>
+            </label>
+            <label for="cpassword">Confirm Password
+            <input type="password" id="cpassword" name="cpassword"/>
+            </label>
+            <input type="submit" name="register" value="Register"/>
+            </form>
+        </div>
+    </div>
 </div>
 </html>
 
