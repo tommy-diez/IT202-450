@@ -11,10 +11,8 @@ form{
     font-family: 'Montserrat', sans-serif;
     background-color: #d63447;
     text-align: center;
-    position: fixed;
-    top: 0;
     width: 100%;
-    display: inline;
+    display: block;
 }
 
 
