@@ -4,8 +4,8 @@ include('header.php');
 ?>
 <html>
 <div class="container">
-    <divm lass="row">
-        <div class = "col-md-12">
+    <div class="row">
+        <div class ="col-md-12">
             <div class="reg-form">
                 <form method="POST">
                     <label for="first_name">First Name</label><br>
