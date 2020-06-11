@@ -5,7 +5,7 @@ include('header.php');
 <html>
 <div class="container">
     <div class="row">
-        <div class ="col-md-12">
+        <div class="col-md-12">
             <div class="reg-form">
                 <form method="POST">
                     <label for="first_name">First Name</label><br>
@@ -33,6 +33,10 @@ include('header.php');
             </div>
         </div>
     </div>
+</div>
+<div id="footer" class="container-fluid">
+
+
 </div>
 </html>
 
