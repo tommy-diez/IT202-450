@@ -22,6 +22,8 @@ form{
     background-color: #ff847c;
     width: 100%;
     display: block;
+    position: fixed;
+    bottom: 0;
 }
 
 .reg-form{

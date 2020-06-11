@@ -35,8 +35,7 @@ include('header.php');
     </div>
 </div>
 <div id="footer" class="container-fluid">
-
-
+Tommy Diez (c) 2020
 </div>
 </html>
 
