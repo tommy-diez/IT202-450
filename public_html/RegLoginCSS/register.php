@@ -8,19 +8,19 @@ include('header.php');
         <div class = "col-md-12">
             <div class="reg-form">
                 <form method="POST">
-                    <label for="first_name">First Name</label><br>
+                    <label for="first_name">First Name</label>
                     <input type="text" id="first_name" name="first_name">
                     <br>
-                    <label for="last_name">Last Name</label><br>
+                    <label for="last_name">Last Name</label>
                     <input type="text" id="last_name" name="last_name">
                     <br>
-                    <label for ="email">Email</label><br>
+                    <label for ="email">Email</label>
                     <input type="email" id="email" name="email"/>
                     <br>
-                    <label for="password">Password</label> <br>
+                    <label for="password">Password</label>
                     <input type="password" id="password" name ="password"/>
                     <br>
-                    <label for="cpassword">Confirm Password</label><br>
+                    <label for="cpassword">Confirm Password</label>
                     <input type="password" id="cpassword" name="cpassword"/>
                     <br>
                     <input type="submit" name="register" value="Register"/>
