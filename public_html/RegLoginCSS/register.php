@@ -4,7 +4,7 @@ include('header.php');
 ?>
 <html>
 <div class="container">
-    <divmclass="row">
+    <divm lass="row">
         <div class = "col-md-12">
             <div class="reg-form">
                 <form method="POST">
