@@ -28,6 +28,7 @@ include('header.php');
                     <br>
                     <input type="password" id="cpassword" name="cpassword"/>
                     <br>
+                    <br>
                     <input type="submit" name="register" value="Register"/>
                 </form>
             </div>
