@@ -2,7 +2,9 @@ form{
     font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
-
+body{
+    background-color: aliceblue;
+}
 h2{
     text-align: center;
     font-family: 'Montserrat', sans-serif;
