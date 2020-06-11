@@ -3,10 +3,14 @@ form{
     text-align: center;
 }
 
+h2{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
 
 #navbar{
     font-family: 'Montserrat', sans-serif;
-    background-color: #d63447;
+    background-color: #1b6ca8;
     text-align: center;
     width: 100%;
     display: block;
@@ -19,7 +23,7 @@ form{
 
 #footer{
     font-family: 'Montserrat', sans-serif;
-    background-color: #ff847c;
+    background-color: #0a97b0;
     width: 100%;
     display: block;
     position: fixed;
