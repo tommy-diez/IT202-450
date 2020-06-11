@@ -7,21 +7,19 @@ include('header.php');
     <divclass="row">
         <div class = "col-md-12">
             <div class="reg-form">
-            <form method="POST">
-            <label for ="email">Email
-            <input type="email" id="email" name="email"/>
-            </label>
-                <br>
-            <label for="password">Password
-            <input type="password" id="password" name ="password"/>
-            </label>
-                <br>
-            <label for="cpassword">Confirm Password
-            <input type="password" id="cpassword" name="cpassword"/>
-            </label>
-                <br>
-            <input type="submit" name="register" value="Register"/>
-            </form>
+                <form method="POST">
+                    <label for="first_name">First Name</label><br>
+                    <input type="text" id="first_name" name="first_name">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name">
+                    <label for ="email">Email</label><br>
+                    <input type="email" id="email" name="email"/>
+                    <label for="password">Password</label> <br>
+                    <input type="password" id="password" name ="password"/>
+                    <label for="cpassword">Confirm Password</label><br>
+                    <input type="password" id="cpassword" name="cpassword"/>
+                    <input type="submit" name="register" value="Register"/>
+                </form>
             </div>
         </div>
     </div>
@@ -37,6 +35,8 @@ echo var_export($_REQUEST, true);
 
 if (isset($_POST["register"])) {
     if (isset($_POST["password"]) && isset ($_POST["cpassword"])) {
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
         $email = $_POST["email"];
@@ -49,9 +49,11 @@ if (isset($_POST["register"])) {
             try{
                 $db = new PDO($con_string, $dbuser, $dbpass);
                 $hash = password_hash($password, PASSWORD_BCRYPT);
-                $stmt = $db->prepare("INSERT INTO Users (email, password) VALUES (:email, :password)");
+                $stmt = $db->prepare("INSERT INTO Users (first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)");
                 $stmt->bindValue(':email', $email);
-                $stmt->bindValue('password', $hash);
+                $stmt->bindValue(':password', $hash);
+                $stmt->bindValue(':first_name', $first_name);
+                $stmt->bindValue(':lastname', $last_name);
                 $stmt->execute();
                 $e = $stmt->errorInfo();
                 if ($e[0] != "00000"){
