@@ -8,23 +8,23 @@ include('header.php');
         <div class = "col-md-12">
             <div class="reg-form">
                 <form method="POST">
-                    <label for="first_name">First Name</label>
+                    <label for="first_name">First Name</label><br>
                     <input type="text" id="first_name" name="first_name">
                     <br>
                     <br>
-                    <label for="last_name">Last Name</label>
+                    <label for="last_name">Last Name</label><br>
                     <input type="text" id="last_name" name="last_name">
                     <br>
                     <br>
-                    <label for ="email">Email</label>
+                    <label for ="email">Email</label><br>
                     <input type="email" id="email" name="email"/>
                     <br>
                     <br>
-                    <label for="password">Password</label>
+                    <label for="password">Password</label><br>
                     <input type="password" id="password" name ="password"/>
                     <br>
                     <br>
-                    <label for="cpassword">Confirm Password</label>
+                    <label for="cpassword">Confirm Password</label><br>
                     <input type="password" id="cpassword" name="cpassword"/>
                     <br>
                     <br>
