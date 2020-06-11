@@ -10,14 +10,19 @@ include('header.php');
                 <form method="POST">
                     <label for="first_name">First Name</label><br>
                     <input type="text" id="first_name" name="first_name">
-                    <label for="last_name">Last Name</label>
+                    <br>
+                    <label for="last_name">Last Name</label><br>
                     <input type="text" id="last_name" name="last_name">
+                    <br>
                     <label for ="email">Email</label><br>
                     <input type="email" id="email" name="email"/>
+                    <br>
                     <label for="password">Password</label> <br>
                     <input type="password" id="password" name ="password"/>
+                    <br>
                     <label for="cpassword">Confirm Password</label><br>
                     <input type="password" id="cpassword" name="cpassword"/>
+                    <br>
                     <input type="submit" name="register" value="Register"/>
                 </form>
             </div>
