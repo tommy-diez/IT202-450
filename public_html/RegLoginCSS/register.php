@@ -6,6 +6,12 @@ include('header.php');
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <h2>Register an account with our banking portal!</h2>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
             <div class="reg-form">
                 <form method="POST">
                     <label for="first_name">First Name</label><br>
