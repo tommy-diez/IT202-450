@@ -66,7 +66,7 @@ if (isset($_POST["register"])) {
                 $stmt->bindValue(':email', $email);
                 $stmt->bindValue(':password', $hash);
                 $stmt->bindValue(':first_name', $first_name);
-                $stmt->bindValue(':lastname', $last_name);
+                $stmt->bindValue(':last_name', $last_name);
                 $stmt->execute();
                 $e = $stmt->errorInfo();
                 if ($e[0] != "00000"){
