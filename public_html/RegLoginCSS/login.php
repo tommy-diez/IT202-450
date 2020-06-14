@@ -4,6 +4,7 @@ include('header.php');
 ?>
 
 <html>
+<link rel="stylesheet" href="style.css">
 <body>
 <br>
 <h1>Login</h1>
@@ -12,10 +13,12 @@ include('header.php');
     <label for ="email">Email
     <input type="email" id="email" name="email"/>
     </label>
+    <br>
     <label for="password">Password
     <input type="password" id="password" name ="password"/>
     </label>
-    <input type="submit" name="login" value="Login"/>
+    <br>
+    <input type="submit" name="login" value="LOGIN"/>
 </form>
 </body>
 </html>

@@ -3,6 +3,7 @@ include('header.php');
 
 ?>
 <html>
+<link rel="stylesheet" href="style.css">
 <body>
 <div class="container">
     <div class="row">

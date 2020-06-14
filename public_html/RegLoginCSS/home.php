@@ -4,6 +4,7 @@ include 'header.php';
 //echo "Welcome, " . $_SESSION["user"]["email"];
 ?>
 <html>
+<link rel="stylesheet" href="style.css">
 <body>
     <h1>Home Page</h1>
     <br>
