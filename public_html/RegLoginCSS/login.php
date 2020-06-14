@@ -4,6 +4,7 @@ include('header.php');
 ?>
 
 <html>
+<body>
 <br>
 <h1>Login</h1>
 <br>
@@ -16,6 +17,7 @@ include('header.php');
     </label>
     <input type="submit" name="login" value="Login"/>
 </form>
+</body>
 </html>
 
 <?php

@@ -3,6 +3,7 @@ include('header.php');
 
 ?>
 <html>
+<body>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -44,6 +45,7 @@ include('header.php');
 <div id="footer" class="container-fluid">
 Tommy Diez (c) 2020
 </div>
+</body>
 </html>
 
 <?php
