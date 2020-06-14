@@ -4,6 +4,9 @@ include('header.php');
 ?>
 
 <html>
+<br>
+<h1>Login</h1>
+<br>
 <form class="login-form" method="POST">
     <label for ="email">Email
     <input type="email" id="email" name="email"/>

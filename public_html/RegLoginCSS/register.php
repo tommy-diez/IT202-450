@@ -69,7 +69,8 @@ if (isset($_POST["register"])) {
             try{
                 $db = new PDO($con_string, $dbuser, $dbpass);
                 $hash = password_hash($password, PASSWORD_BCRYPT);
-                $stmt = $db->prepare("INSERT INTO Users (first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)");
+                $stmt = $db->prepare("INSERT INTO Users (first_name, last_name, email, password) 
+                                                VALUES (:first_name, :last_name, :email, :password)");
                 $stmt->bindValue(':email', $email);
                 $stmt->bindValue(':password', $hash);
                 $stmt->bindValue(':first_name', $first_name);
