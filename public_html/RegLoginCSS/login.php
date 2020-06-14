@@ -10,13 +10,13 @@ include('header.php');
 <h1>Login</h1>
 <br>
 <form class="login-form" method="POST">
-    <label for ="email">Email
+    <label for ="email">Email</label><br>
     <input type="email" id="email" name="email"/>
-    </label>
     <br>
-    <label for="password">Password
+    <br>
+    <label for="password">Password</label><br>
     <input type="password" id="password" name ="password"/>
-    </label>
+    <br>
     <br>
     <input type="submit" name="login" value="LOGIN"/>
 </form>
