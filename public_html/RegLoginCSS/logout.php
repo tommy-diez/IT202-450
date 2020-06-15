@@ -15,3 +15,7 @@ if (ini_get("session.use_cookies")) {
 }
 
 
+?>
+<div id="footer" class="container-fluid">
+    Tommy Diez (c) 2020
+</div>

@@ -9,6 +9,9 @@ include 'header.php';
     <h1>Home Page</h1>
     <br>
 <div><?php echo "Welcome, " . $_SESSION["user"]["first_name"]; ?></div>
+    <div id="footer" class="container-fluid">
+        Tommy Diez (c) 2020
+    </div>
 </body>
 </html>
 

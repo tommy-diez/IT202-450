@@ -20,6 +20,9 @@ include('header.php');
     <br>
     <input type="submit" name="login" value="LOGIN"/>
 </form>
+<div id="footer" class="container-fluid">
+    Tommy Diez (c) 2020
+</div>
 </body>
 </html>
 
