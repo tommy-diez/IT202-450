@@ -66,7 +66,7 @@ if (isset($_POST["register"])) {
             $email = $_POST["email"];
             //echo $password;
             //echo $cpassword;
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 if ($password == $cpassword) {
                     //echo "<br>Passwords match!";
                     require 'config.php';
