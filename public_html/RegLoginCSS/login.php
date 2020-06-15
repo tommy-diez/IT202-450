@@ -9,7 +9,6 @@ include('header.php');
 <br>
 <h1>Login</h1>
 <br>
-<div class="reg-form">
 <form class="login-form" method="POST">
     <label for ="email">Email</label><br>
     <input type="email" id="email" name="email"/>
@@ -23,7 +22,6 @@ include('header.php');
 </form>
 <div id="footer" class="container-fluid">
     Tommy Diez (c) 2020
-</div>
 </div>
 </body>
 </html>
