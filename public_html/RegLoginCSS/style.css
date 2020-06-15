@@ -38,7 +38,12 @@ h2{
 }
 
 .reg-form{
-    padding-top: 3rem;
     text-align: center;
+    border-width: medium;
+    border-color: #a6dcef;
+    border-style: solid;
+    border-radius: 100px;
+    color: black;
+    background-color: #a6dcef;
 }
 
