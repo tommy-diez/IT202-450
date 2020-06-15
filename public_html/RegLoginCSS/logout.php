@@ -16,6 +16,7 @@ if (ini_get("session.use_cookies")) {
 
 
 ?>
+<link rel="stylesheet" href="style.css">
 <div id="footer" class="container-fluid">
     Tommy Diez (c) 2020
 </div>
