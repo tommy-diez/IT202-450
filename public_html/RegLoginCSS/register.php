@@ -9,7 +9,7 @@ include('header.php');
     <div class="row">
         <div class="col-md-12">
             <br>
-            <h2>Register an account with our banking portal!</h2>
+            <h2>Register an account with our shop!</h2>
         </div>
     </div>
     <br>
