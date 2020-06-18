@@ -31,8 +31,8 @@ if(isset($_POST['submit'])) {
 
 
     $db = getDB();
-    $query = "INSERT INTO `Products`(name, quantity, price, description) 
-            VALUES(product_name, quantity, price, description)";
+    $query = "INSERT INTO Products (name, quantity, price, description) 
+            VALUES(:product_name, :quantity, :price, :description)";
     $stmt = $db->prepare($query);
 
     $stmt->bindValue(':product_name', $product_name);
@@ -44,7 +44,9 @@ if(isset($_POST['submit'])) {
     if ($e[0] != "00000"){
         echo var_export($e, true);
     }
-    echo "Successfully inserted product";
+    else {
+        echo "Successfully inserted product";
+    }
 }
 
 ?>
