@@ -9,35 +9,36 @@
             <input type="text" name="product_name" required>
             <label for="quantity">Quantity</label>
             <input type="number" name="quantity">
-            <label for="price"></label>
+            <label for="price">Price</label>
             <input type="text" name="price" required>
-            <label for="description"></label>
+            <label for="description">Description</label>
             <input type="text" name="description">
-            <input type="submit">
+            <input type="submit" value = "Submit">
         </form>
     </body>
 </html>
 
 <?php
-require("common.inc.php");
+if(isset($_POST['submit'])) {
 
-$product_name = $_POST['product_name'];
-$quantity = $_POST['quantity'];
-$price = $_POST['price'];
-$description = $_POST['description'];
+    require("common.inc.php");
 
 
-$db = getDB();
-$query = "INSERT INTO `Products`(name, quantity, price, description) 
+    $product_name = $_POST['product_name'];
+    $quantity = $_POST['quantity'];
+    $price = $_POST['price'];
+    $description = $_POST['description'];
+
+
+    $db = getDB();
+    $query = "INSERT INTO `Products`(name, quantity, price, description) 
             VALUES(product_name, quantity, price, description)";
-$stmt = $db->prepare($query);
-$stmt->bindValue(':product_name', $product_name);
-$stmt->bindValue(':quantity', $quantity);
-$stmt->bindValue(':price', $price);
-$stmt->bindValue(':description', $description);
-$stmt->execute();
-
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':product_name', $product_name);
+    $stmt->bindValue(':quantity', $quantity);
+    $stmt->bindValue(':price', $price);
+    $stmt->bindValue(':description', $description);
+    $stmt->execute();
+}
 
 ?>
-
-
