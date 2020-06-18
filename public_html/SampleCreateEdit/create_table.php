@@ -13,7 +13,7 @@
             <input type="text" name="price" required>
             <label for="description">Description</label>
             <input type="text" name="description">
-            <input type="submit" value = "Submit">
+            <input type="submit" name="submit" value ="Submit">
         </form>
     </body>
 </html>
@@ -34,7 +34,6 @@ if(isset($_POST['submit'])) {
     $query = "INSERT INTO `Products`(name, quantity, price, description) 
             VALUES(product_name, quantity, price, description)";
     $stmt = $db->prepare($query);
-    $e = $stmt->errorInfo();
 
     $stmt->bindValue(':product_name', $product_name);
     $stmt->bindValue(':quantity', $quantity);
