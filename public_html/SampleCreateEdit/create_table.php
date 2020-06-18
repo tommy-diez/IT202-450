@@ -34,11 +34,18 @@ if(isset($_POST['submit'])) {
     $query = "INSERT INTO `Products`(name, quantity, price, description) 
             VALUES(product_name, quantity, price, description)";
     $stmt = $db->prepare($query);
+    $e = $stmt->errorInfo();
+
     $stmt->bindValue(':product_name', $product_name);
     $stmt->bindValue(':quantity', $quantity);
     $stmt->bindValue(':price', $price);
     $stmt->bindValue(':description', $description);
     $stmt->execute();
+    $e = $stmt->errorInfo();
+    if ($e[0] != "00000"){
+        echo var_export($e, true);
+    }
+    echo "Successfully inserted product";
 }
 
 ?>
