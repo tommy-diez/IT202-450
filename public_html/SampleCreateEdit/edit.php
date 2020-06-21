@@ -65,9 +65,9 @@ if (isset($_POST["submit"])) {
             var_export($e, true);
         } else {
             echo "Successfully updated record";
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $product = $stmt->fetch(PDO::FETCH_ASSOC);
             //echo var_export($result, true);
-            header("Location: edit.php?id=$id");
+            //header("Location: edit.php?id=$id");
         }
     }
     else {
