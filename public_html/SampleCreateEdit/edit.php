@@ -1,6 +1,8 @@
 <?php
 require("common.inc.php");
 
+
+$db=getDB();
 $id = -1;
 
 if(isset($_GET['id'])){
