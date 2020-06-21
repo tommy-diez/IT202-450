@@ -41,35 +41,34 @@ else{
 
 
 <?php
-
 if (isset($_POST["submit"])) {
     $name = $_POST['product_name'];
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
     $description = $_POST['description'];
     $id = $_GET['id'];
-
-    $db = getDB();
-    $query = "UPDATE Products
+    if (!empty($name) && !empty($quantity) && !empty($price) && !empty($description)) {
+        $db = getDB();
+        $query = "UPDATE Products
           SET name= :name, quantity = :quantity, price= :price, description = :description
           WHERE id = :id";
 
-    $stmt = $db->prepare($query);
-    $stmt->bindValue(':id', $id);
-    $stmt->bindValue(':name', $name);
-    $stmt->bindValue(':quantity', $quantity);
-    $stmt->bindValue(':price', $price);
-    $stmt->bindValue(':description', $description);
-    $stmt->execute();
-    $e = $stmt->errorInfo();
-    if($e[0] != "00000"){
-        var_export($e, true);
-    }
-    else {
-        echo "Successfully updated record";
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        //echo var_export($result, true);
-        header('Location: edit.php');
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':quantity', $quantity);
+        $stmt->bindValue(':price', $price);
+        $stmt->bindValue(':description', $description);
+        $stmt->execute();
+        $e = $stmt->errorInfo();
+        if ($e[0] != "00000") {
+            var_export($e, true);
+        } else {
+            echo "Successfully updated record";
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            //echo var_export($result, true);
+            header("Location: edit.php?$id");
+        }
     }
 }
 ?>
