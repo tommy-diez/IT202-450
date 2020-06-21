@@ -1,19 +1,36 @@
+<?php
+require("common.inc.php");
+
+$id = -1;
+
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    $query = "SELECT * FROM Products WHERE id = :id";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+else{
+    echo "No id provided in url";
+}
+
+?>
+
 <html>
     <head>
     </head>
     <body>
-    <h1>Edit Product</h1>
+        <h1>Edit Product</h1>
         <form method ="POST">
-            <label for="id">Product ID: </label>
-            <input type="text" name="id">
             <label for="product_name">Edit Product Name: </label>
-            <input type="text" name="product_name">
+            <input type="text" name="product_name" value="<?php echo $product['name']; ?>">
             <label for="quantity">Edit Quantity: </label>
-            <input type="number" name="quantity">
+            <input type="number" name="quantity" value="<?php echo $product['quantity']; ?>">
             <label for="price">Edit Price: </label>
-            <input type="text" name="price">
+            <input type="text" name="price" value="<?php echo $product['price']; ?>">
             <label for="description">Edit Description: </label>
-            <input type="text" name="description">
+            <input type="text" name="description" value="<?php echo $product['description']; ?>">
             <input type="submit" name="submit" value="submit">
         </form>
     </body>
@@ -21,6 +38,7 @@
 
 
 <?php
+
 if (isset($_POST["submit"])) {
     require("common.inc.php");
 
