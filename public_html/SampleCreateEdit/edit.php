@@ -41,8 +41,6 @@ else{
 <?php
 
 if (isset($_POST["submit"])) {
-    require("common.inc.php");
-
     $name = $_POST['product_name'];
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
