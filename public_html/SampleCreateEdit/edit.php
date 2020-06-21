@@ -47,7 +47,7 @@ if (isset($_POST["submit"])) {
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
     $description = $_POST['description'];
-    $id = $_POST['id'];
+    $id = $_GET['id'];
 
     $db = getDB();
     $query = "UPDATE Products
