@@ -51,7 +51,7 @@ if (isset($_POST["submit"])) {
 
     $db = getDB();
     $query = "UPDATE Products
-          SET name= :name, quantity = :name, price= :price, description = :description
+          SET name= :name, quantity = :quantity, price= :price, description = :description
           WHERE id = :id";
 
     $stmt = $db->prepare($query);
