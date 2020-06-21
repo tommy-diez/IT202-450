@@ -70,6 +70,9 @@ if (isset($_POST["submit"])) {
             header("Location: edit.php?$id");
         }
     }
+    else {
+        echo "Leave no field empty";
+    }
 }
 ?>
 
