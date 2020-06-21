@@ -10,6 +10,7 @@ if(isset($_GET['id'])){
     $stmt->bindValue(':id', $id);
     $stmt->execute();
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
 }
 else{
     echo "No id provided in url";
@@ -24,13 +25,13 @@ else{
         <h1>Edit Product</h1>
         <form method ="POST">
             <label for="product_name">Edit Product Name: </label>
-            <input type="text" name="product_name" value="<?php echo $product['name']; ?>">
+            <input type="text" name="product_name" value="<?php echo get($product, 'name'); ?>">
             <label for="quantity">Edit Quantity: </label>
-            <input type="number" name="quantity" value="<?php echo $product['quantity']; ?>">
+            <input type="number" name="quantity" value="<?php echo get($product, 'quantity'); ?>">
             <label for="price">Edit Price: </label>
-            <input type="text" name="price" value="<?php echo $product['price']; ?>">
+            <input type="text" name="price" value="<?php echo get($product, 'price'); ?>">
             <label for="description">Edit Description: </label>
-            <input type="text" name="description" value="<?php echo $product['description']; ?>">
+            <input type="text" name="description" value="<?php echo get($product, 'description'); ?>">
             <input type="submit" name="submit" value="submit">
         </form>
     </body>
@@ -52,7 +53,6 @@ if (isset($_POST["submit"])) {
     $query = "UPDATE Products
           SET name= :name, quantity = :name, price= :price, description = :description
           WHERE id = :id";
-
 
     $stmt = $db->prepare($query);
     $stmt->bindValue(':id', $id);
