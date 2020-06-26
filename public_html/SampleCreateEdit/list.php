@@ -19,9 +19,9 @@ else{
 <?php if(isset($results)): ?>
     <p>Products</p>
     <ul>
-        <?php foreach ($results as $row): ?>{
+        <?php foreach ($results as $row): ?>
             <li>
-                <?php echo get($row, "id"); ?>
+                 <?php echo get($row, "id"); ?>
                  <?php echo get($row, "name"); ?>
                  <?php echo get($row, "quantity"); ?>
                  <?php echo get($row, "price"); ?>
@@ -31,9 +31,9 @@ else{
             </li>
         <?php endforeach; ?>
     </ul>
-}
+
 
 <?php else: ?>
-<p>No products available at this time, sadly</p>
+    <p>No products available at this time, sadly</p>
 
 <?php endif; ?>
