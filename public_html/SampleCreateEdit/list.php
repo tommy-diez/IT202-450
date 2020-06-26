@@ -21,14 +21,13 @@ else{
     <ul>
         <?php foreach ($results as $row): ?>{
             <li>
-                <?php echo get($row, "id");
-                 echo get($row, "name");
-                 echo get($row, "quantity");
-                 echo get($row, "price");
-                 echo get($row, "description");
-                 echo get($row, "modified");
-                 echo get($row, 'created');
-                 ?>
+                <?php echo get($row, "id"); ?>
+                 <?php echo get($row, "name"); ?>
+                 <?php echo get($row, "quantity"); ?>
+                 <?php echo get($row, "price"); ?>
+                 <?php echo get($row, "description");?>
+                 <?php echo get($row, "modified");?>
+                 <?php echo get($row, 'created');?>
             </li>
         <?php endforeach; ?>
     </ul>
