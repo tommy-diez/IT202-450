@@ -3,6 +3,7 @@ require('common.inc.php');
 $query = file_get_contents(__DIR__ , "/queries/SELECT_ALL_TABLE.sql");
 if (isset($query) && !empty($query)){
     try{
+        $db = getDB();
         $stmt = $db->prepare($query);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
