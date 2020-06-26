@@ -29,9 +29,11 @@ else{
                  <?php echo get($row, "description");?>
                  <?php echo get($row, "modified");?>
                  <?php echo get($row, "created");?>
+                <a href="delete.php?id=<?php echo get($row, 'id')?>">Delete Product</a>
             </li>
         <?php endforeach; ?>
     </ul>
 <?php else: ?>
     <p>No products available at this time, sadly</p>
 <?php endif; ?>
+

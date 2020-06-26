@@ -4,15 +4,16 @@
     <head>
     </head>
     <body>
-        <form method="POST">
+    <script src="js/validate_form.js"></script>
+        <form method="POST" onsubmit="validate()">
             <label for="product_name">Product Name</label>
-            <input type="text" name="product_name" required>
+            <input id="product_name" type="text" name="product_name" required>
             <label for="quantity">Quantity</label>
-            <input type="number" name="quantity">
+            <input id="quantity" type="number" name="quantity">
             <label for="price">Price</label>
-            <input type="text" name="price" required>
+            <input id="price" type="text" name="price" required>
             <label for="description">Description</label>
-            <input type="text" name="description">
+            <input id="description" type="text" name="description">
             <input type="submit" name="submit" value ="Submit">
         </form>
     </body>
