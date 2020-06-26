@@ -1,6 +1,6 @@
 <?php
 require('common.inc.php');
-$query = file_get_contents(__DIR__ . "/queries/SELECT_ALL_TABLE.sql");
+$query = file_get_contents(__DIR__ , "/queries/SELECT_ALL_TABLE.sql");
 if (isset($query) && !empty($query)){
     try{
         $stmt = $db->prepare($query);
@@ -27,13 +27,10 @@ else{
                  <?php echo get($row, "price"); ?>
                  <?php echo get($row, "description");?>
                  <?php echo get($row, "modified");?>
-                 <?php echo get($row, 'created');?>
+                 <?php echo get($row, "created");?>
             </li>
         <?php endforeach; ?>
     </ul>
-
-
 <?php else: ?>
     <p>No products available at this time, sadly</p>
-
 <?php endif; ?>
