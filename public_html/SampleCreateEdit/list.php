@@ -11,6 +11,9 @@ if (isset($query) && !empty($query)){
         echo $e->getMessage();
     }
 }
+else{
+    echo "No query";
+}
 ?>
 
 <?php if(isset($results)): ?>
