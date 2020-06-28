@@ -10,7 +10,7 @@ function validate() {
         alert("Leave no fields empty");
         return false;
     }
-    else if (!alpha.test(product_name) || !alpha.test(description)){
+    else if (alpha.test(product_name) == false || alpha.test(description) == false){
         alert("Only use words and letters for name and description");
         return false;
     }
