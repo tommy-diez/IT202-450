@@ -3,6 +3,16 @@ $search = "";
 if (isset($_POST['search'])) {
     $search = $_POST['search'];
 }
+
+$order = 'price';
+if(isset($_POST['order'])){
+    $order = $_POST['order'];
+}
+
+$sort = "ASC";
+if(isset($_POST['sort'])){
+    $sort = $_POST['sort'];
+}
 ?>
 
 <html>
@@ -11,9 +21,18 @@ if (isset($_POST['search'])) {
 <body>
     <form method="POST">
         <input type="text" name="search" placeholder="SEARCH" value="<?php echo $search; ?>">
-        <select name="sort">
-            <option value="1">Lowest to Highest Price</option>
-            <option value="2">Highest to Lowest Price</option>
+        <br>
+        <h1>Order</h1>
+        <label for="sort">Ascending or Descending?: </label>
+        <select id="sort" name="sort">
+            <option value="ASC">Lowest to Highest</option>
+            <option value="DESC">Highest to Lowest</option>
+        </select>
+        <label for="by">By?: </label>
+        <select id="by"name="order">
+            <option value="price">Price</option>
+            <option value="quantity">Quantity</option>
+            <option value="name">Name</option>
         </select>
         <input type="submit" name="submit" value="SUBMIT">
     </form>
@@ -21,32 +40,21 @@ if (isset($_POST['search'])) {
 </html>
 
 <?php
-    if (isset($search)) {
-        require('common.inc.php');
-        if (isset($_POST['sort'])) {
-            $sort = $_POST['sort'];
-            if ($sort = 1) {
-                $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql");
-            } else {
-                $query = file_get_contents(__DIR__ . "queries/SEARCH_TABLE_PRODUCTS_DESC.sql");
-            }
-        }
-        else {
-            $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql"); //default case
-        }
-        if(isset($query) && !empty($query)){
-            try{
-                $db = getDB();
-                $stmt = $db->prepare($query);
-                $stmt->bindValue(':thing', $search);
-                $stmt -> execute();
-                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            catch(Exception $e){
-                echo $e->getMessage();
-            }
-        }
+
+
+if(isset($query) && !empty($query)){
+    try{
+        $db = getDB();
+        $query = ("SELECT * FROM Products ORDER BY " . $order . " " . $sort);
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':thing', $search);
+        $stmt -> execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    catch(Exception $e){
+        echo $e->getMessage();
+    }
+}
 ?>
 
 <?php if(isset($results) && count($results) > 0) :?>
