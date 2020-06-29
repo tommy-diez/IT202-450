@@ -15,6 +15,7 @@ if (isset($_POST['search'])) {
             <option value="1">Lowest to Highest Price</option>
             <option value="2">Highest to Lowest Price</option>
         </select>
+        <input type="submit" name="submit" value="SUBMIT">
     </form>
 </body>
 </html>
