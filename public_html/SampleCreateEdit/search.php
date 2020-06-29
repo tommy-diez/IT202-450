@@ -12,14 +12,32 @@ if (isset($_POST['search'])) {
 <body>
     <form method="POST">
         <input type="text" name="search" placeholder="SEARCH" value="<?php echo $search; ?>">
+        <label for="order">Order by Price</label>
+        <select id="order" name="order">
+            <option value="Ascending">Lowest to Highest Price</option>
+            <option value="Descending">Highest to Lowest Price</option>
+        </select>
+        <input type ="submit" name="submit">
     </form>
 </body>
 </html>
 
 <?php
+    if(isset($_POST['order'])) {
+        $order = $_POST['order'];
+        if($order == "Ascending"){
+            $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql");
+        }
+        else  {
+            $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS_DESC.sql");
+        }
+    }
+    else {
+        $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql"); //default
+    }
+
     if (isset($search)) {
         require('common.inc.php');
-        $query = file_get_contents(__DIR__ ."/queries/SEARCH_TABLE_PRODUCTS.sql");
         if(isset($query) && !empty($query)){
             try{
                 $db = getDB();
@@ -33,6 +51,7 @@ if (isset($_POST['search'])) {
             }
         }
     }
+
 ?>
 
 <?php if(isset($results) && count($results) > 0) :?>

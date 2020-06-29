@@ -1,6 +1,6 @@
 <?php
 require('common.inc.php');
-$query = file_get_contents(__DIR__ . 'queries/SELECT_ALL_TABLE.sql');
+$query = file_get_contents(__DIR__ . 'queries/SELECT_ALL_TABLE_ASC.sql');
 $result = array("status"=>"200");
 if (isset($query) && !empty($query)){
     try{
