@@ -1,6 +1,6 @@
 <?php
 $search = "";
-
+$order = "";
 if (isset($_POST['search'])) {
     $search = $_POST['search'];
 }
