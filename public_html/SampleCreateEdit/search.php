@@ -44,11 +44,12 @@ if(isset($_POST['sort'])){
 if(isset($query) && !empty($query)){
     try{
         $db = getDB();
-        $query = "SELECT * FROM Products WHERE name like CONCAT('%', :thing, '%') ORDER BY :order :sort";
+        $query = "SELECT * FROM Products WHERE name like CONCAT('%', :thing, '%') 
+                    ORDER BY :order ASC";
         $stmt = $db->prepare($query);
+        $stmt->bindValue(':thing', $search);
         $stmt->bindValue(':order', $order);
         $stmt->bindValue(':sort', $sort);
-        $stmt->bindValue(':thing', $search);
         $stmt -> execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
