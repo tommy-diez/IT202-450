@@ -41,12 +41,12 @@ if(isset($_POST['sort'])){
 
 <?php
 
-
 if(isset($query) && !empty($query)){
     try{
         $db = getDB();
-        $query = ("SELECT * FROM Products ORDER BY " . $order . " " . $sort);
+        $query = "SELECT * FROM Products ORDER BY :order :sort";
         $stmt = $db->prepare($query);
+        $stmt->bindValue(':order', $order);
         $stmt->bindValue(':thing', $search);
         $stmt -> execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
