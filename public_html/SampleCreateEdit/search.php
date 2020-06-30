@@ -44,7 +44,7 @@ if(isset($_POST['sort'])){
 if (isset($search)) {
     require 'common.inc.php';
     $query = "SELECT * FROM Products WHERE name like CONCAT('%', :thing, '%')
-              ORDER BY" . $order . ' ' . $sort;
+              ORDER BY $order $sort";
 
     /*
     if($sort == "ASC"){
