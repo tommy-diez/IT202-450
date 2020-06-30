@@ -3,7 +3,6 @@ $search = "";
 if (isset($_POST['search'])) {
     $search = $_POST['search'];
 }
-
 /*
 $order = 'price';
 if(isset($_POST['order'])){
@@ -37,7 +36,7 @@ if(isset($_POST['sort'])){
             <option value="quantity">Quantity</option>
             <option value="name">Name</option>
         </select>
-        --!> 
+        --!>
         <input type="submit" name="submit" value="SUBMIT">
     </form>
 </body>
@@ -48,10 +47,10 @@ if(isset($_POST['sort'])){
 if(isset($query) && !empty($query)){
     try{
         $db = getDB();
-        $query = "SELECT * FROM Products  ORDER BY :order :sort";
+        $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql");
         $stmt = $db->prepare($query);
         $stmt->bindValue(':thing', $search);
-       // $stmt->bindValue(':order', $order);
+        //$stmt->bindValue(':order', $order);
         //$stmt->bindValue(':sort', $sort);
         $stmt -> execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
