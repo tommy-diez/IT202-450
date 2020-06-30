@@ -4,6 +4,7 @@ if (isset($_POST['search'])) {
     $search = $_POST['search'];
 }
 
+/*
 $order = 'price';
 if(isset($_POST['order'])){
     $order = $_POST['order'];
@@ -13,6 +14,7 @@ $sort = "ASC";
 if(isset($_POST['sort'])){
     $sort = $_POST['sort'];
 }
+*/
 ?>
 
 <html>
@@ -23,6 +25,7 @@ if(isset($_POST['sort'])){
         <input type="text" name="search" placeholder="SEARCH" value="<?php echo $search; ?>">
         <br>
         <h1>Order</h1>
+        <!--
         <label for="sort">Ascending or Descending?: </label>
         <select id="sort" name="sort">
             <option value="ASC">Lowest to Highest</option>
@@ -34,6 +37,7 @@ if(isset($_POST['sort'])){
             <option value="quantity">Quantity</option>
             <option value="name">Name</option>
         </select>
+        --!> 
         <input type="submit" name="submit" value="SUBMIT">
     </form>
 </body>
@@ -46,9 +50,9 @@ if(isset($query) && !empty($query)){
         $db = getDB();
         $query = "SELECT * FROM Products  ORDER BY :order :sort";
         $stmt = $db->prepare($query);
-        //$stmt->bindValue(':thing', $search);
-        $stmt->bindValue(':order', $order);
-        $stmt->bindValue(':sort', $sort);
+        $stmt->bindValue(':thing', $search);
+       // $stmt->bindValue(':order', $order);
+        //$stmt->bindValue(':sort', $sort);
         $stmt -> execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
