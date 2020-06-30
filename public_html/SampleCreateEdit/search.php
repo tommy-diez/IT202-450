@@ -43,14 +43,19 @@ if(isset($_POST['sort'])){
 <?php
 if (isset($search)) {
     require 'common.inc.php';
-    $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql");
+    if($sort == "ASC"){
+        $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql");
+    }
+    else{
+        $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS_DESC.sql");
+    }
     if (isset($query) && !empty($query)) {
         try {
             $db = getDB();
             $stmt = $db->prepare($query);
             $stmt->bindValue(':thing', $search);
             $stmt->bindValue(':order', $order);
-            $stmt->bindValue(':sort', $sort);
+            //$stmt->bindValue(':sort', $sort);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {

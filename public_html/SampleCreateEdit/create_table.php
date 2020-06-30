@@ -4,7 +4,7 @@
     <head>
     </head>
     <body>
-    <script src="js/validate_form.js"></script>
+    <!--<script src="js/validate_form.js"></script> -->
         <form method="POST" onsubmit="return validate()">
             <label for="product_name">Product Name</label>
             <input id="product_name" type="text" name="product_name" required>

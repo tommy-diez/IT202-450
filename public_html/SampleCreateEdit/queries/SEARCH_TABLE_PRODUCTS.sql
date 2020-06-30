@@ -1,2 +1,2 @@
 SELECT * FROM Products WHERE name like CONCAT('%', :thing, '%')
-ORDER BY :order :sort
+ORDER BY :order ASC
