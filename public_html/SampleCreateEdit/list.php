@@ -1,5 +1,6 @@
 <?php
 require('common.inc.php');
+session_start();
 $query = file_get_contents(__DIR__ . "/queries/SELECT_ALL_TABLE_ASC.sql");
 if (isset($query) && !empty($query)){
     try{
@@ -30,6 +31,7 @@ else{
                  <?php echo get($row, "modified");?>
                  <?php echo get($row, "created");?>
                 <a href="delete.php?id=<?php echo get($row, 'id')?>">Delete Product</a>
+                <a href="add_order.php?id=<?php echo get($row, 'id')?>">Add Product to Cart</a>
             </li>
         <?php endforeach; ?>
     </ul>
