@@ -24,6 +24,12 @@ if (isset($_GET['id'])){
             $quantity = 1;
             $price = $results['price'];
             $query2 = file_get_contents(__DIR__ . "/queries/QUERY_INSERT_CART.sql");
+            $stmt = $db->prepare($query2);
+            $stmt->bindValue(':name', $name);
+            $stmt->bindValue(':quantity', $quantity);
+            $stmt->bindValue('price', $price);
+            $stmt->execute();
+
         } catch (Exception $e) {
             echo $e->getMessage();
         }
