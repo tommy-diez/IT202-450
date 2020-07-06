@@ -11,7 +11,9 @@ if (isset($_GET['id'])){
     SET quantity = quantity-1
     WHERE id = :id;
     
+
     ";
+    $userID = $_SESSION['user_id'];
 
     if (isset($query) && !empty($query)) {
         try {
@@ -25,11 +27,11 @@ if (isset($_GET['id'])){
             $price = $results['price'];
             $query2 = file_get_contents(__DIR__ . "/queries/QUERY_INSERT_CART.sql");
             $stmt = $db->prepare($query2);
-            $stmt->bindValue(':name', $name);
+            $stmt->bindValue(':id', $id);
             $stmt->bindValue(':quantity', $quantity);
-            $stmt->bindValue('price', $price);
+            $stmt->bindValue(':price', $price);
+            $stmt->bindValue(':userID', $userID);
             $stmt->execute();
-
         } catch (Exception $e) {
             echo $e->getMessage();
         }
