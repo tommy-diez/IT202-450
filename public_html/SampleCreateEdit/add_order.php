@@ -36,14 +36,18 @@ else {
     <ol>
         <?php foreach ($results as $row): ?>
             <li>
-                <?php echo get($row, "id"); ?>
+                <?php //echo get($row, "id"); ?>
                 <?php echo get($row, "name"); ?>
-                <?php echo get($row, "quantity"); ?>
+                <?php //echo get($row, "quantity"); ?>
                 <?php echo get($row, "price"); ?>
                 <?php echo get($row, "description");?>
+                <form>
+                    <select>How many</select>
+                </form>
             </li>
         <?php endforeach; ?>
     </ol>
+    <button>Submit Order</button>
 <?php else: ?>
     <p>Cart Is Empty</p>
 <?php endif; ?>
