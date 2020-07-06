@@ -1,4 +1,5 @@
 <?php
+include('common.inc.php');
 include "header.php";
 //session_start();
 session_unset();

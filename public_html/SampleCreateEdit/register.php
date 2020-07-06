@@ -1,6 +1,6 @@
 <?php
 include('header.php');
-
+include('common.inc.php');
 ?>
 <html>
 <link rel="stylesheet" href="style.css">
