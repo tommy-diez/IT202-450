@@ -1,4 +1,15 @@
 <?php
+include('header.php'); ?>
+<html>
+    <link rel="stylesheet" href="style.css">
+    <body>
+    <h1>Home Page</h1>
+    <br>
+    <div><?php echo "Welcome, " . $_SESSION["user"]["first_name"]; ?></div>
+    </body>
+</html>
+
+<?php
 require('common.inc.php');
 session_start();
 $query = file_get_contents(__DIR__ . "/queries/SELECT_ALL_TABLE_ASC.sql");
@@ -28,10 +39,10 @@ else{
                  <?php echo get($row, "quantity"); ?>
                  <?php echo get($row, "price"); ?>
                  <?php echo get($row, "description");?>
-                 <?php echo get($row, "modified");?>
-                 <?php echo get($row, "created");?>
+                 <?//php echo get($row, "modified");?>
+                 <?//php echo get($row, "created");?>
                 <a href="delete.php?id=<?php echo get($row, 'id')?>">Delete Product</a>
-                <a href="add_order.php?id=<?php echo get($row, 'id')?>">Add Product to Cart</a>
+                <a href="add_order.php?id=<?php echo get($row, 'id')?>&price="<?php echo get($row, 'price')?>>Add Product to Cart</a>
             </li>
         <?php endforeach; ?>
     </ul>
@@ -39,3 +50,6 @@ else{
     <p>No products available at this time, sadly</p>
 <?php endif; ?>
 
+<div id="footer" class="container-fluid">
+    Tommy Diez (c) 2020
+</div>

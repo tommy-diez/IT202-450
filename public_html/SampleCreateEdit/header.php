@@ -7,7 +7,7 @@
     <div id="navbar" class="container-fluid">
         <div class="row">
             <h1 class="col-md-4">Welcome</h1>
-            <a class="col-md-2 nav-item" href="home.php">Home</a></li>
+            <a class="col-md-2 nav-item" href="list.php">Home</a></li>
             <a class="col-md-2 nav-item" href="login.php">Login</a></li>
             <a class="col-md-2 nav-item" href="register.php">Register</a></li>
             <a class="col-md-2 nav-item" href="logout.php">Logout</a></li>
