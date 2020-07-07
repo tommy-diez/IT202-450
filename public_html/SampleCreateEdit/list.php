@@ -3,9 +3,10 @@ include('header.php'); ?>
 <html>
     <link rel="stylesheet" href="style.css">
     <body>
-    <h1>Home Page</h1>
+    <h1>Welcome to our ECommerce Platform</h1>
     <br>
-    <div><?php echo "Welcome, " . $_SESSION["user"]["first_name"]; ?></div>
+    <h2><?php echo "Welcome, " . $_SESSION["user"]["first_name"]; ?></h2>
+    <br>
     </body>
 </html>
 
@@ -30,9 +31,39 @@ else{
 ?>
 
 <?php if(isset($results)): ?>
-    <p>Products</p>
-    <ul>
-        <?php foreach ($results as $row): ?>
+    <h3>Products</h3>
+    <table border="1">
+    <tr>
+        <th>Product ID</th>
+        <th>Product</th>
+        <th>In Stock</th>
+        <th>Price</th>
+        <th>Description</th>
+    </tr>
+    <?php foreach ($results as $row): ?>
+    <tr>
+        <td>
+            <?php echo get($row, "id"); ?>
+        </td>
+        <td>
+            <?php echo get($row, "name"); ?>
+        </td>
+        <td>
+            <?php echo get($row, "quantity"); ?>
+        </td>
+        <td>
+            <?php echo get($row, "price"); ?>
+        </td>
+        <td>
+            <?php echo get($row, "description");?>
+        </td>
+        <td>
+            <a href="delete.php?id=<?php echo get($row, 'id')?>">Delete Product</a>
+        </td>
+        <td>
+            <a href="add_order.php?id=<?php echo get($row, 'id')?>&price=<?php echo get($row, 'price')?>">Add Product to Cart</a>
+        </td>
+    </tr>  <!--
             <li>
                  <?php echo get($row, "id"); ?>
                  <?php echo get($row, "name"); ?>
@@ -44,8 +75,9 @@ else{
                 <a href="delete.php?id=<?php echo get($row, 'id')?>">Delete Product</a>
                 <a href="add_order.php?id=<?php echo get($row, 'id')?>&price=<?php echo get($row, 'price')?>">Add Product to Cart</a>
             </li>
+            !-->
         <?php endforeach; ?>
-    </ul>
+    </table>
 <?php else: ?>
     <p>No products available at this time, sadly</p>
 <?php endif; ?>
