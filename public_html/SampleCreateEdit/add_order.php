@@ -1,5 +1,6 @@
 <?php
 if (isset($_GET['id'])){
+    session_start();
     include('header.php');
     require ('common.inc.php');
     session_start();
@@ -18,6 +19,10 @@ if (isset($_GET['id'])){
             $stmt->bindValue(':price', $price);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $_SESSION['user_cart'] = array(
+            );
+            array_push($_SESSION['user_cart'], $results);
+            header('Location: cart.php');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
