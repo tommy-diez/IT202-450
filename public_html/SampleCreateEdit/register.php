@@ -1,6 +1,6 @@
 <?php
 include('header.php');
-//include('common.inc.php');
+
 ?>
 <html>
 <link rel="stylesheet" href="style.css">
@@ -69,7 +69,7 @@ if (isset($_POST["register"])) {
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 if ($password == $cpassword) {
                     //echo "<br>Passwords match!";
-                    require 'config.php';
+                    require 'common.inc.php';
                     $con_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
                     try {
                         $db = new PDO($con_string, $dbuser, $dbpass);

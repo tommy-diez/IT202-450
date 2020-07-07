@@ -1,5 +1,4 @@
 <?php
-//include('common.inc.php');
 include('header.php');
 ?>
 
@@ -33,7 +32,7 @@ if (isset($_POST["login"])) {
     if (isset($_POST["password"]) && isset ($_POST["email"])) {
         $password = $_POST["password"];
         $email = $_POST["email"];
-        //require 'config.php';
+        require 'common.inc.php';
             $con_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             try{
                 $db = new PDO($con_string, $dbuser, $dbpass);
