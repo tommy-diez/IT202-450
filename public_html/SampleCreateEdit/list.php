@@ -84,7 +84,7 @@ else{
 
 
 <?php if (isset($_SESSION['cart'])){
-     echo $_SESSION['cart'];
+     var_dump($_SESSION['cart']);
 }
 
 
