@@ -82,6 +82,17 @@ else{
     <p>No products available at this time, sadly</p>
 <?php endif; ?>
 
+
+<?php if (isset($_SESSION['cart'])){
+     echo $_SESSION('cart');
+}
+
+
+?>
+
+
+
+
 <div id="footer" class="container-fluid">
     Tommy Diez (c) 2020
 </div>
