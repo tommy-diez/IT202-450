@@ -70,9 +70,8 @@ if (isset($_POST["register"])) {
                 if ($password == $cpassword) {
                     //echo "<br>Passwords match!";
                     require 'common.inc.php';
-                    $con_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
                     try {
-                        $db = new PDO($con_string, $dbuser, $dbpass);
+                        $db = getDB();
                         $hash = password_hash($password, PASSWORD_BCRYPT);
                         $stmt = $db->prepare("INSERT INTO Users (first_name, last_name, email, password) 
                                                 VALUES (:first_name, :last_name, :email, :password)");

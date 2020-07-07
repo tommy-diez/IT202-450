@@ -33,9 +33,8 @@ if (isset($_POST["login"])) {
         $password = $_POST["password"];
         $email = $_POST["email"];
         require 'common.inc.php';
-            $con_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             try{
-                $db = new PDO($con_string, $dbuser, $dbpass);
+                $db = getDB();
                 $stmt = $db->prepare("SELECT * from Users where email = :email LIMIT 1");
                 $stmt->bindValue(':email', $email);
                 $stmt->execute();
