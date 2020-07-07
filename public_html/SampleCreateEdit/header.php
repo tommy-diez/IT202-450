@@ -19,5 +19,5 @@
 </body>
 <?php
 //include('common.inc.php');
-require('config.php');
+//require('config.php');
 session_start();
