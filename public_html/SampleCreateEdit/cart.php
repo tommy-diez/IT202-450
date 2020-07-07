@@ -1,6 +1,10 @@
 <?php
-if (isset ($_SESSION['user_cart']) && !(empty($_SESSION['user_cart']))) {
+if (isset ($_SESSION['user_cart']) && !empty($_SESSION['user_cart'])) {
     $cart = $_SESSION['user_cart'];
+    echo "within";
+}
+else{
+    echo "invalid request 403";
 }
 ?>
 <?php if(isset($cart)): ?>
