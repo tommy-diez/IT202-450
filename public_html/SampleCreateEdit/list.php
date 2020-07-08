@@ -83,14 +83,23 @@ else{
 <?php endif; ?>
 
 
-<?php if (isset($_SESSION['cart'])){
-     var_dump($_SESSION['cart']);
-}
+<?php if (isset($_SESSION['cart'])) : ?>
+<ol>
+    <li>
+        <?php $_SESSION['cart']['name'] ?>
+    </li>
+    <li>
+        <?php $_SESSION['cart']['price'] ?>
+    </li>
+    <li>
+        <?php $_SESSION['cart']['description'] ?>
+    </li>
+    <li>
+        
+    </li>
+</ol>
 
-
-?>
-
-
+<?php endif ?>
 
 
 <div id="footer" class="container-fluid">
