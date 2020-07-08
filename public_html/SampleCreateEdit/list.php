@@ -86,16 +86,13 @@ else{
 <?php if (isset($_SESSION['cart'])) : ?>
 <ol>
     <li>
-        <?php $_SESSION['cart']['name'] ?>
+        <?php echo $_SESSION['cart']['name'] ?>
     </li>
     <li>
-        <?php $_SESSION['cart']['price'] ?>
+        <?php echo $_SESSION['cart']['price'] ?>
     </li>
     <li>
-        <?php $_SESSION['cart']['description'] ?>
-    </li>
-    <li>
-        
+        <?php echo $_SESSION['cart']['description'] ?>
     </li>
 </ol>
 
