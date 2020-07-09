@@ -60,11 +60,13 @@ else{
         <td>
             <a href="delete.php?id=<?php echo get($row, 'id')?>">Delete Product</a>
         </td>
+        <td>
         <form action="cart.php" method="POST">
             <input type="hidden" name="add_cart" value="<?php echo get($row, 'id')?>">
             <input type="number" name="cart_quantity">
             <input type="submit" name="add_cart_submit" value="Add_Cart">
         </form>
+        </td>
     </tr>
 
         <?php endforeach; ?>
