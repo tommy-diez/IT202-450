@@ -1,5 +1,5 @@
 <?php
-    if (isset($_POST['add_cart_submit'])) {
+    if (isset($_POST['cart'])) {
         require 'common.inc.php';
         session_start();
         $orderID = $_SESSION['orderID'];
