@@ -84,7 +84,7 @@ else{
     $stmt->bindValue(':id', $orderID);
     $stmt->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
+    //$stmt->closeCursor();
     ?>
 
 <?php if (isset($products)) : ?>
