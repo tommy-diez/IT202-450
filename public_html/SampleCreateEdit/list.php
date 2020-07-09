@@ -80,8 +80,6 @@ else{
     $stmt = $db->prepare($query);
     $stmt->bindValue(':id', $userID);
     $stmt->execute();
-    $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->execute();
     $products = $stmt->fetchAll();
     ?>
 
