@@ -1,11 +1,9 @@
 <?php
-//if (isset($_SESSION['user'])) {
     if (isset($_POST['add_cart_submit'])) {
         require 'common.inc.php';
         session_start();
-        $_SESSION['user']['orderID'] = getOrderID();
         $orderID = $_SESSION['user']['orderID'];
-        echo $orderID;
+        //echo $orderID;
         $userID = $_SESSION['user']['id'];
         $productID = $_POST['add_cart'];
         $quantity = $_POST['cart_quantity'];
@@ -36,6 +34,3 @@
         echo "Invalid Request";
     }
 
-/*else {
-    echo "<h1>403 Forbidden</h1>";
-}
