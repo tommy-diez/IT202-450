@@ -1,6 +1,6 @@
 <?php
 include('header.php');
-$_SESSION['orderID'] = getOrderID();
+//$_SESSION['orderID'] = getOrderID();
 ?>
 <html>
     <link rel="stylesheet" href="style.css">
