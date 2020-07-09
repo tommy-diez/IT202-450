@@ -88,13 +88,13 @@ else{
 <?php foreach ($products as $product): ?>
     <tr>
         <td>
-            <?php echo get($product, "orderID"); ?>
+            <?php echo $product['orderID']; ?>
         </td>
         <td>
-            <?php echo get($product, "productID"); ?>
+            <?php echo $product['productID']; ?>
         </td>
         <td>
-            <?php echo get($product, "quantity"); ?>
+            <?php echo $product['quantity']; ?>
         </td>
      </tr>
 <?php endforeach ?>
