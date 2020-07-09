@@ -80,7 +80,7 @@ else{
     $stmt = $db->prepare($query);
     $stmt->bindValue(':id', $userID);
     $stmt->execute();
-    $products = $stmt->fetchAll();
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
 
 <?php if (isset($products)) : ?>
