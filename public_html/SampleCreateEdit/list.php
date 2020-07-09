@@ -48,7 +48,6 @@ else{
     <tr>
         <td>
             <?php echo get($row, "id"); ?>
-            <input type="">
         </td>
         <td>
             <?php echo get($row, "name"); ?>
