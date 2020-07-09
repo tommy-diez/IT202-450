@@ -63,22 +63,10 @@ else{
         <form action="cart.php" method="POST">
             <input type="hidden" name="add_cart" value="<?php echo get($row, 'id')?>">
             <input type="number" name="cart_quantity">
-            <td><input type="submit" name="add_cart_submit" value="Add_Cart"</td>
-            <!--<a href="add_to_cart.php?id=<?php //echo get($row, 'id')?>">Add Product to Cart</a> !-->
+            <input type="submit" name="add_cart_submit" value="Add_Cart">
         </form>
-    </tr>  <!--
-            <li>
-                 <?php echo get($row, "id"); ?>
-                 <?php echo get($row, "name"); ?>
-                 <?php echo get($row, "quantity"); ?>
-                 <?php echo get($row, "price"); ?>
-                 <?php echo get($row, "description");?>
-                 <?//php echo get($row, "modified");?>
-                 <?//php echo get($row, "created");?>
-                <a href="delete.php?id=<?php echo get($row, 'id')?>">Delete Product</a>
-                <a href="add_order.php?id=<?php echo get($row, 'id')?>&price=<?php echo get($row, 'price')?>">Add Product to Cart</a>
-            </li>
-            !-->
+    </tr>
+
         <?php endforeach; ?>
     </table>
 <?php else: ?>
@@ -111,17 +99,7 @@ else{
         </td>
      </tr>
 <?php endforeach ?>
-     <!--
-            <a href="delete.php?id=<?php // echo get($row, 'id')?>">Delete Product</a>
-        </td>
-        <form action="cart.php" method="POST">
-            <input type="hidden" name="add_cart" value="<?php // echo get($row, 'id')?>">
-            <input type="number" name="cart_quantity">
-            <td><input type="submit" name="add_cart_submit" value="Add_Cart"</td>
-            <a href="add_to_cart.php?id=<?php //echo get($row, 'id')?>">Add Product to Cart</a>
-        </form>
-    </tr>
-    !-->
+
 
 <?php endif ?>
 
