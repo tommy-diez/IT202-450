@@ -1,6 +1,6 @@
 <?php
 include('header.php');
-//$_SESSION['orderID'] = getOrderID();
+
 ?>
 <html>
     <link rel="stylesheet" href="style.css">
@@ -22,7 +22,6 @@ if (isset($query) && !empty($query)){
         $stmt = $db->prepare($query);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //$stmt->closeCursor();
     }
     catch(Exception $e){
         echo $e->getMessage();
@@ -31,6 +30,8 @@ if (isset($query) && !empty($query)){
 else{
     echo "No query";
 }
+
+
 ?>
 
 <?php if(isset($results)): ?>
@@ -78,13 +79,14 @@ else{
 <?php endif; ?>
 
 <?php
-    $orderID = $_SESSION['orderID'];
+    $orderID = getOrderID();
+    $_SESSION['orderID'] = $orderID;
     $query = file_get_contents(__DIR__ . "queries/SELECT_CART.sql");
     $stmt = $db->prepare($query);
     $stmt->bindValue(':id', $orderID);
     $stmt->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //$stmt->closeCursor();
+    
     ?>
 
 <?php if (isset($products)) : ?>
