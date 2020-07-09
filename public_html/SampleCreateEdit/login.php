@@ -61,6 +61,7 @@ if (isset($_POST["login"])) {
                             echo var_export($_SESSION, true);
                             $_SESSION['orderID'] = getOrderID();
                             header('Location: list.php');
+                            exit();
                         }
                         else{
                             echo "<div>Invalid password";

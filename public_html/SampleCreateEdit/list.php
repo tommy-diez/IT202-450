@@ -79,8 +79,7 @@ else{
 <?php endif; ?>
 
 <?php
-    //$orderID = getOrderID();
-    $_SESSION['orderID'] = $orderID;
+    $orderID = $_SESSION['orderID'];
     $query = file_get_contents(__DIR__ . "queries/SELECT_CART.sql");
     $stmt = $db->prepare($query);
     $stmt->bindValue(':id', $orderID);

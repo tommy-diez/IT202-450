@@ -2,7 +2,7 @@
     if (isset($_POST['add_cart_submit'])) {
         require 'common.inc.php';
         session_start();
-        $orderID = $_SESSION['orderID'];
+        //$orderID = $_SESSION['orderID'];
         //echo $orderID;
         $userID = $_SESSION['user']['id'];
         $productID = $_POST['add_cart'];
