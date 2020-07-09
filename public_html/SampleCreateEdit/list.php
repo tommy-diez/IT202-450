@@ -79,14 +79,14 @@ else{
 <?php endif; ?>
 
 <?php
-    $orderID = getOrderID();
+    //$orderID = getOrderID();
     $_SESSION['orderID'] = $orderID;
     $query = file_get_contents(__DIR__ . "queries/SELECT_CART.sql");
     $stmt = $db->prepare($query);
     $stmt->bindValue(':id', $orderID);
     $stmt->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
     ?>
 
 <?php if (isset($products)) : ?>
