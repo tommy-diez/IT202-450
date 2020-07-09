@@ -11,7 +11,7 @@ if (isset($_POST['add_cart_submit'])){
               SET quantity = quantity - :quantity
               WHERE id = :id;
               
-              INSERT INTO Cart(orderID, quantity, userID)
+              INSERT INTO Cart(productID, quantity, userID)
               VALUES(:id, :quantity, :userID);";
     $stmt = $db->prepare($query);
     $stmt->bindValue(':id', $productID);
