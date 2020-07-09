@@ -1,5 +1,7 @@
 <?php
-include('header.php'); ?>
+include('header.php');
+$_SESSION['orderID'] = getOrderID();
+?>
 <html>
     <link rel="stylesheet" href="style.css">
     <body>
@@ -20,6 +22,7 @@ if (isset($query) && !empty($query)){
         $stmt = $db->prepare($query);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
     }
     catch(Exception $e){
         echo $e->getMessage();
@@ -75,12 +78,13 @@ else{
 <?php endif; ?>
 
 <?php
-    $userID = $_SESSION['user']['id'];
+    $orderID = $_SESSION['orderID'];
     $query = file_get_contents(__DIR__ . "queries/SELECT_CART.sql");
     $stmt = $db->prepare($query);
-    $stmt->bindValue(':id', $userID);
+    $stmt->bindValue(':id', $orderID);
     $stmt->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
     ?>
 
 <?php if (isset($products)) : ?>
