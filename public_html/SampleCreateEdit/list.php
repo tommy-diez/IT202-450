@@ -68,7 +68,6 @@ else{
         </form>
         </td>
     </tr>
-
         <?php endforeach; ?>
     </table>
 <?php else: ?>
