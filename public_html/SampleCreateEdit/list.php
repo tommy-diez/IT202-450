@@ -60,9 +60,12 @@ else{
         <td>
             <a href="delete.php?id=<?php echo get($row, 'id')?>">Delete Product</a>
         </td>
-        <td>
-            <a href="add_to_cart.php?id=<?php echo get($row, 'id')?>">Add Product to Cart</a>
-        </td>
+        <form action="cart.php" method="POST">
+            <input type="hidden" name="add_cart" value="<?php echo get($row, 'id')?>">
+            <input type="number" name="cart_quantity">
+            <td><input type="submit" name="add_cart_submit" value="Add_Cart"</td>
+            <!--<a href="add_to_cart.php?id=<?php //echo get($row, 'id')?>">Add Product to Cart</a> !-->
+        </form>
     </tr>  <!--
             <li>
                  <?php echo get($row, "id"); ?>
@@ -82,19 +85,43 @@ else{
     <p>No products available at this time, sadly</p>
 <?php endif; ?>
 
+<?php
+    $userID = $_SESSION['user']['id'];
+    $query = file_get_contents(__DIR__ . "queries/SELECT_CART.sql");
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':id', $userID);
+    $stmt->execute();
+    $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->execute();
+    $products = $stmt->fetchAll();
+    ?>
 
 <?php if (isset($_SESSION['cart'])) : ?>
-<ol>
-    <li>
-        <?php echo $_SESSION['cart']['name']; ?>
-    </li>
-    <li>
-        <?php echo $_SESSION['cart']['price']; ?>
-    </li>
-    <li>
-        <?php echo $_SESSION['cart']['description']; ?>
-    </li>
-</ol>
+<h1>My Cart</h1>
+<?php foreach ($products as $product): ?>
+    <tr>
+        <td>
+            <?php echo get($product, "orderID"); ?>
+        </td>
+        <td>
+            <?php echo get($product, "productID"); ?>
+        </td>
+        <td>
+            <?php echo get($product, "quantity"); ?>
+        </td>
+     </tr>
+<?php endforeach ?>
+     <!--
+            <a href="delete.php?id=<?php // echo get($row, 'id')?>">Delete Product</a>
+        </td>
+        <form action="cart.php" method="POST">
+            <input type="hidden" name="add_cart" value="<?php // echo get($row, 'id')?>">
+            <input type="number" name="cart_quantity">
+            <td><input type="submit" name="add_cart_submit" value="Add_Cart"</td>
+            <a href="add_to_cart.php?id=<?php //echo get($row, 'id')?>">Add Product to Cart</a>
+        </form>
+    </tr>
+    !-->
 
 <?php endif ?>
 

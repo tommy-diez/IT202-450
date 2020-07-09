@@ -1,29 +1,26 @@
 <?php
-if (isset ($_SESSION['user_cart']) && !empty($_SESSION['user_cart'])) {
-    $cart = $_SESSION['user_cart'];
-    echo "within";
-}
-else{
-    echo "invalid request 403";
-}
-?>
-<?php if(isset($cart)): ?>
-<html>
-<h1>My Cart</h1>
-<?php foreach ($results as $row): ?>
-<br>
-<ol>
-     <li>
-         <?php echo get($row, "id"); ?>
-         <?php echo get($row, "name"); ?>
-         <?php echo get($row, "quantity"); ?>
-         <?php echo get($row, "price"); ?>
-         <?php echo get($row, "description");?>
-     </li>
-    <?php endforeach; ?>
-</ol>
+if (isset($_POST['add_cart_submit'])){
+    session_start();
+    $userID = $_SESSION['user']['id'];
+    $productID= $_POST['add_cart'];
+    $quantity = $_POST['cart_quantity'];
+    $db = getDB();
 
-</html>
-<?php endif ?>
+    $query = "
+              UPDATE Products
+              SET quantity = quantity-:quantity
+              WHERE id = :id;
+              
+              INSERT INTO Cart
+              VALUES(:id, :quantity, :userID);";
 
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':id', $productID);
+    $stmt->bindValue(':quantity', $quantity);
+    $stmt->bindValue(':userID', $userID);
+    $stmt->execute();
+    header('Location: list.php');
+
+
+}
 
