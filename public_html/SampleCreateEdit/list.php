@@ -48,6 +48,7 @@ else{
     <tr>
         <td>
             <?php echo get($row, "id"); ?>
+            <input type="">
         </td>
         <td>
             <?php echo get($row, "name"); ?>
@@ -62,33 +63,36 @@ else{
             <?php echo get($row, "description");?>
         </td>
         <td>
-            <a href="delete.php?id=<?php echo get($row, 'id')?>">Delete Product</a>
+            <a href="order.php">Place an Order!</a>
         </td>
         <td>
-        <form action="cart.php" method="POST">
-            <input type="hidden" name="add_cart" value="<?php echo get($row, 'id')?>">
-            <input type="number" name="cart_quantity">
-            <input type="submit" name="add_cart_submit" value="Add_Cart">
-        </form>
+            <form method="POST" action="cart.php">
+            <input type="hidden" name="productID" value="<?php echo get($row, "id"); ?>">
+            <label for="number">How many?</label>
+            <input id="number" type="number" name="quantity">
+            <input type="submit" name="cart" value="ADD TO CART">
+            </form>
         </td>
     </tr>
         <?php endforeach; ?>
     </table>
+        <input type="submit" name="submit" value="Add to Cart!"
+    </form>
 <?php else: ?>
     <p>No products available at this time, sadly</p>
 <?php endif; ?>
 
 <?php
-    $orderID = $_SESSION['orderID'];
+    /*
     $query = file_get_contents(__DIR__ . "queries/SELECT_CART.sql");
     $stmt = $db->prepare($query);
     $stmt->bindValue(':id', $orderID);
     $stmt->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+*/
     ?>
 
-<?php if (isset($products)) : ?>
+<?php if (isset($products)): ?>
 <h1>My Cart</h1>
 <?php foreach ($products as $product): ?>
     <tr>

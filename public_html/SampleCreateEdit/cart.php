@@ -2,11 +2,10 @@
     if (isset($_POST['add_cart_submit'])) {
         require 'common.inc.php';
         session_start();
-        //$orderID = $_SESSION['orderID'];
-        //echo $orderID;
+        $orderID = $_SESSION['orderID'];
         $userID = $_SESSION['user']['id'];
-        $productID = $_POST['add_cart'];
-        $quantity = $_POST['cart_quantity'];
+        $productID = $_POST['productID'];
+        $quantity = $_POST['quantity'];
         $db = getDB();
         $query = "
               UPDATE Products
@@ -26,7 +25,7 @@
             echo var_export($e, true);
         } else {
             echo "Value successfully inserted";
-            header('Location: list.php');
+            //header('Location: list.php');
         }
 
     }

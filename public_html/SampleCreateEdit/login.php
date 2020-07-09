@@ -28,14 +28,16 @@ include('header.php');
 <?php
 session_start();
 
+
 if (isset($_POST["login"])) {
     if (isset($_POST["password"]) && isset ($_POST["email"])) {
         $password = $_POST["password"];
         $email = $_POST["email"];
+        $orderID = getOrderID();
         require 'config.php';
         $con_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
-                //$orderID = getOrderID();
+
                 $db = new PDO($con_string, $dbuser, $dbpass);
                 $stmt = $db->prepare("SELECT * from Users where email = :email LIMIT 1");
                 $stmt->bindValue(':email', $email);
@@ -51,17 +53,15 @@ if (isset($_POST["login"])) {
                         if(password_verify($password, $rpassword)){
                             echo "<div>Login credentials valid. You are logged in";
                             $_SESSION['user'] = array(
-                                    //"orderID"=>$orderID,
                                     "id"=>$result['id'],
                                     "email"=>$result["email"],
                                     "first_name"=>$result["first_name"],
-                                    "last_name"=>$result["last_name"]
+                                    "last_name"=>$result["last_name"],
+                                    "orderID"=>$orderID,
 
                             );
                             echo var_export($_SESSION, true);
-                            $_SESSION['orderID'] = getOrderID();
                             header('Location: list.php');
-                            exit();
                         }
                         else{
                             echo "<div>Invalid password";
