@@ -22,7 +22,7 @@ if (isset($query) && !empty($query)){
         $stmt = $db->prepare($query);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
+        //$stmt->closeCursor();
     }
     catch(Exception $e){
         echo $e->getMessage();
