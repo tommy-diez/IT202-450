@@ -51,7 +51,7 @@ if (isset($_POST["login"])) {
                         if(password_verify($password, $rpassword)){
                             echo "<div>Login credentials valid. You are logged in";
                             $_SESSION['user'] = array(
-                                    "orderID"=>$orderID,
+                                    //"orderID"=>$orderID,
                                     "id"=>$result['id'],
                                     "email"=>$result["email"],
                                     "first_name"=>$result["first_name"],
