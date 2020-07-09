@@ -35,7 +35,7 @@ if (isset($_POST["login"])) {
         require 'config.php';
         $con_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
-                $orderID = getOrderID();
+                //$orderID = getOrderID();
                 $db = new PDO($con_string, $dbuser, $dbpass);
                 $stmt = $db->prepare("SELECT * from Users where email = :email LIMIT 1");
                 $stmt->bindValue(':email', $email);
