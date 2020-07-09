@@ -1,5 +1,5 @@
 <?php
-if (isset($_SESSION['user'])) {
+//if (isset($_SESSION['user'])) {
     if (isset($_POST['add_cart_submit'])) {
         require 'common.inc.php';
         session_start();
@@ -35,7 +35,7 @@ if (isset($_SESSION['user'])) {
     else{
         echo "Invalid Request";
     }
-}
-else {
+
+/*else {
     echo "<h1>403 Forbidden</h1>";
 }
