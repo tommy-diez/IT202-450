@@ -33,7 +33,7 @@ if (isset($_POST["login"])) {
     if (isset($_POST["password"]) && isset ($_POST["email"])) {
         $password = $_POST["password"];
         $email = $_POST["email"];
-        $orderID = getOrderID();
+        //$orderID = getOrderID();
         require 'config.php';
         $con_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
