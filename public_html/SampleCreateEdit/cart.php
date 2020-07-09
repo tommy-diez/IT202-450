@@ -24,7 +24,7 @@ if (isset($_POST['add_cart_submit'])){
     }
     else {
         echo "Value successfully inserted";
-        //header('Location: list.php');
+        header('Location: list.php');
     }
 
 }

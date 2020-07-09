@@ -85,7 +85,7 @@ else{
     $products = $stmt->fetchAll();
     ?>
 
-<?php if (isset($_SESSION['cart'])) : ?>
+<?php if (isset($products)) : ?>
 <h1>My Cart</h1>
 <?php foreach ($products as $product): ?>
     <tr>
@@ -101,9 +101,7 @@ else{
      </tr>
 <?php endforeach ?>
 
-
 <?php endif ?>
-
 
 <div id="footer" class="container-fluid">
     Tommy Diez (c) 2020
