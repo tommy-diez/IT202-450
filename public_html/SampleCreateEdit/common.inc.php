@@ -29,3 +29,15 @@ function getOrderID($length = 5){
     return $randomString;
 }
 
+function getCart($id){
+    $sql = "SELECT * FROM Cart WHERE userID = :userID";
+    $db = getDB();
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue('userID', $id);
+    $stmt->execute();
+    $results = $stmt->fetchAll();
+    $stmt->closeCursor(PDO::FETCH_ASSOC);
+    return $results;
+
+}
+

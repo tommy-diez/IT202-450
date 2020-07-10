@@ -80,33 +80,32 @@ else{
 <?php endif; ?>
 
 <?php
-    /*
-    $query = file_get_contents(__DIR__ . "queries/SELECT_CART.sql");
-    $stmt = $db->prepare($query);
-    $stmt->bindValue(':id', $orderID);
-    $stmt->execute();
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-*/
-    ?>
-
-<?php if (isset($products)): ?>
-<h1>My Cart</h1>
-<?php foreach ($products as $product): ?>
+  $cart = getCart([$_SESSION['id']]);
+  ?>
+<?php if(isset($cart)): ?>
+<h3>Products</h3>
+<table border="1">
+    <tr>
+        <th>Product ID</th>
+        <th>Quantity</th>
+        <th>UserID</th>
+    </tr>
+    <?php foreach ($cart as $item): ?>
     <tr>
         <td>
-            <?php echo $product['orderID']; ?>
+            <?php echo get($item, 'id'); ?>
         </td>
         <td>
-            <?php echo $product['productID']; ?>
+            <?php echo get($item, 'productID'); ?>
         </td>
         <td>
-            <?php echo $product['quantity']; ?>
+            <?php echo get($item, 'userID'); ?>
         </td>
-     </tr>
-<?php endforeach ?>
+    </tr>
+    <?php endforeach; ?>
+</table>
+<?php else: echo "<div>Empty Cart</div>"; ?>
 
-<?php endif ?>
+<?php endif; ?>
 
-<div id="footer" class="container-fluid">
-    Tommy Diez (c) 2020
-</div>
+
