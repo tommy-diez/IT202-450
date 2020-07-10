@@ -16,7 +16,7 @@ session_start();
     <label for="quantity">Quantity</label>
     <input id="quantity" type ="number"  name="quantity">
     <br>
-    <input name="submit" type="submit">
+    <input name="submit" type="submit" value="SUBMIT">
 </form>
 </html>
 
