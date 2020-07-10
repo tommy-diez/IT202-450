@@ -10,8 +10,12 @@ session_start();
     <link rel="stylesheet" href="style.css">
 </head>
 <form action ="edit_cart.php" method="post"">
-    <input type = "number" name="productID" value = "<?php echo $task['message'];?>">
-    <input type = "number" id="duedate" name = "duedate" value = "<?php echo $task['duedate'];?>">Change DueDate
+    <label for="product"></label>
+    <input id="product" type ="number" name="product">
+    <br>
+    <label for="quantity"></label>
+    <input id="quantity" type ="number"  name="quantity">
+    <br>
     <input type = submit>
 </form>
 </html>
