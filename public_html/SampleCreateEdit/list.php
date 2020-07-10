@@ -82,7 +82,7 @@ else{
 <?php
   $cart = getCart([$_SESSION['user']['id']]);
   ?>
-<?php if(isset($cart)): ?>
+<?php if(isset($cart) && !empty($cart)): ?>
 <h3>Cart</h3>
 <table border="1">
     <tr>
@@ -90,6 +90,7 @@ else{
         <th>Quantity</th>
         <th>UserID</th>
     </tr>
+    <?php var_export($cart) ?>
     <?php foreach ($cart as $item): ?>
     <tr>
         <td>
