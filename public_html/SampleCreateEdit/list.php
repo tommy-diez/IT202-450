@@ -15,6 +15,7 @@ include('header.php');
 <?php
 require('common.inc.php');
 session_start();
+
 $query = file_get_contents(__DIR__ . "/queries/SELECT_ALL_TABLE_ASC.sql");
 if (isset($query) && !empty($query)){
     try{
@@ -31,7 +32,7 @@ else{
     echo "No query";
 }
 
-
+$SESSION['orderID'] = getOrderID();
 ?>
 
 <?php if(isset($results)): ?>
