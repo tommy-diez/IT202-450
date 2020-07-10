@@ -35,8 +35,8 @@ function getCart($id){
     $stmt = $db->prepare($sql);
     $stmt->bindValue('userID', $id);
     $stmt->execute();
-    $results = $stmt->fetchAll();
-    $stmt->closeCursor(PDO::FETCH_ASSOC);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
     return $results;
 
 }
