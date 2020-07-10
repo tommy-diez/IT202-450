@@ -11,10 +11,10 @@ session_start();
 </head>
 <form action ="edit_cart.php" method="post"">
     <label for="product">Product ID</label>
-    <input id="product" type ="number" name="product">
+    <input id="product" type="number" name="product">
     <br>
     <label for="quantity">Quantity</label>
-    <input id="quantity" type ="number"  name="quantity">
+    <input id="quantity" type="number"  name="quantity">
     <br>
     <input name="submit" type="submit" value="SUBMIT">
 </form>
@@ -24,7 +24,6 @@ session_start();
 
 if (isset($_POST['submit'])) {
     if (isset($_GET['id'])) {
-        include 'common.inc.php';
         $productID = $_GET['id'];
         $userID = $_SESSION['user']['id'];
         $newProductID = $_POST['product'];
