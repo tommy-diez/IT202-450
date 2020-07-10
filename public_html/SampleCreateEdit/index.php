@@ -83,6 +83,7 @@ else{
   $cart = getCart($_SESSION['user']['id']);
   ?>
 <?php if(isset($cart) && !empty($cart)): ?>
+<br>
 <h3>Cart</h3>
 <table border="1">
     <tr>

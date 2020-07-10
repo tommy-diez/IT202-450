@@ -10,13 +10,13 @@ session_start();
     <link rel="stylesheet" href="style.css">
 </head>
 <form action ="edit_cart.php" method="post"">
-    <label for="product"></label>
+    <label for="product">Product ID</label>
     <input id="product" type ="number" name="product">
     <br>
-    <label for="quantity"></label>
+    <label for="quantity">Quantity</label>
     <input id="quantity" type ="number"  name="quantity">
     <br>
-    <input type = submit>
+    <input name="submit" type="submit">
 </form>
 </html>
 
