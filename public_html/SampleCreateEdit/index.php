@@ -97,7 +97,7 @@ else{
             <?php echo get($item, 'productID'); ?>
         </td>
         <td>
-            <?php echo get($item, 'Quantity'); ?>
+            <?php echo get($item, 'quantity'); ?>
         </td>
         <td>
             <?php echo get($item, 'userID'); ?>
