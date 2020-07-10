@@ -32,7 +32,8 @@ else{
     echo "No query";
 }
 
-$SESSION['orderID'] = getOrderID();
+$orderID= getOrderID();
+$_SESSION['orderID'] = $orderID; 
 ?>
 
 <?php if(isset($results)): ?>
