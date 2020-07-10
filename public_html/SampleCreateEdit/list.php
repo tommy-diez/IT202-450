@@ -80,7 +80,7 @@ else{
 <?php endif; ?>
 
 <?php
-  $cart = getCart([$_SESSION['user']['id']]);
+  $cart = getCart($_SESSION['user']['id']);
   ?>
 <?php if(isset($cart) && !empty($cart)): ?>
 <h3>Cart</h3>
