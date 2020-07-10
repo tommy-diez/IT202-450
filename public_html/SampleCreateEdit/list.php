@@ -1,6 +1,6 @@
 <?php
 include('header.php');
-include('login.php');
+
 ?>
 <html>
     <link rel="stylesheet" href="style.css">
@@ -15,7 +15,7 @@ include('login.php');
 <?php
 require('common.inc.php');
 session_start();
-$_SESSION['orderID'] = $orderID;
+
 $query = file_get_contents(__DIR__ . "/queries/SELECT_ALL_TABLE_ASC.sql");
 if (isset($query) && !empty($query)){
     try{
