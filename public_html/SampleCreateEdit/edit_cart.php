@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 include 'common.inc.php';
-session_start();
+//session_start();
  ?>
 
 <html>
