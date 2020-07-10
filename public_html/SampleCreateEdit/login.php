@@ -60,8 +60,6 @@ if (isset($_POST["login"])) {
                                     //"orderID"=>$orderID,
 
                             );
-                            $orderID = getOrderID();
-                            $_SESSION['orderID'] = $orderID;
                             echo var_export($_SESSION, true);
                             header('Location: list.php');
                         }
