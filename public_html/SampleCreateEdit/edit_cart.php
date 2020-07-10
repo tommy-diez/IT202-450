@@ -30,11 +30,11 @@ if (isset($_POST['submit'])) {
         $quantity = $_POST['quantity'];
 
         //echo $productID;
-        //echo $userID;
-        //echo $newProductID;
-        //echo $quantity;
-        modifyCart($orderID, $quantity, $newProductID);
-        header('Location:index.php');
+        echo $orderID;
+        echo $newProductID;
+        echo $quantity;
+        //modifyCart($orderID, $quantity, $newProductID);
+        //header('Location:index.php');
     }
 }
 ?>
