@@ -75,8 +75,6 @@ else{
     </tr>
         <?php endforeach; ?>
     </table>
-        <input type="submit" name="submit" value="Add to Cart!"
-    </form>
 <?php else: ?>
     <p>No products available at this time, sadly</p>
 <?php endif; ?>

@@ -6,10 +6,10 @@
         $userID = $_SESSION['user']['id'];
         $productID = $_POST['productID'];
         $quantity = $_POST['quantity'];
-        echo $orderID;
-        echo $userID;
-        echo $productID;
-        echo $quantity;
+        echo $orderID . " :orderID";
+        echo $userID . " :userID";
+        echo $productID . " :productID" ;
+        echo $quantity . " :quantity" ;
         $db = getDB();
         $query = "
               UPDATE Products
