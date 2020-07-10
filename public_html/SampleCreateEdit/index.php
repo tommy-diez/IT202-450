@@ -104,7 +104,7 @@ else{
             <?php echo get($item, 'userID'); ?>
         </td>
         <td>
-            <a href="edit_cart.php?id=<?php echo get($item, 'productID');?>">Edit Cart</a>
+            <a href="edit_cart.php?id=<?php echo get($item, 'orderID');?>">Edit Cart</a>
         </td>
     </tr>
     <?php endforeach; ?>

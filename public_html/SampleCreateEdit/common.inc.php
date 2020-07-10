@@ -41,7 +41,7 @@ function getCart($id){
 
 }
 
-function modifyCart($productID, $quantity, $newProductID){
+function modifyCart($orderID, $quantity, $newProductID){
         $db = getDB();
         $query = "
 UPDATE
@@ -49,9 +49,9 @@ UPDATE
 SET
    productID = :newProductID, quantity = :quantity 
 WHERE
-   orderID = :productID";
+   orderID = :orderID";
         $statement = $db->prepare($query);
-        $statement->bindValue(':productID', $productID);
+        $statement->bindValue(':orderID', $orderID);
         $statement->bindValue(':quantity', $quantity);
         $statement->bindValue(':newProductID', $newProductID);
         $statement->execute();

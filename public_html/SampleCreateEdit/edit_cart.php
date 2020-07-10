@@ -24,16 +24,16 @@ session_start();
 
 if (isset($_POST['submit'])) {
     if (isset($_GET['id'])) {
-        $productID = $_GET['id'];
-        $userID = $_SESSION['user']['id'];
+        $orderID = $_GET['id'];
+        //$userID = $_SESSION['user']['id'];
         $newProductID = $_POST['product'];
         $quantity = $_POST['quantity'];
-        echo $productID;
-        echo $userID;
-        echo $newProductID;
-        echo $quantity;
-        //modifyCart($productID, $quantity, $newProductID);
-        //header('Location:index.php');
+        //echo $productID;
+        //echo $userID;
+        //echo $newProductID;
+        //echo $quantity;
+        modifyCart($orderID, $quantity, $newProductID);
+        header('Location:index.php');
     }
 }
 
