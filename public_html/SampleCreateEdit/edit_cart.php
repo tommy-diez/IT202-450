@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
         $userID = $_SESSION['user']['id'];
         $newProductID = $_POST['product'];
         $quantity = $_POST['quantity'];
-        modifyCart($productID, $newProductID, $quantity);
+        modifyCart($productID, $quantity, $newProductID);
         header('Location:index.php');
     }
 }
