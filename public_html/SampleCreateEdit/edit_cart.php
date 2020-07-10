@@ -9,7 +9,7 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<form action ="edit_cart.php" method="post"">
+<form action ="edit_cart.php" method="post">
     <label for="product">Product ID</label>
     <input id="product" type="number" name="product">
     <br>
@@ -28,6 +28,7 @@ if (isset($_POST['submit'])) {
         //$userID = $_SESSION['user']['id'];
         $newProductID = $_POST['product'];
         $quantity = $_POST['quantity'];
+
         //echo $productID;
         //echo $userID;
         //echo $newProductID;
@@ -36,5 +37,4 @@ if (isset($_POST['submit'])) {
         header('Location:index.php');
     }
 }
-
 ?>
