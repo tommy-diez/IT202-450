@@ -48,7 +48,7 @@ function modifyCart($productID, $quantity, $orderID){
 SET
    productID = :newProductID, quantity = :quantity 
 WHERE
-   cartID = :product";
+   productID = :productID";
         $statement = $db->prepare($query);
         $statement->bindValue(':productID', $productID);
         $statement->bindValue(':quantity', $quantity);
