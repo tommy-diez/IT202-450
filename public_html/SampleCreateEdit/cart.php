@@ -24,7 +24,7 @@
             echo var_export($e, true);
         } else {
             echo "Value successfully inserted";
-            header('Location: list.php');
+            header('Location: index.php');
         }
 
     }

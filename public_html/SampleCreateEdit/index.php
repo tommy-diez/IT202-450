@@ -90,22 +90,26 @@ else{
         <th>Quantity</th>
         <th>UserID</th>
     </tr>
-    <?php var_export($cart) ?>
+    <?php //var_export($cart) ?>
     <?php foreach ($cart as $item): ?>
     <tr>
-        <td>
-            <?php echo get($item, 'id'); ?>
-        </td>
         <td>
             <?php echo get($item, 'productID'); ?>
         </td>
         <td>
+            <?php echo get($item, 'Quantity'); ?>
+        </td>
+        <td>
             <?php echo get($item, 'userID'); ?>
+        </td>
+        <td>
+            <a href="edit_cart.php?id=<?php echo get($item, 'userID');?>">Edit Cart</a>
         </td>
     </tr>
     <?php endforeach; ?>
 </table>
-<?php else: echo "<div>Empty Cart</div>"; ?>
+
+<?php else: echo "<div>Cart is Empty</div>"; ?>
 
 <?php endif; ?>
 

@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     foreach($results as $row){
         array_push($_SESSION['cart'], $row);
     }
-    header('Location: list.php');
+    header('Location: index.php');
 }
 else {
     echo "bad request 403";

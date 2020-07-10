@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
     }
     else{
         echo "Product successfully deleted";
-        die(header('Location: list.php'));
+        die(header('Location: index.php'));
     }
 }
 else {

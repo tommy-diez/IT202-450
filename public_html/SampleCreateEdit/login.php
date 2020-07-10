@@ -59,7 +59,7 @@ if (isset($_POST["login"])) {
 
                             );
                             echo var_export($_SESSION, true);
-                            header('Location: list.php');
+                            header('Location: index.php');
                         }
                         else{
                             echo "<div>Invalid password";
