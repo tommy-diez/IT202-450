@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
         echo $userID;
         echo $newProductID;
         echo $quantity;
-        modifyCart($productID, $quantity, $newProductID);
+        //modifyCart($productID, $quantity, $newProductID);
         //header('Location:index.php');
     }
 }
