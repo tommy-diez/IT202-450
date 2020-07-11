@@ -20,6 +20,9 @@ WHERE
     if ($e[0] != "00000"){
         echo var_export($e, true);
     }
+    else{
+        echo "Successfully updated card";
+    }
     header('Location: index.php');
 }
 else {
