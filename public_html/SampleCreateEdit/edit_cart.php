@@ -3,6 +3,18 @@ $id = $_POST['id'];
 include 'header.php';
 include 'common.inc.php';
 //session_start();
+
+if (isset($_POST['submit'])) {
+    //$userID = $_SESSION['user']['id'];
+    $newProductID = $_POST['product'];
+    $quantity = $_POST['quantity'];
+    //echo $productID;
+    echo $id;
+    echo $newProductID;
+    echo $quantity;
+    //modifyCart($orderID, $quantity, $newProductID);
+    //header('Location:index.php');
+}
  ?>
 
 <html>
@@ -24,6 +36,7 @@ include 'common.inc.php';
 </html>
 
 <?php
+/*
 if (isset($_POST['submit'])) {
     //$userID = $_SESSION['user']['id'];
     $newProductID = $_POST['product'];
@@ -35,5 +48,6 @@ if (isset($_POST['submit'])) {
     //modifyCart($orderID, $quantity, $newProductID);
     //header('Location:index.php');
 }
+*/
 ?>
 
