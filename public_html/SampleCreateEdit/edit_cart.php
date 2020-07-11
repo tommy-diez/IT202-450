@@ -1,17 +1,15 @@
 <?php
-//include('header.php');
+include('header.php');
+include 'common.inc.php';
 if(isset($_POST['submit'])) {
     $id = $_POST['id'];
     $productID = $_POST['product'];
     $quantity = $_POST['quantity'];
-    //$db = getDB();
+    $db = getDB();
     echo $id;
     echo $productID;
     echo $quantity;
     //var_export($db, true);
-}
-
-    /*
     $query = "
 UPDATE
    Cart
@@ -37,4 +35,4 @@ WHERE
 else {
     echo "<h1>Invalid Request</h1>";
 }
-*/
+
