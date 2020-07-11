@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+//include('header.php');
 if(isset($_POST['submit'])) {
     $id = $_POST['id'];
     $productID = $_POST['product'];
@@ -8,7 +8,7 @@ if(isset($_POST['submit'])) {
     echo $id;
     echo $productID;
     echo $quantity;
-    var_export($db, true);
+    //var_export($db, true);
 }
 
     /*
