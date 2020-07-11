@@ -1,5 +1,5 @@
 <?php
-$id = $_GET['id'];
+$id = $_POST['id'];
 include 'header.php';
 include 'common.inc.php';
 //session_start();

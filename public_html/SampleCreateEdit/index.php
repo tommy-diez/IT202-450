@@ -104,7 +104,11 @@ else{
             <?php echo get($item, 'userID'); ?>
         </td>
         <td>
-            <a href="edit_cart.php?id=<?php echo get($item, 'orderID');?>">Edit Cart</a>
+            <form>
+                <input id="id" type="hidden" name="id" value="<?php echo get($item, 'orderID'); ?>">
+                <input type="submit" name="submit" value="EDIT CART">
+            </form>
+            <!--<a href="edit_cart.php?id=<?php //echo get($item, 'orderID');?>">Edit Cart</a> !-->
         </td>
     </tr>
     <?php endforeach; ?>
