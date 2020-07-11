@@ -1,10 +1,5 @@
 <?php
-if (isset($_GET['id'])){
-    $id = $_GET['id'];
-}
-else {
-    header('Location: login.php');
-}
+$id = $_GET['id'];
 include 'header.php';
 include 'common.inc.php';
 //session_start();
@@ -29,13 +24,15 @@ include 'common.inc.php';
 </html>
 
 <?php
-        $orderID = $_GET['id'];
-        //$userID = $_SESSION['user']['id'];
-        $newProductID = $_POST['product'];
-        $quantity = $_POST['quantity'];
-        //echo $productID;
-        echo $orderID;
-        echo $newProductID;
-        echo $quantity;
-        //modifyCart($orderID, $quantity, $newProductID);
-        //header('Location:index.php');
+$orderID = $_GET['id'];
+//$userID = $_SESSION['user']['id'];
+$newProductID = $_POST['product'];
+$quantity = $_POST['quantity'];
+//echo $productID;
+echo $orderID;
+echo $newProductID;
+echo $quantity;
+//modifyCart($orderID, $quantity, $newProductID);
+//header('Location:index.php');
+?>
+
