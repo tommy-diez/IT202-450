@@ -22,8 +22,9 @@ WHERE
     }
     else{
         echo "Successfully updated card";
+        header('Location: index.php');
     }
-    header('Location: index.php');
+    //header('Location: index.php');
 }
 else {
     echo "<h1>Invalid Request</h1>";
