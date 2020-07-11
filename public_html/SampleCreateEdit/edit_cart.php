@@ -24,15 +24,16 @@ include 'common.inc.php';
 </html>
 
 <?php
-$orderID = $_GET['id'];
-//$userID = $_SESSION['user']['id'];
-$newProductID = $_POST['product'];
-$quantity = $_POST['quantity'];
-//echo $productID;
-echo $orderID;
-echo $newProductID;
-echo $quantity;
-//modifyCart($orderID, $quantity, $newProductID);
-//header('Location:index.php');
+if (isset($_POST['submit'])) {
+    //$userID = $_SESSION['user']['id'];
+    $newProductID = $_POST['product'];
+    $quantity = $_POST['quantity'];
+    //echo $productID;
+    echo $id;
+    echo $newProductID;
+    echo $quantity;
+    //modifyCart($orderID, $quantity, $newProductID);
+    //header('Location:index.php');
+}
 ?>
 
