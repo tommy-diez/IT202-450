@@ -104,7 +104,7 @@ else{
             <?php echo get($item, 'userID'); ?>
         </td>
         <td>
-            <form>
+            <form method="POST" action="edit_cart.php">
                 <input id="id" type="hidden" name="id" value="<?php echo get($item, 'orderID'); ?>">
                 <input type="submit" name="submit" value="EDIT CART">
             </form>
