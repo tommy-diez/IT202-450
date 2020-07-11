@@ -1,22 +1,15 @@
 <?php
-$id = $_POST['id'];
-include 'header.php';
-include 'common.inc.php';
-//session_start();
-
-if (isset($_POST['submit'])) {
-    //$userID = $_SESSION['user']['id'];
-    $newProductID = $_POST['product'];
+if(isset($_POST['submit'])){
+    $id = $_POST['id'];
+    $productID = $_POST['product'];
     $quantity = $_POST['quantity'];
-    //echo $productID;
     echo $id;
-    echo $newProductID;
+    echo $productID;
     echo $quantity;
-    //modifyCart($orderID, $quantity, $newProductID);
-    //header('Location:index.php');
+    
 }
  ?>
-
+<!--
 <html>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -34,6 +27,7 @@ if (isset($_POST['submit'])) {
 </form>
 </body>
 </html>
+!-->
 
 <?php
 /*

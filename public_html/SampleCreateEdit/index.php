@@ -106,6 +106,12 @@ else{
         <td>
             <form method="POST" action="edit_cart.php">
                 <input id="id" type="hidden" name="id" value="<?php echo get($item, 'orderID'); ?>">
+                <label for="product">Product ID</label>
+                <input id="product" type="number" name="product">
+                <br>
+                <label for="quantity">Quantity</label>
+                <input id="quantity" type="number"  name="quantity">
+                <br>
                 <input type="submit" name="submit" value="EDIT CART">
             </form>
             <!--<a href="edit_cart.php?id=<?php //echo get($item, 'orderID');?>">Edit Cart</a> !-->
