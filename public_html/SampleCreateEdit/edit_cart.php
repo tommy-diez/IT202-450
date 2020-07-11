@@ -8,8 +8,18 @@ if(isset($_POST['submit'])) {
     echo $productID;
     echo $quantity;
     */
-    modifyCart($id, $quantity, $productID);
-    $e = $stmt->errorInfo();
+    $db = getDB();
+    $query = "
+UPDATE
+   Cart 
+SET
+   productID = :newProductID, quantity = :quantity 
+WHERE
+   orderID = :orderID";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':newProductID', $productID);
+    $stmt->bindValue(':quantity', $quantity);
+    $stmt->bindValue(':orderID', $id);
     if ($e[0] != "00000"){
         echo var_export($e, true);
     }
