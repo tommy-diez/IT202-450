@@ -12,6 +12,7 @@ include_once(__DIR__ . "/partial-pages/header.php");
         <br>
         <label for="cpassword">Confirm Password: </label>
         <input type="password" id="cpassword" name="cpassword" required min="5">
+        <input type="submit" name="submit" value="SUBMIT">
     </form>
 </div>
 
