@@ -70,7 +70,9 @@ class DBH{
             $pass = password_hash($pass, PASSWORD_BCRYPT);
             $stmt->bindValue(':first_name', $first_name);
             $stmt->bindValue(':last_name', $last_name);
-            $result = $stmt->execute([":email" => $email, ":password" => $pass]);
+            $stmt->bindValue(':email', $email);
+            $stmt->bindValue(':password', $pass);
+            $result = $stmt->execute();
             DBH::verify_sql($stmt);
             if($result){
                 return DBH::response(NULL,200, "Registration successful");
