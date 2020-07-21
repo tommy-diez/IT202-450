@@ -1,0 +1,1 @@
+SELECT * from Users where email = :email LIMIT 1
