@@ -9,7 +9,7 @@ $count = 0;
 
 try {
 
-    foreach (glob(__DIR__ . "/structure/*.sql") as $filename) {
+    foreach (glob(__DIR__ . "/db_structure/*.sql") as $filename) {
         $sql[$filename] = file_get_contents($filename);
     }
 

@@ -15,7 +15,7 @@ $logged_in = Common::is_logged_in(false);
         <?php endif; ?>
         <?php if(!$logged_in): ?>
         <li>
-            -<a href="<?php echo Common::url_for("login"); ?>">Login</a>
+            <a href="<?php echo Common::url_for("login"); ?>">Login</a>
         </li>
         <li>
             <a href="<?php echo Common::url_for("register"); ?>">Register</a>
