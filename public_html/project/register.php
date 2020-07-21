@@ -38,6 +38,9 @@ if (Common::get($_POST, "submit", false)){
             Common::flash("Successfully registered! Please login", "success");
             die(header('Location: ' . Common::url_for('login')));
         }
+        else {
+            echo "Failure";
+        }
     }
     else{
         Common::flash("Email and password must be filled", "warning");
