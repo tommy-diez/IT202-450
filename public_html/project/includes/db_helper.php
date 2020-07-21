@@ -62,12 +62,14 @@ class DBH{
         }
     }
 
-    public static function register($email, $pass)
+    public static function register($first_name, $last_name, $email, $pass)
     {
         try {
             $query = file_get_contents(__DIR__ . "/../sql/queries/register.sql");
             $stmt = DBH::getDB()->prepare($query);
             $pass = password_hash($pass, PASSWORD_BCRYPT);
+            $stmt->bindValue(':first_name', $first_name);
+            $stmt->bindValue(':last_name', $last_name);
             $result = $stmt->execute([":email" => $email, ":password" => $pass]);
             DBH::verify_sql($stmt);
             if($result){
