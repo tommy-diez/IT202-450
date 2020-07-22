@@ -66,6 +66,7 @@ if (isset($_POST["register"])) {
                     //$con_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
                     try{
                         $db = $common->getDB();
+                        var_export($db, true);
                         $hash = password_hash($password, PASSWORD_BCRYPT);
                         $stmt = $db->prepare("INSERT INTO Users (first_name, last_name, email, password) 
                                                 VALUES (:first_name, :last_name, :email, :password)");
