@@ -21,7 +21,7 @@ include_once(__DIR__ . "/partial-pages/header.php");
 </div>
 <?php
 
-if (Common::get($_POST, "submit", false)){
+if (Common::get($_POST, "register", false)){
     $email = Common::get($_POST, "email", false);
     $password = Common::get($_POST, "password", false);
     $cpassword = Common::get($_POST, "cpassword", false);
