@@ -65,7 +65,9 @@ class DBH{
     public static function register($first_name, $last_name, $email, $pass)
     {
         try {
-            $query = file_get_contents(__DIR__ . "/../sql/queries/register.sql");
+            $query = "INSERT INTO Users (first_name, last_name, email, password) 
+                                                VALUES (:first_name, :last_name, :email, :password)";
+            //$query = file_get_contents(__DIR__ . "/../sql/queries/register.sql");
             $stmt = DBH::getDB()->prepare($query);
             $pass = password_hash($pass, PASSWORD_BCRYPT);
             $stmt->bindValue(':first_name', $first_name);
