@@ -1,6 +1,7 @@
 <?php
 include_once(__DIR__ . "/partial-pages/header.php");
 ?>
+
 <div>
     <form method="POST">
         <label for="first_name">First Name: </label>
@@ -20,7 +21,6 @@ include_once(__DIR__ . "/partial-pages/header.php");
 </div>
 <?php
 
-/*
 if (Common::get($_POST, "submit", false)){
     $email = Common::get($_POST, "email", false);
     $password = Common::get($_POST, "password", false);
@@ -47,8 +47,8 @@ if (Common::get($_POST, "submit", false)){
         die(header("Location: register.php"));
     }
 }
-*/
 
+/*
 if (isset($_POST["register"])) {
     if (isset($_POST["password"]) && isset ($_POST["cpassword"])) {
         if (isset($_POST["email"])) {
@@ -102,4 +102,5 @@ if (isset($_POST["register"])) {
         echo "<div>Leave no fields empty</div>";
     }
 }
+*/
 ?>
