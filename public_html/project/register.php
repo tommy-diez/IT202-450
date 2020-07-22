@@ -31,22 +31,24 @@ if (Common::get($_POST, "register", false)){
         Common::flash("Passwords do not match", "warning");
         die(header("Location: register.php"));
     }
-    if(!empty($email) && !empty($password)){
+    //if(!empty($email) && !empty($password)){
         $result = DBH::register($first_name, $last_name, $email, $password);
         echo var_export($result, true);
         if(Common::get($result, "status", 400)==200) {
             Common::flash("Successfully registered! Please login", "success");
             die(header('Location: ' . Common::url_for('login')));
         }
+        /*
         else {
             echo "Failure";
         }
+        */
     }
     else{
         Common::flash("Email and password must be filled", "warning");
         die(header("Location: register.php"));
     }
-}
+//}
 
 /*
 if (isset($_POST["register"])) {
