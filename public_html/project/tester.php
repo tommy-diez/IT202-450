@@ -6,4 +6,4 @@ $db = new PDO($connection_string, $dbuser, $dbpass);
     $stmt = $db->prepare("SELECT * FROM Users");
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($results, true);
+    var_dump($results);
