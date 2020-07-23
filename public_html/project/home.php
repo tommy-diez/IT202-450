@@ -74,7 +74,7 @@ else{
 <?php endif; ?>
 
 <?php
-$cart = getCart($_SESSION['user']['id']);
+$cart = Common::getCart($_SESSION['user']['id']);
 ?>
 <?php if(isset($cart) && !empty($cart)): ?>
     <br>

@@ -10,7 +10,7 @@ $logged_in = Common::is_logged_in(false);
             <a href="<?php echo Common::url_for("home"); ?>">Home</a>
         </li>
         <li>
-            <a href="<?php echo Common::url_for("cart"); ?>"></a>
+            <a href="<?php echo Common::url_for("cart"); ?>">My Cart</a>
         </li>
         <?php endif; ?>
         <?php if(!$logged_in): ?>
