@@ -6,4 +6,4 @@ $db = new PDO($connection_string, $dbuser, $dbpass);
     $stmt = $db->prepare("SELECT * FROM Users where id=8");
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($results);
+    echo $results['id'];
