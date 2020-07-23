@@ -60,8 +60,8 @@ if (isset($_POST["register"])) {
             $password = $_POST["password"];
             $cpassword = $_POST["cpassword"];
             $email = $_POST["email"];
-            echo $password;
-            echo $cpassword;
+            //echo $password;
+            //echo $cpassword;
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 if ($password == $cpassword) {
                     //echo "<br>Passwords match!";
