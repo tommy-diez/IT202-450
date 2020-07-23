@@ -54,10 +54,10 @@ class Common
 
     public function getDB() {
         if (!isset($this->db)) {
-            $dbdatabse = $dbuser = $dbpass = $dbhost = NULL;
-            require_once(__DIR__ . "/config.php");
-            if (isset($dbhost) && isset($dbdatabse) && isset($dbpass) && isset($dbuser)){
-                $connection_string = "mysql:host=$dbhost;dbname=$dbdatabse;charset=utf8mb4";
+            $dbdatabase = $dbuser = $dbpass = $dbhost = NULL;
+            require_once(__DIR__ . "config.php");
+            if (isset($dbhost) && isset($dbdatabase) && isset($dbpass) && isset($dbuser)){
+                $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
                 $this->db = new PDO($connection_string, $dbuser, $dbpass);
             }
             else {

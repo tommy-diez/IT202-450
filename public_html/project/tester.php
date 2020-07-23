@@ -1,6 +1,6 @@
 <?php
 include 'includes/config.php';
-$connection_string = "mysql:host=$dbhost;dbname=$dbdatabse;charset=utf8mb4";
+$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 //$this->db =
 $db = new PDO($connection_string, $dbuser, $dbpass);
     $stmt = $db->prepare("SELECT * FROM Users where id=8");
