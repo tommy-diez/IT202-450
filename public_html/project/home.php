@@ -6,11 +6,11 @@ if(Common::is_logged_in()){
 }
 ?>
 <div>
-    <h1>Welcome, <?php echo Common::get_username(); ?>, to our ECommerce Site</h1>
+    <h1>Welcome to our ECommerce Site, <?php echo $_SESSION['user']['first_name']; ?></h1>
 </div>
 <?php
 
-$query = file_get_contents(__DIR__ . "sql/queries/select_cart.sql");
+$query = file_get_contents(__DIR__ . "/sql/queries/select_cart.sql");
 if (isset($query) && !empty($query)){
     try{
     $db = getDB();
