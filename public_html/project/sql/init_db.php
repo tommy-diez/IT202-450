@@ -2,7 +2,7 @@
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(__DIR__ . "/../includes/common.inc.php");
+error_reporting(E_ALL);
 
 require_once (__DIR__ . "/../includes/common.inc.php");
 $count = 0;
@@ -36,6 +36,7 @@ try {
                 $line = $lines[0];
                 $line = preg_replace('!\s+!', ' ', $line);
                 $line = str_ireplace("create table", "", $line);
+                $line = str_ireplace("if not exists", "", $line);
                 $line = str_ireplace("`", "", $line);
                 $line = trim($line);
                 if (in_array($line, $t)) {
@@ -49,18 +50,20 @@ try {
             $error = $stmt->errorInfo();
             if ($error && $error[0] !== '00000') {
                 echo "<br>$key result: " . ($result > 0 ? "Success" : "Fail") . "<br>";
-            } else {
-                echo "Didn't find any files, please check the directory/directory contents/permission";
             }
+            echo "<br> Init Complete, used approximately $count db calls. <br>";
+
+
         }
-
-        $db = null;
-
     }
+    else {
+        echo "Didn't find any sql files, please check the directory/directory contents/permission";
+    }
+    $db = null;
 }
-    catch(Exception $e) {
-        echo $e->getMessage();
-        exit("Something went wrong");
+catch (Exception $e) {
+            echo $e->getMessage();
+            exit("Something went wrong");
 
-    }
+}
 
