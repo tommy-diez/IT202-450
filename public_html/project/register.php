@@ -20,7 +20,7 @@ include_once(__DIR__ . "/partial-pages/header.php");
     </form>
 </div>
 <?php
-
+/*
 if (Common::get($_POST, "register", false)){
     $email = Common::get($_POST, "email", false);
     $password = Common::get($_POST, "password", false);
@@ -38,19 +38,20 @@ if (Common::get($_POST, "register", false)){
             Common::flash("Successfully registered! Please login", "success");
             die(header('Location: ' . Common::url_for('login')));
         }
-        /*
-        else {
-            echo "Failure";
-        }
-        */
+
+       // else {
+         //   echo "Failure";
+       // }
+
     }
     else{
         Common::flash("Email and password must be filled", "warning");
         die(header("Location: register.php"));
     }
+ */
+
 //}
 
-/*
 if (isset($_POST["register"])) {
     if (isset($_POST["password"]) && isset ($_POST["cpassword"])) {
         if (isset($_POST["email"])) {
@@ -64,10 +65,10 @@ if (isset($_POST["register"])) {
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 if ($password == $cpassword) {
                     //echo "<br>Passwords match!";
-                    //require 'config.php';
-                    //$con_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+                    require 'includes/config.php';
+                    $con_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
                     try{
-                        $db = $common->getDB();
+                        $db = new PDO($con_string, $dbuser, $dbpass);
                         var_export($db, true);
                         $hash = password_hash($password, PASSWORD_BCRYPT);
                         $stmt = $db->prepare("INSERT INTO Users (first_name, last_name, email, password) 
@@ -104,5 +105,5 @@ if (isset($_POST["register"])) {
         echo "<div>Leave no fields empty</div>";
     }
 }
-*/
+
 ?>
