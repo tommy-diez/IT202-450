@@ -1,6 +1,6 @@
 <?php
 
-include "partial-pages/header.php";
+include_once(__DIR__ . "partial-pages/header.php");
 if(Common::is_logged_in()){
 
 }
