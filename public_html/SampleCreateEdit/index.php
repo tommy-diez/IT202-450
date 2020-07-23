@@ -47,19 +47,19 @@ else{
     <?php foreach ($results as $row): ?>
     <tr>
         <td>
-            <?php echo Common::get($row, "id"); ?>
+            <?php echo get($row, "id"); ?>
         </td>
         <td>
-            <?php echo Common::get($row, "name"); ?>
+            <?php echo get($row, "name"); ?>
         </td>
         <td>
-            <?php echo Common::get($row, "quantity"); ?>
+            <?php echo get($row, "quantity"); ?>
         </td>
         <td>
-            <?php echo Common::get($row, "price"); ?>
+            <?php echo get($row, "price"); ?>
         </td>
         <td>
-            <?php echo Common::get($row, "description");?>
+            <?php echo get($row, "description");?>
         </td>
         <td>
             <a href="order.php">Place an Order!</a>
@@ -95,13 +95,13 @@ else{
     <?php foreach ($cart as $item): ?>
     <tr>
         <td>
-            <?php echo Common::get($item, 'productID'); ?>
+            <?php echo get($item, 'productID'); ?>
         </td>
         <td>
-            <?php echo Common::get($item, 'quantity'); ?>
+            <?php echo get($item, 'quantity'); ?>
         </td>
         <td>
-            <?php echo Common::get($item, 'userID'); ?>
+            <?php echo get($item, 'userID'); ?>
         </td>
         <td>
             <form method="POST" action="edit_cart.php">
