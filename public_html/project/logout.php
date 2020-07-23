@@ -1,9 +1,7 @@
 <?php
 
 include_once(__DIR__ . "partial-pages/header.php");
-if(Common::is_logged_in()){
 
-}
 //session_start();
 session_unset();
 session_destroy();
@@ -17,4 +15,7 @@ if (ini_get("session.use_cookies")) {
         $params['path'], $params['domain'],
         $params['secure'], $params['httponly']);
 }
+Common::flash("You have been securely logged out");
+header('Location.php');
+?>
 
