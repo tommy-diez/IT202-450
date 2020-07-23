@@ -10,7 +10,7 @@ if(Common::is_logged_in()){
 </div>
 <?php
 
-$query = file_get_contents(__DIR__ . "/sql/queries/select_cart.sql");
+$query = file_get_contents(__DIR__ . "/sql/queries/select_cart1.sql");
 if (isset($query) && !empty($query)){
     try{
     $db = $common->getDB();

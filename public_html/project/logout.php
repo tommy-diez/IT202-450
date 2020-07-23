@@ -16,6 +16,6 @@ if (ini_get("session.use_cookies")) {
         $params['secure'], $params['httponly']);
 }
 Common::flash("You have been securely logged out");
-header('Location.php');
+header('Location: login.php');
 ?>
 
