@@ -53,8 +53,8 @@ class Common
     }
 
     public function getDB() {
-        //if (!isset($this->db)) {
-            //$dbdatabse = $dbuser = $dbpass = $dbhost = NULL;
+        if (!isset($this->db)) {
+            $dbdatabse = $dbuser = $dbpass = $dbhost = NULL;
             require_once(__DIR__ . "/config.php");
             if (isset($dbhost) && isset($dbdatabse) && isset($dbpass) && isset($dbuser)){
                 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabse;charset=utf8mb4";
@@ -63,7 +63,7 @@ class Common
             else {
                 error_log("Missing db config details");
             }
-        //}
+        }
         return $this->db;
     }
 
