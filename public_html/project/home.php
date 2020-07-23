@@ -13,7 +13,7 @@ if(Common::is_logged_in()){
 $query = file_get_contents(__DIR__ . "/sql/queries/select_cart.sql");
 if (isset($query) && !empty($query)){
     try{
-    $db = getDB();
+    $db = $common->getDB();
     $stmt = $db->prepare($query);
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
