@@ -9,18 +9,19 @@ if(Common::is_logged_in()){
     <h1>Welcome to our ECommerce Site, <?php echo $_SESSION['user']['first_name']; ?></h1>
 </div>
 <?php
-
-$query = file_get_contents(__DIR__ . "/sql/queries/select_cart1.sql");
+$db = $common->getDB();
+var_dump($db);
+$query = file_get_contents(__DIR__ . "/sql/queries/select_cart.sql");
 if (isset($query) && !empty($query)){
     try{
-    $db = $common->getDB();
-    var_dump($db);
-    $stmt = $db->prepare($query);
-    $stmt->execute();
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $db = $common->getDB();
+        var_dump($db);
+        $stmt = $db->prepare($query);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     catch(Exception $e){
-    echo $e->getMessage();
+        echo $e->getMessage();
     }
 }
 else{
