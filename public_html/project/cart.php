@@ -1,8 +1,8 @@
 <?php
+include_once(__DIR__ . "/partial-pages/header.php");
 if (Common::is_logged_in()){
 
 }
-include_once(__DIR__ . "/partial-pages/header.php");
 $cart = DBH::getCart($_SESSION['user']['id']);
 ?>
 <?php if(isset($cart) && !empty($cart)): ?>
@@ -14,7 +14,6 @@ $cart = DBH::getCart($_SESSION['user']['id']);
         <th>Quantity</th>
         <th>UserID</th>
     </tr>
-    <?php //var_export($cart) ?>
     <?php foreach ($cart as $item): ?>
     <tr>
         <td>

@@ -14,12 +14,12 @@ if(Common::is_logged_in()){
 </div>
 <?php
 $db = $common->getDB();
-var_dump($db);
-$query = file_get_contents(__DIR__ . "/sql/queries/select_cart.sql");
+//var_dump($db);
+$query = file_get_contents(__DIR__ . "/sql/queries/select_products.sql");
 if (isset($query) && !empty($query)){
     try{
         $db = $common->getDB();
-        var_dump($db);
+        //var_dump($db);
         $stmt = $db->prepare($query);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -75,7 +75,9 @@ else{
             </tr>
         <?php endforeach; ?>
     </table>
-<?php else: ?>
-    <p>No products available at this time, sadly</p>
+<?php else:
+    Common::flash("No products are available at this time");
+    ?>
+
 <?php endif; ?>
 

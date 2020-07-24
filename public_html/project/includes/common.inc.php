@@ -22,7 +22,7 @@ class Common
 
     public static function get_username()
     {
-        $user = Common::get($_SESSION, "first_name", false);
+        $user = Common::get($_SESSION, "user", false);
         $name = "";
         if ($user) {
             $name = Common::get($user, "first_name", false);

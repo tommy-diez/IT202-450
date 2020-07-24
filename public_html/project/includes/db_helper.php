@@ -92,7 +92,7 @@ class DBH{
     }
 
     public static function getCart($id){
-        $sql = file_get_contents("/queries/user_cart.sql");
+        $sql = file_get_contents("/../sql/queries/user_cart.sql");
         try {
             $db = DBH::getDB();
             $stmt = $db->prepare($sql);
