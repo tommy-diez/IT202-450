@@ -7,6 +7,6 @@ $arr = array(
     "profession"=>"carpenter",
     "country"=>"USA"
 );
-echo(Common::get($arr, "name");
+echo(Common::get($arr, "name"));
 
 ?>
