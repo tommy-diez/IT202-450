@@ -83,10 +83,10 @@ class Common
         $_SESSION["messages"] = [];
         return $messages;
     }
-
+    /*
     public static function getCart($id){
         $sql = "SELECT * FROM Cart WHERE userID = :userID";
-        $db = getDB();
+        $db = $common->getDB();
         $stmt = $db->prepare($sql);
         $stmt->bindValue('userID', $id);
         $stmt->execute();
@@ -94,7 +94,7 @@ class Common
         $stmt->closeCursor();
         return $results;
     }
-
+    */
 }
 
 $common = new Common;
