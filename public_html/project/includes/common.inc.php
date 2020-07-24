@@ -83,18 +83,7 @@ class Common
         $_SESSION["messages"] = [];
         return $messages;
     }
-    /*
-    public static function getCart($id){
-        $sql = "SELECT * FROM Cart WHERE userID = :userID";
-        $db = $common->getDB();
-        $stmt = $db->prepare($sql);
-        $stmt->bindValue('userID', $id);
-        $stmt->execute();
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $results;
-    }
-    */
+
 }
 
 $common = new Common;

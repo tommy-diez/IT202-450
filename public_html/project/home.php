@@ -7,6 +7,7 @@ ini_set("error_log", "/tmp/php-error.log");
 if(Common::is_logged_in()){
 
 }
+
 ?>
 <div>
     <h1>Welcome to our ECommerce Site, <?php echo $_SESSION['user']['first_name']; ?></h1>
@@ -76,50 +77,5 @@ else{
     </table>
 <?php else: ?>
     <p>No products available at this time, sadly</p>
-<?php endif; ?>
-
-<?php
-$cart = Common::getCart($_SESSION['user']['id']);
-?>
-<?php if(isset($cart) && !empty($cart)): ?>
-    <br>
-    <h3>Cart</h3>
-    <table border="1">
-        <tr>
-            <th>Product ID</th>
-            <th>Quantity</th>
-            <th>UserID</th>
-        </tr>
-        <?php //var_export($cart) ?>
-        <?php foreach ($cart as $item): ?>
-            <tr>
-                <td>
-                    <?php echo Common::get($item, 'productID'); ?>
-                </td>
-                <td>
-                    <?php echo Common::get($item, 'quantity'); ?>
-                </td>
-                <td>
-                    <?php echo Common::get($item, 'userID'); ?>
-                </td>
-                <td>
-                    <form method="POST" action="edit_cart.php">
-                        <input id="id" type="hidden" name="id" value="<?php echo get($item, 'orderID'); ?>">
-                        <label for="product">Product ID</label>
-                        <input id="product" type="number" name="product">
-                        <br>
-                        <label for="quantity">Quantity</label>
-                        <input id="quantity" type="number"  name="quantity">
-                        <br>
-                        <input type="submit" name="submit" value="EDIT CART">
-                    </form>
-                    <!--<a href="edit_cart.php?id=<?php //echo get($item, 'orderID');?>">Edit Cart</a> !-->
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
-
-<?php else: echo "<div>Cart is Empty</div>"; ?>
-
 <?php endif; ?>
 
