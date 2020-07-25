@@ -4,6 +4,7 @@ if (Common::is_logged_in()){
 
 }
 $cart = $_SESSION['cart'];
+var_export($cart, true);
 ?>
 <?php if(isset($cart) && !empty($cart)): ?>
 <br>
