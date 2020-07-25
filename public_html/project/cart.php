@@ -17,13 +17,10 @@ $cart = $_SESSION['cart'];
     <?php foreach ($cart as $item): ?>
     <tr>
         <td>
-            <?php echo get($item, 'productID'); ?>
+            <?php echo Common::get($item, 'item_id'); ?>
         </td>
         <td>
-            <?php echo get($item, 'quantity'); ?>
-        </td>
-        <td>
-            <?php echo get($item, 'userID'); ?>
+            <?php echo Common::get($item, 'quantity'); ?>
         </td>
         <td>
             <form method="POST" action="edit_cart.php">
