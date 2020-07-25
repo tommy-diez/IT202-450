@@ -55,6 +55,7 @@ if (isset($_POST["login"])) {
                                 "last_name" => $result["last_name"],
 
                             );
+                            $_SESSION['cart'] = array();
                             echo var_export($_SESSION, true);
                             header('Location: home.php');
                         } else {
