@@ -39,7 +39,7 @@ else {
         <?php if(isset($_POST['add_cart'])){
             $quantity = $_POST['quantity'];
             $product_name = $_POST['product_name'];
-            Common::addToCart($product_id, $quantity);
+            Common::addToCart($product_name, $quantity);
             var_dump($_SESSION['cart']);
         }
 
