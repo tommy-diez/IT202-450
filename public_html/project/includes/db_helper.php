@@ -108,4 +108,18 @@ class DBH{
         return $results;
     }
 
+    public static function placeOrder($cart){
+        $query = file_get_contents(__DIR__ . "/../sql/queries/place_order.sql");
+        foreach($cart as $item):
+        $order_id = Common::createOrderID();
+        $product_id = $item['id'];
+        $quantity = $item['quantity'];
+        $userID = $_SESSION['user']['login'];
+        endforeach;
+        $paidTotal = Common::getPaidTotal($cart);
+        
+
+
+    }
+
 }

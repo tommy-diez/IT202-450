@@ -92,10 +92,34 @@ class Common
     }
 
     public static function editCart($i, $quantity){
-        $_SESSION['user'][$i]['quantity'] = $quantity;
+        $_SESSION['cart'][$i]['quantity'] = $quantity;
         header('Location: cart.php');
     }
 
+    public static function deleteItem($i, $product_id){
+        $_SESSION['cart'][$i]['id'] = $product_id;
+        header('Location: cart.php');
+    }
+
+
+    public static function emptyCart(){
+        $_SESSION['cart'] = array();
+        header('Location: cart.php');
+    }
+
+    public static function createOrderID(){
+        $randnum = rand(1111111111,9999999999);
+        return $randnum;
+    }
+
+    public static function getPaidTotal($cart)
+    {
+        $price = 0;
+        foreach($cart as $item){
+            $item['price'] += $price;
+        }
+        return $price;
+    }
 }
 
 $common = new Common;

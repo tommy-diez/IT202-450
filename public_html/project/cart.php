@@ -32,15 +32,35 @@ var_dump($cart);
                 <input type="submit" name="submit" value="CHANGE QUANTITY">
             </form>
         </td>
+        <td>
+            <form method="POST">
+                <label for="new_quantity">How many?: </label>
+                <input id="new_quantity" type="number" name="new_quantity">
+                <input type="hidden" name="array_id" value="<?php echo $i ?>">
+                <input type="hidden" name="product_id" value="<?php Common::get($item, "id"); ?>">
+                <input type="submit" name="delete" value="delete">
+            </form>
+        </td>
     </tr>
     <?php
     $i++;
     endforeach; ?>
+    <form>
+        <input type="submit" name="empty" value="emptied">
+    </form>
 </table>
 <?php if(isset($_POST['submit']) && !empty($_POST['submit'])){
         $i = $_POST['array_id'];
         $quantity = $_POST['new_quantity'];
         Common::editCart($i, $quantity);
+    }
+    if(isset($_POST['empty']) && !empty($_POST['empty'])){
+        Common::emptyCart();
+    }
+    if(isset($_POST['delete']) && !empty($_POST['delete'])){
+        $i = $_POST['array_id'];
+        $product_id = $_POST['product_id'];
+        Common::deleteItem($i, $product_id);
     }
 ?>
 
