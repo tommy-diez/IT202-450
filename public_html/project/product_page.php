@@ -38,7 +38,7 @@ else {
             <input type="submit" name="add_cart" value="ADD TO CART">
         </form>
         <?php if(isset($_POST['add_cart'])){
-            $id = $_POST['id'];
+            $id = $_POST['product_id'];
             $quantity = $_POST['quantity'];
             $product_name = $_POST['product_name'];
             Common::addToCart($id, $product_name, $quantity);
