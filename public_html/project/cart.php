@@ -26,7 +26,7 @@ var_dump($cart);
         </td>
         <td>
             <form method="POST">
-                <label for="new_quantity"
+                <label for="new_quantity">How many?: </label>
                 <input id="new_quantity" type="number" name="new_quantity">
                 <input type="hidden" name="array_id" value="<?php echo $i ?>">
                 <input type="submit" name="submit" value="CHANGE QUANTITY">
@@ -43,6 +43,7 @@ var_dump($cart);
         Common::editCart($i, $quantity);
     }
 ?>
+
 <?php else: echo "<div>Cart is Empty</div>"; ?>
 
 <?php endif; ?>
