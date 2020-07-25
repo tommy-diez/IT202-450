@@ -22,6 +22,7 @@ $arr2 = array(
 ?>
 
 <?php foreach ($multi_arr as $arr): ?>
+<table border="1">
     <tr>
         <td>
             <?php echo Common::get($arr, 'name'); ?>
@@ -36,6 +37,7 @@ $arr2 = array(
             <?php echo Common::get($arr, 'country'); ?>
         </td>
     </tr>
+</table>
     <?php endforeach; ?>
 
 
