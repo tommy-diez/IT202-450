@@ -7,19 +7,17 @@ ini_set("error_log", "/tmp/php-error.log");
 if(Common::is_logged_in()){
 
 }
-
+$_SESSION['cart'] = array();
 ?>
 <div>
     <h1>Welcome to our ECommerce Site, <?php echo $_SESSION['user']['first_name']; ?></h1>
 </div>
 <?php
 $db = $common->getDB();
-//var_dump($db);
 $query = file_get_contents(__DIR__ . "/sql/queries/select_products.sql");
 if (isset($query) && !empty($query)){
     try{
         $db = $common->getDB();
-        //var_dump($db);
         $stmt = $db->prepare($query);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -31,11 +29,11 @@ if (isset($query) && !empty($query)){
 else{
     echo "No query";
 }
-
 ?>
 
 <?php if(isset($results)): ?>
     <h3>Products</h3>
+    <form>
     <table border="1">
         <tr>
             <th>Product ID</th>
@@ -43,6 +41,7 @@ else{
             <th>In Stock</th>
             <th>Price</th>
             <th>Description</th>
+            <th>Image</th>
         </tr>
         <?php foreach ($results as $row): ?>
             <tr>
@@ -50,7 +49,7 @@ else{
                     <?php echo Common::get($row, "id"); ?>
                 </td>
                 <td>
-                    <?php echo Common::get($row, "name"); ?>
+                    <a href="product_page.php?id=<?php echo Common::get($row, "id"); ?>"><?php echo Common::get($row, "name"); ?></a>
                 </td>
                 <td>
                     <?php echo Common::get($row, "quantity"); ?>
@@ -62,15 +61,7 @@ else{
                     <?php echo Common::get($row, "description");?>
                 </td>
                 <td>
-                    <a href="order.php">Place an Order!</a>
-                </td>
-                <td>
-                    <form method="POST" action="cart.php">
-                        <input type="hidden" name="productID" value="<?php echo get($row, "id"); ?>">
-                        <label for="number">How many?</label>
-                        <input id="number" type="number" name="quantity">
-                        <input type="submit" name="cart" value="ADD TO CART">
-                    </form>
+
                 </td>
             </tr>
         <?php endforeach; ?>

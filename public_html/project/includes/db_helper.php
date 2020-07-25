@@ -91,23 +91,21 @@ class DBH{
         }
     }
 
-    public static function getCart($id){
-        $sql = file_get_contents("/../sql/queries/user_cart.sql");
+
+    public static function getProductInfo($id){
+        $query = file_get_contents(__DIR__ . "/../sql/queries/get_product_info.sql");
         try {
             $db = DBH::getDB();
-            $stmt = $db->prepare($sql);
-            $stmt->bindValue('userID', $id);
+            $stmt = $db->prepare($query);
+            $stmt->bindValue(":id", $id);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $stmt->closeCursor();
-            return $results;
         }
-        catch (Exception $e) {
+        catch (Exception $e){
             error_log($e->getMessage());
             return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
         }
+        return $results;
     }
-
-
 
 }
