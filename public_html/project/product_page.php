@@ -1,8 +1,8 @@
 <?php
 include_once(__DIR__ . '/partial-pages/header.php');
 if (isset($_GET['id'])){
-    $results = DBH::getProductInfo($id);
     $product_id = $_GET['id'];
+    $results = DBH::getProductInfo($product_id);
 
 }
 else {

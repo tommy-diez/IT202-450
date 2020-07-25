@@ -3,7 +3,7 @@ include_once(__DIR__ . "/partial-pages/header.php");
 if (Common::is_logged_in()){
 
 }
-$cart = DBH::getCart($_SESSION['user']['id']);
+$cart = $_SESSION['cart'];
 ?>
 <?php if(isset($cart) && !empty($cart)): ?>
 <br>
