@@ -40,7 +40,9 @@ else {
             $quantity = $_POST['quantity'];
             $product_id = $_POST['product_id'];
             Common::addToCart($product_id, $quantity);
+            var_dump($_SESSION['cart']);
         }
+
         ?>
 
     <?php else: Common::flash("BAD REQUEST");
