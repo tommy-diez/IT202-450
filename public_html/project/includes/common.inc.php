@@ -84,13 +84,17 @@ class Common
         return $messages;
     }
 
-    public static function addToCart($name, $quantity){
+    public static function addToCart($id, $name, $quantity){
         if (isset($_SESSION["cart"])) {
-            $arr = array("item" => $name, "quantity" => $quantity);
+            $arr = array("item" => $name, "quantity" => $quantity, "id"=>$id);
             array_push($_SESSION['cart'], $arr);
         }
     }
 
+    public static function editCart($i, $quantity){
+        $_SESSION['user'][$i]['quantity'] = $quantity;
+        header('Location: cart.php');
+    }
 
 }
 
