@@ -4,9 +4,9 @@ if (Common::is_logged_in()){
 
 }
 $cart = $_SESSION['cart'];
-var_export($cart, true);
+var_dump($cart);
 ?>
-<?php if(isset($cart) && !empty($cart)): ?>
+<?php if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])): ?>
 <br>
 <h3>Cart</h3>
 <table border="1">
@@ -14,7 +14,7 @@ var_export($cart, true);
         <th>Product</th>
         <th>Quantity</th>
     </tr>
-    <?php foreach ($cart as $item): ?>
+    <?php foreach ($_SESSION['cart'] as $item): ?>
     <tr>
         <td>
             <?php echo Common::get($item, 'item_id'); ?>
