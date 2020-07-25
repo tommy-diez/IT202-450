@@ -33,12 +33,12 @@ else {
         <form method="POST">
             <label for="number">How many?: </label>
             <input type="number" name="quantity" id="number">
-            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+            <input type="hidden" name="product_name" value="<?php echo Common::get($col, "name"); ?>">
             <input type="submit" name="add_cart" value="ADD TO CART">
         </form>
         <?php if(isset($_POST['add_cart'])){
             $quantity = $_POST['quantity'];
-            $product_id = $_POST['product_id'];
+            $product_name = $_POST['product_name'];
             Common::addToCart($product_id, $quantity);
             var_dump($_SESSION['cart']);
         }
