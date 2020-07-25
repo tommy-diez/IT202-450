@@ -10,9 +10,8 @@ $cart = $_SESSION['cart'];
 <h3>Cart</h3>
 <table border="1">
     <tr>
-        <th>Product ID</th>
+        <th>Product</th>
         <th>Quantity</th>
-        <th>UserID</th>
     </tr>
     <?php foreach ($cart as $item): ?>
     <tr>
