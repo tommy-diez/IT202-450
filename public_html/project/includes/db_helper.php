@@ -155,7 +155,7 @@ class DBH{
                 return DBH::response(NULL,200, "Order failed to be placed");
             }
 
-            
+
         }
         catch(Exception $e){
             error_log($e->getMessage());
