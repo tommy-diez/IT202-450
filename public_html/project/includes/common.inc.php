@@ -120,6 +120,7 @@ class Common
         }
         return $price;
     }
+
 }
 
 $common = new Common;

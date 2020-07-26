@@ -29,7 +29,6 @@ class DBH{
         }
     }
 
-
     public static function login($email, $pass)
     {
         try {
@@ -108,17 +107,53 @@ class DBH{
         return $results;
     }
 
+    public static function checkStock($id){
+        $query = file_get_contents(__DIR__ . "/../sql/queries/check_stock.sql");
+        try {
+            $db = DBH::getDB();
+            $stmt = $db->prepare($query);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            $results = $stmt->fetchAll();
+            if ($results >= 1){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        catch (Exception $e){
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
+        return $results;
+}
+
     public static function placeOrder($cart){
         $query = file_get_contents(__DIR__ . "/../sql/queries/place_order.sql");
+        $order_id = Common::createOrderID();
+        $paidTotal = Common::getPaidTotal($cart);
         foreach($cart as $item):
         $order_id = Common::createOrderID();
         $product_id = $item['id'];
         $quantity = $item['quantity'];
         $userID = $_SESSION['user']['login'];
+        try {
+            $db = DBH::getDB();
+            $stmt = $db->prepare($query);
+            $stmt->bindValue(':OrderID', $order_id);
+            $stmt->bindValue('productID', $product_id);
+            $stmt->bindValue('quantity', $quantity);
+            $stmt->bindValue('userID', $userID);
+            $stmt->bindValue(':paidTotal', $paidTotal);
+            $stmt->execute();
+        }
+        catch(Exception $e){
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
         endforeach;
-        $paidTotal = Common::getPaidTotal($cart);
         
-
 
     }
 
