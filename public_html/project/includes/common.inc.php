@@ -96,8 +96,8 @@ class Common
         header('Location: cart.php');
     }
 
-    public static function deleteItem($i, $product_id){
-        $_SESSION['cart'][$i]['id'] = $product_id;
+    public static function deleteItem($i){
+        unset($_SESSION['cart'][$i]);
         header('Location: cart.php');
     }
 
