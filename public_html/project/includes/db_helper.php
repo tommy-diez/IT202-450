@@ -146,7 +146,16 @@ class DBH{
             $stmt->bindValue('quantity', $quantity);
             $stmt->bindValue('userID', $userID);
             $stmt->bindValue(':paidTotal', $paidTotal);
-            $stmt->execute();
+            $result = $stmt->execute();
+            DBH::verify_sql($query);
+            if($result){
+                return DBH::response(NULL,200, "Order placed successfully");
+            }
+            else{
+                return DBH::response(NULL,200, "Order failed to be placed");
+            }
+
+            
         }
         catch(Exception $e){
             error_log($e->getMessage());
