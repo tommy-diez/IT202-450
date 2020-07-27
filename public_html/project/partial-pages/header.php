@@ -6,37 +6,28 @@ ini_set("error_log", "/tmp/php-error.log");
 require_once (__DIR__ . "/../includes/common.inc.php");
 $logged_in = Common::is_logged_in(false);
 ?>
+
 <head>
 <link rel="stylesheet" type="text/css" href="partial-pages/style.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <div id="navbar" class="container-fluid">
-    <ul>
+    <div class="row">
+        <h1 class="col-md-4 nav-item">EBiz </h1>
         <?php if($logged_in): ?>
-        <li>
-            <a href="<?php echo Common::url_for("home"); ?>">Home</a>
-        </li>
-        <li>
-            <a href="<?php echo Common::url_for("cart"); ?>">My Cart</a>
-        </li>
-        <li>
-            <a href="<?php echo Common::url_for("account"); ?>">My Account</a>
-        </li>
+            <a class="col-md-2 nav-item" href="<?php echo Common::url_for("home"); ?>">Home</a>
+            <a class="col-md-2 nav-item" href="<?php echo Common::url_for("cart"); ?>">My Cart</a>
+            <a class="col-md-2 nav-item" href="<?php echo Common::url_for("account"); ?>">My Account</a>
         <?php endif; ?>
         <?php if(!$logged_in): ?>
-        <li>
-            <a href="<?php echo Common::url_for("login"); ?>">Login</a>
-        </li>
-        <li>
-            <a href="<?php echo Common::url_for("register"); ?>">Register</a>
-        </li>
+            <a class="col-md-4" href="<?php echo Common::url_for("login"); ?>">Login</a>
+            <a class="col-md-4" href="<?php echo Common::url_for("register"); ?>">Register</a>
         <?php else: ?>
-        <li>
-            <a href="<?php echo Common::url_for("logout"); ?>">Logout</a>
-        </li>
+            <a class="col-md-2" href="<?php echo Common::url_for("logout"); ?>">Logout</a>
         <?php endif; ?>
     </ul>
+    </div>
 </div>
 
 <div id="messages">
