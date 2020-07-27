@@ -126,39 +126,37 @@ class DBH{
             error_log($e->getMessage());
             return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
         }
-        return $results;
 }
 
     public static function placeOrder($cart){
         $query = file_get_contents(__DIR__ . "/../sql/queries/place_order.sql");
         $order_id = Common::createOrderID();
         $paidTotal = Common::getPaidTotal($cart);
-        foreach($cart as $item):
-        $product_id = $item['id'];
-        $quantity = $item['quantity'];
-        $userID = $_SESSION['user']['id'];
-        try {
-            $db = DBH::getDB();
-            $stmt = $db->prepare($query);
-            $stmt->bindValue(':OrderID', $order_id);
-            $stmt->bindValue('productID', $product_id);
-            $stmt->bindValue('quantity', $quantity);
-            $stmt->bindValue('userID', $userID);
-            $stmt->bindValue(':paidTotal', $paidTotal);
-            $result = $stmt->execute();
-            //DBH::verify_sql($query);
-            if($result){
-                return DBH::response(NULL,200, "Order placed successfully");
-            }
-            else{
-                return DBH::response(NULL,200, "Order failed to be placed");
-            }
+        foreach($cart as $item) {
+            $product_id = $item['id'];
+            $quantity = $item['quantity'];
+            $userID = $_SESSION['user']['id'];
+            try {
+                $db = DBH::getDB();
+                $stmt = $db->prepare($query);
+                $stmt->bindValue(':OrderID', $order_id);
+                $stmt->bindValue('productID', $product_id);
+                $stmt->bindValue('quantity', $quantity);
+                $stmt->bindValue('userID', $userID);
+                $stmt->bindValue(':paidTotal', $paidTotal);
+                $result = $stmt->execute();
+                //DBH::verify_sql($query);
+                if ($result) {
+                    return DBH::response(NULL, 200, "Order placed successfully");
+                } else {
+                    return DBH::response(NULL, 200, "Order failed to be placed");
+                }
 
 
-        }
-        catch(Exception $e){
-            error_log($e->getMessage());
-            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+            } catch (Exception $e) {
+                error_log($e->getMessage());
+                return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+            }
         }
         endforeach;
         

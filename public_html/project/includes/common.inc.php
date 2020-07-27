@@ -117,7 +117,8 @@ class Common
     {
         $price = 0;
         foreach($cart as $item){
-            $item['price'] += $price;
+            $num_price = (float)($item['price']);
+            $price += $num_price;
         }
         return $price;
     }
