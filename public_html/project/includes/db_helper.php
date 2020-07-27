@@ -154,7 +154,7 @@ class DBH{
         }
 
     public static function getPreviousOrders($userID){
-        $query = file_get_contents("/../sql/queries/get_previous_orders.sql");
+        $query = file_get_contents(__DIR__ . "/../sql/queries/get_previous_orders.sql");
         try{
             $db = DBH::getDB();
             $stmt = $db->prepare($query);
