@@ -47,6 +47,10 @@ var_dump($cart);
         <input type="submit" name="empty" value="EMPTY">
     </form>
 </table>
+<br>
+<form method="POST">
+    <input type="submit" name="order" value="PLACE ORDER">
+</form>
 <?php if(isset($_POST['submit']) && !empty($_POST['submit'])){
         $i = $_POST['array_id'];
         $quantity = $_POST['new_quantity'];
@@ -59,6 +63,9 @@ var_dump($cart);
         $i = $_POST['array_id'];
         $product_id = $_POST['product_id'];
         Common::deleteItem($i);
+    }
+    if(isset($_POST['order']) && !empty($_POST['order'])){
+        DBH::placeOrder($_SESSION['cart']);
     }
 ?>
 

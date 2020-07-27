@@ -35,13 +35,15 @@ else {
             <input type="number" name="quantity" id="number">
             <input type="hidden" name="product_name" value="<?php echo Common::get($col, "name"); ?>">
             <input type="hidden" name="product_id" value="<?php echo Common::get($col, "id"); ?>">
+            <input type="hidden" name="price" value="<?php echo Common::get($col, "price"); ?>">
             <input type="submit" name="add_cart" value="ADD TO CART">
         </form>
         <?php if(isset($_POST['add_cart'])){
             $id = $_POST['product_id'];
             $quantity = $_POST['quantity'];
             $product_name = $_POST['product_name'];
-            Common::addToCart($id, $product_name, $quantity);
+            $price = $_POST['price'];
+            Common::addToCart($id, $product_name, $quantity, $price);
             var_dump($_SESSION['cart']);
         }
 

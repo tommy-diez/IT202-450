@@ -84,9 +84,9 @@ class Common
         return $messages;
     }
 
-    public static function addToCart($id, $name, $quantity){
+    public static function addToCart($id, $name, $quantity, $price){
         if (isset($_SESSION["cart"])) {
-            $arr = array("item" => $name, "quantity" => $quantity, "id"=>$id);
+            $arr = array("item" => $name, "quantity" => $quantity, "id"=>$id, "price"=>$price);
             array_push($_SESSION['cart'], $arr);
         }
     }

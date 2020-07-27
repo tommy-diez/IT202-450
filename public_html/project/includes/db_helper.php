@@ -134,7 +134,6 @@ class DBH{
         $order_id = Common::createOrderID();
         $paidTotal = Common::getPaidTotal($cart);
         foreach($cart as $item):
-        $order_id = Common::createOrderID();
         $product_id = $item['id'];
         $quantity = $item['quantity'];
         $userID = $_SESSION['user']['login'];
