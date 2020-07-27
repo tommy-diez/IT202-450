@@ -136,7 +136,7 @@ class DBH{
         foreach($cart as $item):
         $product_id = $item['id'];
         $quantity = $item['quantity'];
-        $userID = $_SESSION['user']['login'];
+        $userID = $_SESSION['user']['id'];
         try {
             $db = DBH::getDB();
             $stmt = $db->prepare($query);
