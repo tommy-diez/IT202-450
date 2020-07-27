@@ -128,7 +128,7 @@ class DBH{
         }
 }
 
-    public static function placeOrder($order_id, $product_id, $quantity, $userID, $paidTotal){
+    public static function placeOrder($order_id, $product_id, $quantity, $price, $userID, $paidTotal){
         $query = file_get_contents(__DIR__ . "/../sql/queries/place_order.sql");
             try {
                 $db = DBH::getDB();
@@ -136,6 +136,7 @@ class DBH{
                 $stmt->bindValue(':OrderID', $order_id);
                 $stmt->bindValue('productID', $product_id);
                 $stmt->bindValue('quantity', $quantity);
+                $stmt->bindValue(':price', $price);
                 $stmt->bindValue('userID', $userID);
                 $stmt->bindValue(':paidTotal', $paidTotal);
                 $result = $stmt->execute();

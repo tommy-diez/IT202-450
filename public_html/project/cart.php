@@ -76,7 +76,15 @@ var_dump($cart);
             $product_name = Common::get($item, "item");
             $price = Common::get($item, "price");
             $quantity = Common::get($item, "quantity");
-            DBH::placeOrder($orderID, $id, $quantity, $userID, $paidTotal);
+            $result = DBH::placeOrder($orderID, $id, $quantity, $price, $userID, $paidTotal);
+            if($result){
+                Common::flash('Order placed successfully');
+                Common::emptyCart();
+                header('Location: cart.php');
+            }
+            else {
+                Common::flash('Order failed to go through');
+            }
         }
     }
 ?>
