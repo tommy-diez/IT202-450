@@ -56,31 +56,27 @@ var_dump($cart);
         $quantity = $_POST['new_quantity'];
         Common::editCart($i, $quantity);
     }
+
     if(isset($_POST['empty']) && !empty($_POST['empty'])){
         Common::emptyCart();
     }
+
     if(isset($_POST['delete']) && !empty($_POST['delete'])){
         $i = $_POST['array_id'];
         $product_id = $_POST['product_id'];
         Common::deleteItem($i);
     }
+
     if(isset($_POST['order']) && !empty($_POST['order'])){
         $userID = $_SESSION['user']['id'];
         $orderID = Common::createOrderID();
-        $paidTotal = Common::getPaidTotal($_POST['cart']);
+        $paidTotal = Common::getPaidTotal($_SESSION['cart']);
         foreach ($_SESSION['cart'] as $item) {
             $id = Common::get($item, "id");
             $product_name = Common::get($item, "item");
             $price = Common::get($item, "price");
             $quantity = Common::get($item, "quantity");
             DBH::placeOrder($orderID, $id, $quantity, $userID, $paidTotal);
-        }
-        if($result){
-            Common::flash('Order placed successfully');
-            Common::emptyCart();
-        }
-        else {
-            Common::flash('Order failed to be placed');
         }
     }
 ?>
