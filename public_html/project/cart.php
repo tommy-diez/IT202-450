@@ -69,7 +69,7 @@ var_dump($cart);
 
     if(isset($_POST['order']) && !empty($_POST['order'])){
         try {
-            $query = file_get_contents(__DIR__ . "/../sql/queries/get_order_id.sql");
+            $query = "SELECT MAX(OrderID) as max FROM Orders";
             $stmt = $common->getDB()->prepare($query);
             $result = $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
