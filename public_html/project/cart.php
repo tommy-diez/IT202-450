@@ -74,7 +74,7 @@ var_dump($cart);
             $result = $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $max = (int)$result["max"];
-            $max += 1;
+            $max ++;
             $userID = $_SESSION['user']['id'];
             $paidTotal = Common::getPaidTotal($_SESSION['cart']);
             foreach ($_SESSION['cart'] as $item) {
@@ -98,6 +98,6 @@ var_dump($cart);
     }
 ?>
 
-<?php else: echo "<div>Cart is Empty</div>"; ?>
+<?php else: Common::flash("Cart is empty"); ?>
 
 <?php endif; ?>
