@@ -147,20 +147,16 @@ class DBH{
                 $result = $stmt->execute();
                 //DBH::verify_sql($query);
                 if ($result) {
-                    return DBH::response(NULL, 200, "Order placed successfully");
+                    return true;
                 } else {
-                    return DBH::response(NULL, 200, "Order failed to be placed");
+                    return false;
                 }
-
 
             } catch (Exception $e) {
                 error_log($e->getMessage());
                 return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
             }
         }
-        endforeach;
-        
-
     }
 
 }

@@ -65,7 +65,14 @@ var_dump($cart);
         Common::deleteItem($i);
     }
     if(isset($_POST['order']) && !empty($_POST['order'])){
-        DBH::placeOrder($_SESSION['cart']);
+        $result = DBH::placeOrder($_SESSION['cart']);
+        if($result){
+            Common::flash('Order placed successfully');
+            Common::emptyCart();
+        }
+        else {
+            Common::flash('Order failed to be placed');
+        }
     }
 ?>
 
