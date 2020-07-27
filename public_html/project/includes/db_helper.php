@@ -146,7 +146,7 @@ class DBH{
             $stmt->bindValue('userID', $userID);
             $stmt->bindValue(':paidTotal', $paidTotal);
             $result = $stmt->execute();
-            DBH::verify_sql($query);
+            //DBH::verify_sql($query);
             if($result){
                 return DBH::response(NULL,200, "Order placed successfully");
             }
