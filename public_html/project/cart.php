@@ -34,8 +34,6 @@ var_dump($cart);
         </td>
         <td>
             <form method="POST">
-                <label for="new_quantity">How many?: </label>
-                <input id="new_quantity" type="number" name="new_quantity">
                 <input type="hidden" name="array_id" value="<?php echo $i ?>">
                 <input type="hidden" name="product_id" value="<?php Common::get($item, "id"); ?>">
                 <input type="submit" name="delete" value="delete">
@@ -60,7 +58,7 @@ var_dump($cart);
     if(isset($_POST['delete']) && !empty($_POST['delete'])){
         $i = $_POST['array_id'];
         $product_id = $_POST['product_id'];
-        Common::deleteItem($i, $product_id);
+        Common::deleteItem($i);
     }
 ?>
 
