@@ -12,21 +12,20 @@ $logged_in = Common::is_logged_in(false);
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
-<div id="navbar" class="container-fluid">
+<div id="navbar" class="container-fluid bg-info">
     <div class="row">
-        <h1 class="col-md-4 nav-item">EBiz </h1>
+        <h1 class="col-md-4">EBiz </h1>
         <?php if($logged_in): ?>
             <a class="col-md-2 nav-item" href="<?php echo Common::url_for("home"); ?>">Home</a>
             <a class="col-md-2 nav-item" href="<?php echo Common::url_for("cart"); ?>">My Cart</a>
             <a class="col-md-2 nav-item" href="<?php echo Common::url_for("account"); ?>">My Account</a>
         <?php endif; ?>
         <?php if(!$logged_in): ?>
-            <a class="col-md-4" href="<?php echo Common::url_for("login"); ?>">Login</a>
-            <a class="col-md-4" href="<?php echo Common::url_for("register"); ?>">Register</a>
+            <a class="col-md-4 nav-item" href="<?php echo Common::url_for("login"); ?>">Login</a>
+            <a class="col-md-4 nav-item" href="<?php echo Common::url_for("register"); ?>">Register</a>
         <?php else: ?>
-            <a class="col-md-2" href="<?php echo Common::url_for("logout"); ?>">Logout</a>
+            <a class="col-md-2 nav-item" href="<?php echo Common::url_for("logout"); ?>">Logout</a>
         <?php endif; ?>
-    </ul>
     </div>
 </div>
 
@@ -34,7 +33,7 @@ $logged_in = Common::is_logged_in(false);
     <?php $flash_messages = Common::getFlashMessages(); ?>
     <?php if(isset($flash_messages) && count($flash_messages) > 0): ?>
         <?php foreach($flash_messages as $msg): ?>
-    <div class="<?php echo Common::get($msg, "type"); ?>">
+    <div class="alert alert-<?php echo Common::get($msg, "type"); ?>">
         <?php echo Common::get($msg, "message"); ?>
     </div>
     <?php endforeach; ?>

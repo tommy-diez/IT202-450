@@ -19,6 +19,9 @@ include_once(__DIR__ . "/partial-pages/header.php");
     <br>
     <input type="submit" name="login" value="LOGIN"/>
 </form>
+<div>
+
+</div>
 <div id="footer" class="container-fluid">
     Tommy Diez (c) 2020
 </div>

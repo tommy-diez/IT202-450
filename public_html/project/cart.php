@@ -68,23 +68,32 @@ var_dump($cart);
     }
 
     if(isset($_POST['order']) && !empty($_POST['order'])){
-        $userID = $_SESSION['user']['id'];
-        $orderID = Common::createOrderID();
-        $paidTotal = Common::getPaidTotal($_SESSION['cart']);
-        foreach ($_SESSION['cart'] as $item) {
-            $id = Common::get($item, "id");
-            $product_name = Common::get($item, "item");
-            $price = Common::get($item, "price");
-            $quantity = Common::get($item, "quantity");
-            $result = DBH::placeOrder($orderID, $id, $quantity, $price, $userID, $paidTotal);
-            if($result){
-                Common::flash('Order placed successfully');
-                Common::emptyCart();
-                header('Location: cart.php');
+        try {
+            $query = file_get_contents(__DIR__ . "/../sql/queries/get_order_id.sql");
+            $stmt = $common->getDB()->prepare($query);
+            $result = $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $max = (int)$result["max"];
+            $max += 1;
+            $userID = $_SESSION['user']['id'];
+            $paidTotal = Common::getPaidTotal($_SESSION['cart']);
+            foreach ($_SESSION['cart'] as $item) {
+                $id = Common::get($item, "id");
+                $product_name = Common::get($item, "item");
+                $price = Common::get($item, "price");
+                $quantity = Common::get($item, "quantity");
+                $result = DBH::placeOrder($max, $id, $quantity, $price, $userID, $paidTotal);
+                if ($result) {
+                    Common::flash('Order placed successfully');
+                    Common::emptyCart();
+                    header('Location: cart.php');
+                } else {
+                    Common::flash('Order failed to go through');
+                }
             }
-            else {
-                Common::flash('Order failed to go through');
-            }
+        }
+        catch (Exception $e){
+
         }
     }
 ?>
