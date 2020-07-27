@@ -1,1 +1,1 @@
-SELECT * FROM Products ORDER BY Price ASC
+SELECT * FROM Products WHERE quantity>= 1 ORDER BY Price ASC

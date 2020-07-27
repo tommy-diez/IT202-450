@@ -6,7 +6,7 @@ ini_set("error_log", "/tmp/php-error.log");
 require_once (__DIR__ . "/../includes/common.inc.php");
 $logged_in = Common::is_logged_in(false);
 ?>
-
+<link rel="stylesheet" href="/styles/style.css">
 <div id="navbar" class="container-fluid">
     <ul>
         <?php if($logged_in): ?>
@@ -15,6 +15,9 @@ $logged_in = Common::is_logged_in(false);
         </li>
         <li>
             <a href="<?php echo Common::url_for("cart"); ?>">My Cart</a>
+        </li>
+        <li>
+            <a href="<?php echo Common::url_for("account"); ?>">My Account</a>
         </li>
         <?php endif; ?>
         <?php if(!$logged_in): ?>

@@ -153,4 +153,20 @@ class DBH{
             }
         }
 
+    public static function getPreviousOrders($userID){
+        $query = file_get_contents("/../sql/queries/get_previous_orders.sql");
+        try{
+            $db = DBH::getDB();
+            $stmt = $db->prepare($query);
+            $stmt->bindValue('userID', $userID);
+            $stmt->execute();
+            $results = $stmt->fetchAll();
+
+        }catch (Exception $e){
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
+        return $results;
+    }
+
 }

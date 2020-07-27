@@ -1,0 +1,53 @@
+form{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+body{
+    background-color: aliceblue;
+    font-family: 'Montserrat', sans-serif;
+}
+.user-output{
+
+}
+h2{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#navbar{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1b6ca8;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+.nav-item{
+    margin-top: 15px;
+    color: #222831;
+}
+
+#footer{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0a97b0;
+    width: 100%;
+    display: block;
+    position: fixed;
+    bottom: 0;
+}
+
+.reg-form{
+    text-align: center;
+    border-width: medium;
+    border-color: #a6dcef;
+    border-style: solid;
+    border-radius: 100px;
+    color: black;
+    background-color: #a6dcef;
+}
+
+h1{
+    text-align: center;
+}
+
