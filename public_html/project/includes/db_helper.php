@@ -128,14 +128,8 @@ class DBH{
         }
 }
 
-    public static function placeOrder($cart){
+    public static function placeOrder($order_id, $product_id, $quantity, $userID, $paidTotal){
         $query = file_get_contents(__DIR__ . "/../sql/queries/place_order.sql");
-        $order_id = Common::createOrderID();
-        $paidTotal = Common::getPaidTotal($cart);
-        foreach($cart as $item) {
-            $product_id = $item['id'];
-            $quantity = $item['quantity'];
-            $userID = $_SESSION['user']['id'];
             try {
                 $db = DBH::getDB();
                 $stmt = $db->prepare($query);
@@ -157,6 +151,5 @@ class DBH{
                 return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
             }
         }
-    }
 
 }
