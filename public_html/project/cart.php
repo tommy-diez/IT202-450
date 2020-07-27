@@ -43,8 +43,8 @@ var_dump($cart);
     <?php
     $i++;
     endforeach; ?>
-    <form>
-        <input type="submit" name="empty" value="emptied">
+    <form method="POST">
+        <input type="submit" name="empty" value="EMPTY">
     </form>
 </table>
 <?php if(isset($_POST['submit']) && !empty($_POST['submit'])){

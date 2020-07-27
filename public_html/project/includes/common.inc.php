@@ -104,9 +104,7 @@ class Common
 
     public static function emptyCart()
     {
-        foreach ($_SESSION['cart'] as $item) {
-            unset($item);
-        }
+        $_SESSION['cart'] = array();
         header('Location: cart.php');
     }
 
