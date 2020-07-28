@@ -41,7 +41,7 @@ $arr2 = array(
     <?php endforeach; ?>
 
 <?php
-DBH::getUserInfo($_SESSION['user']['id']);
+$results = DBH::getUserInfo($_SESSION['user']['id']);
 var_dump($results);
 
 
