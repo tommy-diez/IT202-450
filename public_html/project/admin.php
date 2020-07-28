@@ -4,7 +4,7 @@ if (Common::is_logged_in()){
 
 }
 $admin = DBH::isUserAdmin($_SESSION['user']['id']);
-if(!$admin){
+if ($admin == false){
     Common::flash("Access denied");
     header('Location: home.php');
 }
