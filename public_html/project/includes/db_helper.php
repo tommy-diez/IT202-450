@@ -185,15 +185,18 @@ class DBH
     }
 
     public static function isUserAdmin($id){
-        $results = DBH::getUserInfo($id);
-        if($results['role'] == 0){
-            return false;
+        try {
+            $results = DBH::getUserInfo($id);
+            if($results["role"] == 1){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
-        elseif($results['role'] == 1) {
-            return true;
-        }
-        else{
-            return false;
+        catch(Exception $e){
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
         }
     }
 
