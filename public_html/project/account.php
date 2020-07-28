@@ -8,6 +8,8 @@ if(Common::is_logged_in()){
 
 <h1>Welcome, <?php echo $_SESSION['user']['first_name']; ?></h1>
 <h1>View your previous purchases below</h1>
+<br>
+<a href="edit_account.php"><h2>Would you like to edit your account?</h2></a>
 
 <?php
 $results = DBH::getPreviousOrders($_SESSION['user']['id']);

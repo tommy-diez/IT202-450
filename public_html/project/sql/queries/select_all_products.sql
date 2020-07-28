@@ -1,0 +1,1 @@
+SELECT * FROM Products WHERE quantity ORDER BY Price ASC
