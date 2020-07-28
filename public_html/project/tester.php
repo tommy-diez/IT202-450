@@ -43,5 +43,6 @@ $arr2 = array(
 <?php
 $results = DBH::getUserInfo($_SESSION['user']['id']);
 var_dump($results);
-
+$res = DBH::isUserAdmin($_SESSION['user']['id']);
+var_dump($res);
 
