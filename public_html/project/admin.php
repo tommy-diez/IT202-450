@@ -8,7 +8,6 @@ if (Common::getUserRole()){
 }
 ?>
 
-<?php if(isset($results) && !empty($results)): ?>
 <h1>Welcome admin, add a product below: </h1>
 <form method="POST">
     <label for="product_name">Product Name</label>
@@ -24,13 +23,21 @@ if (Common::getUserRole()){
 <br>
 
 <h1>Update an existing product: </h1>
-<?php endif; ?>
-<?php
-$products = DBH::getAllProducts();
+
+
+<?php $products = DBH::getAllProducts();
 ?>
 
 <?php if(isset($products) && !empty($products)): ?>
     <?php foreach ($products as $product): ?>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>EDIT</th>
+    </tr>
         <tr>
             <td>
                 <?php echo Common::get($product, "id"); ?>
