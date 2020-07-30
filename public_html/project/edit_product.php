@@ -6,11 +6,11 @@ if (Common::is_logged_in()) {
 if (Common::getUserRole()) {
 
 }
-if(isset($_POST['update'])):
-$id = $_POST['id'];
-$results = DBH::getProductInfo($id);
-
-if (isset($_POST['delete'])){
+if(isset($_POST['update'])) {
+    $id = $_POST['id'];
+    $results = DBH::getProductInfo($id);
+}
+elseif(isset($_POST['delete'])){
     $id = $_POST['id'];
     $result = DBH::deleteFunction($id);
     if($result){
@@ -18,7 +18,11 @@ if (isset($_POST['delete'])){
         header('Location: admin.php');
     }
 }
-    ?>
+else{
+    Common::flash('Invalid Request');
+    header('Location: admin.php');
+}
+?>
 
 <h1>Edit the product below</h1>
     <form method="POST">
@@ -37,7 +41,7 @@ if (isset($_POST['delete'])){
         <input type="submit" name="edit" value="Submit">
     </form>
 <br>
-<?php endif;
+<?php
 Common::flash("Invalid Request");
 header('Location: home.php');
 ?>
@@ -47,9 +51,13 @@ header('Location: home.php');
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
     $description = $_POST['description'];
-    $result = DBH::editProduct();
+    $result = DBH::editProduct($name, $quantity, $price, $description);
     if($result){
         Common::flash('Product updated successfully');
+        header('Location: admin.php');
+    }
+    else {
+        Common::flash('Failed to update product');
         header('Location: admin.php');
     }
 }

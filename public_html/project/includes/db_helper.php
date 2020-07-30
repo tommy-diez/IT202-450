@@ -193,12 +193,13 @@ class DBH
             $stmt->bindValue(':quantity', $quantity);
             $stmt->bindValue(':price', $price);
             $stmt->bindValue(':description', $description);
-            $stmt->execute();
+            $results = $stmt->execute();
             }
             catch (Exception $e){
                 error_log($e->getMessage());
                 return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
             }
+            return $results;
     }
 
     public static function getAllProducts(){

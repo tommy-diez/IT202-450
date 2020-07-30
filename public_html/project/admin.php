@@ -74,7 +74,15 @@ if (Common::getUserRole()){
 
 <?php if(isset($_POST['add_product']) && !empty($_POST['add_product']))
 {
-    DBH::createItem($_POST['product_name'], $_POST['quantity'], $_POST['price'], $_POST['description']);
+    $results = DBH::createItem($_POST['product_name'], $_POST['quantity'], $_POST['price'], $_POST['description']);
+    if($results) {
+        Common::flash('Product successfully created');
+        header('Location: admin.php');
+    }
+    else{
+        Common::flash('Failed to add product');
+        header('Location: admin.php');
+    }
 }
 ?>
 
