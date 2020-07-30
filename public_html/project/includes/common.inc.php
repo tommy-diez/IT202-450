@@ -21,8 +21,7 @@ class Common
     }
 
     public static function getUserRole($redirect = true){
-        $role = $_SESSION['user']['role'];
-        if($role == 0){
+        if (Common::get($_SESSION['user'], "role", false)){
             return true;
         }
         if ($redirect) {
