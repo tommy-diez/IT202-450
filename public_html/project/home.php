@@ -10,7 +10,7 @@ if(Common::is_logged_in()){
 
 ?>
 <div>
-    <h1>Welcome to our ECommerce Site, <?php echo $_SESSION['user']['first_name']; ?></h1>
+    <h1>Welcome to our ECommerce Site, <?php echo $_SESSION['user']['first_name']; ?>, <?php echo $_SESSION['user']['role']; ?></h1>
 </div>
 <?php
 $db = $common->getDB();
