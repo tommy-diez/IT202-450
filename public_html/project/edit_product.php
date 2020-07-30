@@ -9,18 +9,31 @@ if (Common::getUserRole()) {
 if(isset($_POST['update'])):
 $id = $_POST['id'];
 $results = DBH::getProductInfo($id);
+
+if (isset($_POST['delete'])){
+    $id = $_POST['id'];
+    $result = DBH::deleteFunction($id);
+    if($result){
+        Common::flash('Product deleted successfully');
+        header('Location: admin.php');
+    }
+}
     ?>
 
-<h1>Welcome admin, add a product below: </h1>
+<h1>Edit the product below</h1>
     <form method="POST">
         <label for="product_name">Product Name</label>
         <input id="product_name" type="text" name="product_name" value="<?php Common::get($results, "name"); ?>">
+        <br>
         <label for="quantity">Quantity</label>
         <input id="quantity" type="number" name="quantity" value="<?php echo Common::get($results, "quantity"); ?>">
+        <br>
         <label for="price">Price</label>
         <input id="price" type="text" name="price" required value="<?php echo Common::get($results, "price"); ?>">
+        <br>
         <label for="description">Description</label>
         <input id="description" type="text" name="description" value="<?php echo Common::get($results, "description"); ?>">
+        <br>
         <input type="submit" name="edit" value="Submit">
     </form>
 <br>
@@ -40,4 +53,5 @@ header('Location: home.php');
         header('Location: admin.php');
     }
 }
+
 ?>

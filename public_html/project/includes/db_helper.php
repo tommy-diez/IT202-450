@@ -189,7 +189,7 @@ class DBH
         try {
             $db = DBH::getDB();
             $stmt = $db->prepare($query);
-            $stmt->bindValue(':name', $name);
+            $stmt->bindValue(':product_name', $name);
             $stmt->bindValue(':quantity', $quantity);
             $stmt->bindValue(':price', $price);
             $stmt->bindValue(':description', $description);
@@ -239,6 +239,26 @@ class DBH
             error_log($e->getMessage());
             return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
         }
+    }
+
+    public static function deleteFunction($id){
+        $query = file_get_contents(__DIR__ . "/../sql/queries/delete_product.sql");
+    try{
+        $db = DBH::getDB();
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $result = $stmt->execute();
+        if($result){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }   catch(Exception $e){
+        error_log($e->getMessage());
+        return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+    }
     }
 
 }

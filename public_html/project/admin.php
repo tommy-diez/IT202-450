@@ -24,12 +24,12 @@ if (Common::getUserRole()){
 
 <h1>Update an existing product: </h1>
 
-
 <?php $products = DBH::getAllProducts();
 ?>
 
 <?php if(isset($products) && !empty($products)): ?>
     <?php foreach ($products as $product): ?>
+    <table>
     <tr>
         <th>ID</th>
         <th>Name</th>
@@ -37,6 +37,7 @@ if (Common::getUserRole()){
         <th>Price</th>
         <th>Description</th>
         <th>EDIT</th>
+        <th>DELETE</th>
     </tr>
         <tr>
             <td>
@@ -60,7 +61,14 @@ if (Common::getUserRole()){
                     <input type="submit" name="update" value="EDIT">
                 </form>
             </td>
+            <td>
+                <form method="POST" action="edit_product.php">
+                    <input type="hidden" name="id" value="<?php echo Common::get($product, "id"); ?>">
+                    <input type="submit" name="delete" value="DELETE">
+                </form>
+            </td>
         </tr>
+    </table>
     <?php endforeach; ?>
 <?php endif; ?>
 
