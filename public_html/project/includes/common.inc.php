@@ -20,6 +20,20 @@ class Common
         }
     }
 
+    public static function getUserRole($redirect = true){
+        $role = $_SESSION['user']['role'];
+        if($role == 0){
+            return true;
+        }
+        if ($redirect) {
+            Common::flash("Access denied");
+            die(header('Location: ' . Common::url_for("home")));
+        } else{
+            return false;
+        }
+    }
+
+
     public static function get_username()
     {
         $user = Common::get($_SESSION, "user", false);

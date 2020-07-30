@@ -184,22 +184,6 @@ class DBH
         return $results;
     }
 
-    public static function isUserAdmin($id){
-        try {
-            $results = DBH::getUserInfo($id);
-            if($results["role"] == 1){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        catch(Exception $e){
-            error_log($e->getMessage());
-            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
-        }
-    }
-
     public static function createItem($name, $quantity, $price, $description){
         $query = file_get_contents(__DIR__ . "/../sql/queries/create_item.sql");
         try {

@@ -3,10 +3,8 @@ include_once(__DIR__ . '/partial-pages/header.php');
 if (Common::is_logged_in()){
 
 }
-$admin = DBH::isUserAdmin($_SESSION['user']['id']);
-if ($admin == false){
-    Common::flash("Access denied");
-    header('Location: home.php');
+if (Common::getUserRole()){
+
 }
 ?>
 

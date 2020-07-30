@@ -56,7 +56,7 @@ if (isset($_POST["login"])) {
                                 "email" => $result["email"],
                                 "first_name" => $result["first_name"],
                                 "last_name" => $result["last_name"],
-
+                                "role"=> $result['role']
                             );
                             $_SESSION['cart'] = array();
                             echo var_export($_SESSION, true);
