@@ -97,7 +97,7 @@ else {
 
 
 
-<?php if(DBH::ifPurchased($id, $product_id)): ?>
+<?php if(DBH::ifPurchased($_SESSION['user']['id'], $product_id)): ?>
     <h2>Leave a Review</h2>
     <form>
         <label for="rating">RatingL </label>
