@@ -330,7 +330,7 @@ class DBH
         }
 
     public static function createReview($productID, $rating, $description){
-        $query = file_get_contents("/../sql/queries/create_review.sql");
+        $query = file_get_contents(__DIR__ . "/../sql/queries/create_review.sql");
             try {
                 $db = DBH::getDB();
                 $stmt = $db->prepare($query);
