@@ -57,12 +57,12 @@ Common::flash('No previous orders');
 <?php if (!empty($account)): ?>
 <br>
 <h2>Edit your account below</h2>
-    <form>
-        <label for="email"></label>
+    <form method="POST">
+        <label for="email">Email</label>
         <input id="email" type="email" name="email" value="<?php echo Common::get($account, "email"); ?>">
-        <label for="first_name"></label>
+        <label for="first_name">First Name</label>
         <input id="first_name" type="text" name="first_name" value="<?php echo Common::get($account, "first_name"); ?>">
-        <label for="last_name"></label>
+        <label for="last_name">Last Name</label>
         <input id="last_name" type="text" name="last_name" value="<?php echo Common::get($account, "last_name"); ?>">
         <input type="submit" name="edit_account" value="SUBMIT">
     </form>
