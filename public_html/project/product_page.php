@@ -99,14 +99,23 @@ else {
 
 <?php if(DBH::ifPurchased($_SESSION['user']['id'], $product_id)): ?>
     <h2>Leave a Review</h2>
-    <form>
-        <label for="rating">RatingL </label>
+    <form method="POST">
+        <label for="rating">Rating </label>
         <input id="rating" type="number" name="rating" min="0" max="5">
         <label for="description">Explain: </label>
         <input id="description" type="text" name="description">
         <input type="submit" name="review" value="PLACE REVIEW">
     </form>
-
+<?php if(!empty($_POST['review'])){
+    $new_review = DBH::createReview($product_id, $_POST['rating'], $_POST['description'] );
+    if($new_review){
+        echo"<div>Placed review successfully</div>";
+    }
+    else{
+        echo"<div>Failed to place review</div>";
+    }
+    }
+    ?>
 <?php else: ?>
 
 
