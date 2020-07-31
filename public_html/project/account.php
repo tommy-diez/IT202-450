@@ -5,7 +5,6 @@ if(Common::is_logged_in()){
 }
 
 ?>
-
 <h1>Welcome, <?php echo $_SESSION['user']['first_name']; ?></h1>
 <h1>View your previous purchases below</h1>
 <br>
@@ -13,6 +12,7 @@ if(Common::is_logged_in()){
 
 <?php
 $results = DBH::getPreviousOrders($_SESSION['user']['id']);
+$account = DBH::getUserInfo($_SESSION['user']['id']);
 ?>
 
 <?php if (!empty($results)): ?>
@@ -49,6 +49,36 @@ $results = DBH::getPreviousOrders($_SESSION['user']['id']);
         </tr>
     <?php endforeach; ?>
 </table>
+<?php else:
+Common::flash('No previous orders');
+?>
+
+<?php endif; ?>
+<?php if (!empty($account)): ?>
+<br>
+<h2>Edit your account below</h2>
+    <form>
+        <label for="email"></label>
+        <input id="email" type="email" name="email" value="<?php echo Common::get($account, "email"); ?>">
+        <label for="first_name"></label>
+        <input id="first_name" type="text" name="first_name" value="<?php echo Common::get($account, "first_name"); ?>">
+        <label for="last_name"></label>
+        <input id="last_name" type="text" name="last_name" value="<?php echo Common::get($account, "last_name"); ?>">
+        <input type="submit" name="edit_account" value="SUBMIT">
+    </form>
+<?php if(!empty($_POST['edit_account'])){
+        $result = DBH::updateUserInfo($_SESSION['user']['id'], $_POST['email'], $_POST['first_name'], $_POST['last_name']);
+        if($result){
+            Common::flash('Account updated successfully');
+            header('Login: account.php');
+        }
+        else {
+            Common::flash('Failed to update');
+            header('Login: account.php');
+        }
+    }
+
+?>
 <?php else:
 Common::flash('No previous orders');
 ?>

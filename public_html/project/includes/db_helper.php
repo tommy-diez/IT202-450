@@ -262,4 +262,55 @@ class DBH
     }
     }
 
+    public static function getEmails(){
+        $query = file_get_contents(__DIR__ . "/../sql/queries/get_emails.sql");
+        try {
+            $db = DBH::getDB();
+            $stmt = $db->prepare($query);
+            $stmt->execute();
+            $results = $stmt->fetchAll();
+        }
+        catch(Exception $e){
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
+        return $results;
+    }
+
+    public static function updateUserInfo($email, $fname, $lname, $id)
+    {
+        $query = file_get_contents(__DIR__ . "/../queries/update_user.sql");
+        $emails = DBH::getEmails();
+        $count = 0;
+        foreach ($emails as $result) {
+            if ($result == $email) {
+                $count++;
+            }
+        }
+        if ($count == 0) {
+            try {
+                $db = DBH::getDB();
+                $stmt = $db->prepare($query);
+                $stmt->bindValue(':id', $id);
+                $stmt->bindValue('email', $email);
+                $stmt->bindValue('fname', $fname);
+                $stmt->bindValue('lname', $lname);
+                $result = $stmt->execute();
+                if ($result) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } catch (Exception $e) {
+                error_log($e->getMessage());
+                return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+            }
+
+        }
+        else{
+            Common::flash('Email already in use');
+        }
+    }
+
 }

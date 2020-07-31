@@ -6,17 +6,14 @@ if (Common::is_logged_in()) {
 if (Common::getUserRole()) {
 
 }
-if(isset($_POST['update'])) {
+if(isset($_POST['update'])):
     $id = $_POST['id'];
     $results = DBH::getProductInfo($id);
-}
-else{
-    Common::flash('Invalid Request');
-    header('Location: admin.php');
-}
-?>
 
-<h1>Edit the product below</h1>
+    ?>
+
+
+    <h1>Edit the product below</h1>
     <form method="POST">
         <label for="product_name">Product Name</label>
         <input id="product_name" type="text" name="product_name" value="<?php Common::get($results, "name"); ?>">
@@ -32,26 +29,27 @@ else{
         <br>
         <input type="submit" name="edit" value="Submit">
     </form>
-<br>
-<?php
-Common::flash("Invalid Request");
-header('Location: home.php');
-?>
-
-<?php if(isset($_POST['edit'])){
-    $name = $_POST['product_name'];
-    $quantity = $_POST['quantity'];
-    $price = $_POST['price'];
-    $description = $_POST['description'];
-    $result = DBH::editProduct($name, $quantity, $price, $description);
-    if($result){
-        Common::flash('Product updated successfully');
-        header('Location: admin.php');
+    <br>
+    <?php else:
+    Common::flash("Invalid Request");
+    header('Location: home.php');
+    ?>
+    <?php endif; ?>
+    <?php if(isset($_POST['edit'])){
+        $name = $_POST['product_name'];
+        $quantity = $_POST['quantity'];
+        $price = $_POST['price'];
+        $description = $_POST['description'];
+        $result = DBH::editProduct($name, $quantity, $price, $description);
+        if($result){
+            Common::flash('Product updated successfully');
+            header('Location: admin.php');
+        }
+        else {
+            Common::flash('Failed to update product');
+            header('Location: admin.php');
+        }
     }
-    else {
-        Common::flash('Failed to update product');
-        header('Location: admin.php');
-    }
-}
 
-?>
+    ?>
+

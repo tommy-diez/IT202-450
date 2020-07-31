@@ -28,8 +28,8 @@ if (Common::getUserRole()){
 ?>
 
 <?php if(isset($products) && !empty($products)): ?>
-    <?php foreach ($products as $product): ?>
     <table>
+    <?php foreach ($products as $product): ?>
     <tr>
         <th>ID</th>
         <th>Name</th>
