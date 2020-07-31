@@ -10,14 +10,6 @@ if(isset($_POST['update'])) {
     $id = $_POST['id'];
     $results = DBH::getProductInfo($id);
 }
-elseif(isset($_POST['delete'])){
-    $id = $_POST['id'];
-    $result = DBH::deleteFunction($id);
-    if($result){
-        Common::flash('Product deleted successfully');
-        header('Location: admin.php');
-    }
-}
 else{
     Common::flash('Invalid Request');
     header('Location: admin.php');

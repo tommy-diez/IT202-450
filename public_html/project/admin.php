@@ -62,7 +62,7 @@ if (Common::getUserRole()){
                 </form>
             </td>
             <td>
-                <form method="POST" action="edit_product.php">
+                <form method="POST" action="delete_product.php">
                     <input type="hidden" name="id" value="<?php echo Common::get($product, "id"); ?>">
                     <input type="submit" name="delete" value="DELETE">
                 </form>
