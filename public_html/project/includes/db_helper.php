@@ -313,4 +313,86 @@ class DBH
         }
     }
 
+    public static function search($order, $sort, $thing){
+        $query = "SELECT * FROM Products WHERE name like CONCAT('%', :thing, '%')
+              ORDER BY $order $sort";
+            try {
+                $db = DBH::getDB();
+                $stmt = $db->prepare($query);
+                $stmt->bindValue(':thing', $thing);
+                $stmt->execute();
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (Exception $e) {
+                error_log($e->getMessage());
+                return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+            }
+            return $results;
+        }
+
+    public static function createReview($productID, $rating, $description){
+        $query = file_get_contents("/../sql/queries/create_review.sql");
+            try {
+                $db = DBH::getDB();
+                $stmt = $db->prepare($query);
+                $stmt->bindValue('productID', $productID);
+                $stmt->bindValue('rating', $rating);
+                $stmt->bindValue('description', $description);
+                $reviews = $stmt->execute();
+            } catch (Exception $e) {
+                error_log($e->getMessage());
+                return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+            }
+            if ($reviews) {
+                return true;
+            } else {
+                return false;
+            }
+
+    }
+
+    public static function ifPurchased($id, $productID){
+        $count = 0;
+        $query = file_get_contents(__DIR__ . "/../sql/queries/get_previous_orders.sql");
+        try{
+        $db = DBH::getDB();
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':userID', $id);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach($results as $result){
+            if(Common::get($result, "productID") == $productID){
+                $count++;
+            }
+        }
+        if($count >= 1){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+    catch (Exception $e) {
+        error_log($e->getMessage());
+        return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
+    }
+
+    public static function getReviews($productID){
+        $query = file_get_contents(__DIR__ . "/../sql/queries/get_reviews.sql");
+        try {
+            $db = DBH::getDB();
+            $stmt = $db->prepare($query);
+            $stmt->bindValue(':productID', $productID);
+            $stmt->execute();
+            $results = $stmt->fetchAll();
+        }
+        catch(Exception $e){
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
+        return $results;
+    }
+
 }
+

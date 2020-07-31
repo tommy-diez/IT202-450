@@ -1,0 +1,1 @@
+SELECT * FROM Reviews WHERE productID = :productID;
