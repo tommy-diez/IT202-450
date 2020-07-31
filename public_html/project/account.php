@@ -67,7 +67,7 @@ Common::flash('No previous orders');
         <input type="submit" name="edit_account" value="SUBMIT">
     </form>
 <?php if(!empty($_POST['edit_account'])){
-        $result = DBH::updateUserInfo($_SESSION['user']['id'], $_POST['email'], $_POST['first_name'], $_POST['last_name']);
+        $result = DBH::updateUserInfo($_POST['email'], $_POST['first_name'], $_POST['last_name'], $_SESSION['user']['id'], );
         if($result){
             Common::flash('Account updated successfully');
             header('Login: account.php');
