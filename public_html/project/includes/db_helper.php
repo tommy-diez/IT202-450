@@ -279,7 +279,7 @@ class DBH
 
     public static function updateUserInfo($email, $fname, $lname, $id)
     {
-        $query = file_get_contents(__DIR__ . "/../queries/update_user.sql");
+        $query = file_get_contents(__DIR__ . "/../sql/queries/update_user.sql");
         $emails = DBH::getEmails();
         $count = 0;
         foreach ($emails as $result) {
