@@ -4,6 +4,7 @@ if (isset($_GET['id'])){
     $product_id = $_GET['id'];
     $results = DBH::getProductInfo($product_id);
     $reviews = DBH::getReviews($product_id);
+    $user_id = $_SESSION['user']['id'];
 
 }
 else {
@@ -85,7 +86,7 @@ else {
 
 <?php endif; ?>
 
-<?php if(DBH::ifPurchased($_SESSION['user']['id'], $product_id)): ?>
+<?php if(DBH::ifPurchased($user_id, $product_id)): ?>
     <h2>Leave a Review</h2>
     <form method="POST">
         <label for="rating">Rating </label>
@@ -105,7 +106,7 @@ else {
     }
     ?>
 <?php else: ?>
-
+    <p>There are no reviews for this item, yet</p>
 
 <?php endif; ?>
 
