@@ -86,4 +86,17 @@ if (Common::getUserRole()){
 }
 ?>
 
+<?php
+$orders = DBH::getPreviousOrders($_SESSION['user']['id']);
+?>
+
+<?php if(!empty($orders)) : ?>
+
+
+<?php else: ?>
+
+
+<?php endif; ?>
+
+
 

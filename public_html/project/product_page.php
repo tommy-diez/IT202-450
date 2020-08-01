@@ -72,8 +72,6 @@ else {
                         }
                         ?>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <?php echo Common::get($review, "description"); ?>
                 </td>

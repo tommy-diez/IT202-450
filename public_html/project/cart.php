@@ -1,8 +1,6 @@
 <?php
 include_once(__DIR__ . "/partial-pages/header.php");
-if (Common::is_logged_in()){
 
-}
 $cart = $_SESSION['cart'];
 var_dump($cart);
 ?>
@@ -43,6 +41,7 @@ var_dump($cart);
     <?php
     $i++;
     endforeach; ?>
+    <?php if(Common::get($_SESSION, "user", true)): ?>
     <form method="POST">
         <input type="submit" name="empty" value="EMPTY">
     </form>
@@ -51,6 +50,7 @@ var_dump($cart);
 <form method="POST">
     <input type="submit" name="order" value="PLACE ORDER">
 </form>
+<?php endif; ?> 
 <?php if(isset($_POST['submit']) && !empty($_POST['submit'])){
         $i = $_POST['array_id'];
         $quantity = $_POST['new_quantity'];
