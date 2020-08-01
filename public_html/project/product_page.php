@@ -11,8 +11,8 @@ else {
     die(header("Location: " . Common::url_for("home")));
 }
 ?>
-<html>
 
+<html>
     <?php if (!empty($results)): ?>
         <?php foreach ($results as $col): ?>
             <tr>
@@ -47,7 +47,6 @@ else {
             Common::addToCart($id, $product_name, $quantity, $price);
             var_dump($_SESSION['cart']);
         }
-
         ?>
 
     <?php else: Common::flash("BAD REQUEST");
@@ -57,45 +56,34 @@ else {
 <?php if(!empty($reviews)): ?>
     <table border="1">
         <tr>
-        <th>
+            <th>
             Rating
-        </th>
-        <th>
+            </th>
+            <th>
             Description
-        </th>
+            </th>
         </tr>
         <?php foreach ($reviews as $review): ?>
             <tr>
                 <td>
-                    <h1><?php for ($x = 0; $x <= Common::get($review, "rating"); $x++) {
+                    <?php for ($x = 0; $x < Common::get($review, "rating"); $x++) {
                     echo "⭐";
                         }
                         ?>
-                    </h1>
-
-                    </h1>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <h1>IMAGE WILL GO HERE</h1>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h1><?php echo Common::get($review, "description"); ?></h1>
+                    <?php echo Common::get($review, "description"); ?>
                 </td>
             </tr>
         <?php endforeach; ?>
         <form method="POST">
-
     </table>
 <?php else: ?>
     <h3>No reviews for this product, yet</h3>
 
 <?php endif; ?>
-
-
 
 <?php if(DBH::ifPurchased($_SESSION['user']['id'], $product_id)): ?>
     <h2>Leave a Review</h2>
