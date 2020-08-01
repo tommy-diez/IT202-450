@@ -20,7 +20,7 @@ include_once(__DIR__ . "/partial-pages/header.php");
     <input type="submit" name="login" value="LOGIN"/>
 </form>
 <div>
-<a href=""
+<a href="">Forgot your password?</a>
 </div>
 <div id="footer" class="container-fluid">
     Tommy Diez (c) 2020

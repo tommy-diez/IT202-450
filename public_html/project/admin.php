@@ -36,7 +36,7 @@ if(isset($_POST['sort'])){
 ?>
 
 <?php if(isset($products) && !empty($products)): ?>
-    <table>
+    <table border="2">
     <tr>
         <th>ID</th>
         <th>Name</th>
