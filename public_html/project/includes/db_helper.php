@@ -394,5 +394,44 @@ class DBH
         return $results;
     }
 
+    public static function getAllOrders($filter, $sort){
+        $query = file_get_contents(__DIR__ . "/../sql/queries/get_all_orders_name.sql");
+        $query .= " ";
+        $query .= $filter;
+        $query .= " ";
+        $query .= $sort;
+        try {
+            $db = DBH::getDB();
+            $stmt = $db->prepare($query);
+            $stmt->execute();
+            $results = $stmt->fetchAll();
+        }
+        catch (Exception $e){
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
+        return $results;
+    }
+
+    public static function getProfit(){
+        $query = file_get_contents(__DIR__ . "/../sql/queries/get_all_orders_name.sql");
+        try {
+            $profit = 0;
+            $db = DBH::getDB();
+            $stmt = $db->prepare($query);
+            $stmt->execute();
+            $results = $stmt->fetchAll();
+            foreach($results as $result){
+                $result['price'] += $profit;
+            }
+    }
+    catch(Exception $e){
+        error_log($e->getMessage());
+        return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
+        return $profit;
+    }
+
+
 }
 

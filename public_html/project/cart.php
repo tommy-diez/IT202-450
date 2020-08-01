@@ -1,6 +1,8 @@
 <?php
 include_once(__DIR__ . "/partial-pages/header.php");
+if(Common::is_logged_in()){
 
+}
 $cart = $_SESSION['cart'];
 var_dump($cart);
 ?>

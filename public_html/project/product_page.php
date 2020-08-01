@@ -1,5 +1,8 @@
 <?php
 include_once(__DIR__ . '/partial-pages/header.php');
+if(Common::is_logged_in()){
+
+}
 if (isset($_GET['id'])){
     $product_id = $_GET['id'];
     $results = DBH::getProductInfo($product_id);

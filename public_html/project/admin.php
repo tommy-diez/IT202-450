@@ -6,6 +6,14 @@ if (Common::is_logged_in()){
 if (Common::getUserRole()){
 
 }
+$filter = 'created';
+if(isset($_POST['filter'])){
+    $filter = $_POST['filter'];
+}
+$sort = 'ASC';
+if(isset($_POST['sort'])){
+    $sort = $_POST['sort'];
+}
 ?>
 
 <h1>Welcome admin, add a product below: </h1>
@@ -29,7 +37,6 @@ if (Common::getUserRole()){
 
 <?php if(isset($products) && !empty($products)): ?>
     <table>
-    <?php foreach ($products as $product): ?>
     <tr>
         <th>ID</th>
         <th>Name</th>
@@ -39,6 +46,7 @@ if (Common::getUserRole()){
         <th>EDIT</th>
         <th>DELETE</th>
     </tr>
+    <?php foreach ($products as $product): ?>
         <tr>
             <td>
                 <?php echo Common::get($product, "id"); ?>
@@ -87,14 +95,50 @@ if (Common::getUserRole()){
 ?>
 
 <?php
-$orders = DBH::getPreviousOrders($_SESSION['user']['id']);
+$orders = DBH::getAllOrders($filter, $sort);
 ?>
+<html>
+    <form method="POST">
+        <label for="filter">Filter: </label>
+        <input id="filter" type="text" name="filter">
+        <label for="sort">Sort: </label>
+        <input id="sort" type="text" name="sort">
+        <input type="submit" name="sort" value="SORT">
+    </form>
+</html>
 
 <?php if(!empty($orders)) : ?>
-
+<br>
+<table>
+    <?php foreach ($orders as $order): ?>
+    <tr>
+        <th>OrderID</th>
+        <th>productID</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Created</th>
+        <th>Modified</th>
+        <th>UserID</th>
+        <th>PaidTotal</th>
+    </tr>
+    <tr>
+        <td><?php echo Common::get($order, "orderID"); ?></td>
+        <td><?php echo Common::get($order, "productID"); ?></td>
+        <td><?php echo Common::get($order, "Quantity"); ?></td>
+        <td><?php echo Common::get($order, "Price"); ?></td>
+        <td><?php echo Common::get($order, "Created"); ?></td>
+        <td><?php echo Common::get($order, "Modified"); ?></td>
+        <td><?php echo Common::get($order, "UserID"); ?></td>
+        <td><?php echo Common::get($order, "PaidTotal"); ?></td>
+    </tr>
+    <tr>
+        <p><?php echo DBH::getProfit(); ?></p>
+    </tr>
+    <?php endforeach; ?>
+</table>
 
 <?php else: ?>
-
+<p>No orders at this time</p>
 
 <?php endif; ?>
 
