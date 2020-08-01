@@ -76,8 +76,9 @@ if(isset($_POST['sort'])){
                 </form>
             </td>
         </tr>
-    </table>
     <?php endforeach; ?>
+    </table>
+  
 <?php endif; ?>
 
 <?php if(isset($_POST['add_product']) && !empty($_POST['add_product']))
