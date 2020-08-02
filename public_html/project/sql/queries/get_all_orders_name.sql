@@ -1,1 +1,1 @@
-SELECT * FROM Orders WHERE name like CONCAT('%', :thing, '%') ORDER BY
+SELECT * FROM Orders 

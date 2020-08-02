@@ -135,7 +135,6 @@ $orders = DBH::getAllOrders($filter, $sort, $search);
     </html>
 <br>
 <table border="2">
-    <?php foreach ($orders as $order): ?>
     <tr>
         <th>OrderID</th>
         <th>productID</th>
@@ -146,6 +145,7 @@ $orders = DBH::getAllOrders($filter, $sort, $search);
         <th>UserID</th>
         <th>PaidTotal</th>
     </tr>
+    <?php foreach ($orders as $order): ?>
     <tr>
         <td><?php echo Common::get($order, "OrderID"); ?></td>
         <td><?php echo Common::get($order, "productID"); ?></td>
@@ -156,10 +156,11 @@ $orders = DBH::getAllOrders($filter, $sort, $search);
         <td><?php echo Common::get($order, "userID"); ?></td>
         <td><?php echo Common::get($order, "paidTotal"); ?></td>
     </tr>
+    <?php endforeach; ?>
     <tr>
         <?php echo DBH::getProfit(); ?>
     </tr>
-    <?php endforeach; ?>
+
 </table>
 
 <?php else: ?>
