@@ -395,11 +395,7 @@ class DBH
     }
 
     public static function getAllOrders($filter, $sort){
-        $query = file_get_contents(__DIR__ . "/../sql/queries/get_all_orders_name.sql");
-        $query .= " ";
-        $query .= $filter;
-        $query .= " ";
-        $query .= $sort;
+        $query = "SELECT * FROM Orders WHERE name like CONCAT('%', :thing, '%') ORDER BY $filter $sort";
         try {
             $db = DBH::getDB();
             $stmt = $db->prepare($query);

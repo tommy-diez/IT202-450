@@ -19,14 +19,23 @@ if(isset($_POST['sort'])){
 <h1>Welcome admin, add a product below: </h1>
 <form method="POST">
     <label for="product_name">Product Name</label>
+    <br>
     <input id="product_name" type="text" name="product_name" required>
+    <br>
     <label for="quantity">Quantity</label>
+    <br>
     <input id="quantity" type="number" name="quantity">
+    <br>
     <label for="price">Price</label>
+    <br>
     <input id="price" type="text" name="price" required>
+    <br>
     <label for="description">Description</label>
+    <br>
     <input id="description" type="text" name="description">
+    <br>
     <input type="submit" name="add_product" value="Submit">
+    <br>
 </form>
 <br>
 
@@ -78,7 +87,7 @@ if(isset($_POST['sort'])){
         </tr>
     <?php endforeach; ?>
     </table>
-  
+
 <?php endif; ?>
 
 <?php if(isset($_POST['add_product']) && !empty($_POST['add_product']))
@@ -98,17 +107,25 @@ if(isset($_POST['sort'])){
 <?php
 $orders = DBH::getAllOrders($filter, $sort);
 ?>
-<html>
-    <form method="POST">
-        <label for="filter">Filter: </label>
-        <input id="filter" type="text" name="filter">
-        <label for="sort">Sort: </label>
-        <input id="sort" type="text" name="sort">
-        <input type="submit" name="sort" value="SORT">
-    </form>
-</html>
 
 <?php if(!empty($orders)) : ?>
+<br>
+    <html>
+    <form method="POST">
+        <label for="sort">Sort: </label>
+        <select id="sort" name="sort">
+            <option value="ASC">Lowest to Highest</option>
+            <option value="DESC">Highest to Lowest</option>
+        </select>
+        <label for="by"
+        <select id="by"name="filter">
+            <option value="price">Price</option>
+            <option value="quantity">Quantity</option>
+            <option value="name">Name</option>
+        </select>
+        <input type="submit" name="sort" value="SORT">
+    </form>
+    </html>
 <br>
 <table>
     <?php foreach ($orders as $order): ?>
@@ -133,7 +150,7 @@ $orders = DBH::getAllOrders($filter, $sort);
         <td><?php echo Common::get($order, "PaidTotal"); ?></td>
     </tr>
     <tr>
-        <p><?php echo DBH::getProfit(); ?></p>
+        <?php echo DBH::getProfit(); ?>
     </tr>
     <?php endforeach; ?>
 </table>
