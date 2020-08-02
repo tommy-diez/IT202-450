@@ -417,7 +417,7 @@ class DBH
             $db = DBH::getDB();
             $stmt = $db->prepare($query);
             $stmt->execute();
-            $results = $stmt->fetchAll();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach($results as $result){
                 $result['price'] += $profit;
             }
