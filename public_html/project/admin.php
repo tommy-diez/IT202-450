@@ -124,8 +124,8 @@ $orders = DBH::getAllOrders($filter, $sort, $search);
         </select>
         <label for="by">Filter: </label>
         <select id="by"name="filter">
-            <option value="price">Price</option>
-            <option value="quantity">Quantity</option>
+            <option value="created">Created</option>
+            <option value="modified">Modified</option>
             <option value="name">Name</option>
         </select>
         <label for="search" >Search: </label>

@@ -412,14 +412,14 @@ class DBH
 
     public static function getProfit(){
         $query = file_get_contents(__DIR__ . "/../sql/queries/get_all_orders_name.sql");
+        $profit = 0;
         try {
-            $profit = 0;
             $db = DBH::getDB();
             $stmt = $db->prepare($query);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach($results as $result){
-                $result['price'] += $profit;
+                $profit += $result['price'];
             }
     }
     catch(Exception $e){
