@@ -128,8 +128,8 @@ $orders = DBH::getAllOrders($filter, $sort, $search);
             <option value="quantity">Quantity</option>
             <option value="name">Name</option>
         </select>
-        <label for="search">Search: </label>
-        <input id="search" type="text" name="search">
+        <label for="search" >Search: </label>
+        <input id="search" type="text" name="search" placeholder="SEARCH" value="<?php echo $search; ?>">
         <input type="submit" name="sort" value="SORT">
     </form>
     </html>

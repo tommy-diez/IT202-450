@@ -401,7 +401,7 @@ class DBH
             $stmt = $db->prepare($query);
             $stmt->bindValue(':thing', $search);
             $stmt->execute();
-            $results = $stmt->fetchAll();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (Exception $e){
             error_log($e->getMessage());
