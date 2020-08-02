@@ -126,7 +126,8 @@ $orders = DBH::getAllOrders($filter, $sort, $search);
         <select id="by"name="filter">
             <option value="created">Created</option>
             <option value="modified">Modified</option>
-            <option value="name">Name</option>
+            <option value="OrderID">Order</option>
+            <option value="userID">User ID</option>
         </select>
         <label for="search" >Search: </label>
         <input id="search" type="text" name="search" placeholder="SEARCH" value="<?php echo $search; ?>">

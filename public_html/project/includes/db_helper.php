@@ -184,7 +184,8 @@ class DBH
         return $results;
     }
 
-    public static function createItem($name, $quantity, $price, $description){
+    public static function createItem($name, $quantity, $price, $description)
+    {
         $query = file_get_contents(__DIR__ . "/../sql/queries/create_item.sql");
         try {
             $db = DBH::getDB();
@@ -194,24 +195,23 @@ class DBH
             $stmt->bindValue(':price', $price);
             $stmt->bindValue(':description', $description);
             $results = $stmt->execute();
-            }
-            catch (Exception $e){
-                error_log($e->getMessage());
-                return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
-            }
-            return $results;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
+        return $results;
     }
 
-    public static function getAllProducts(){
+    public static function getAllProducts()
+    {
         $query = file_get_contents(__DIR__ . "/../sql/queries/select_all_products.sql");
-        if (isset($query) && !empty($query)){
-            try{
+        if (isset($query) && !empty($query)) {
+            try {
                 $db = DBH::getDB();
                 $stmt = $db->prepare($query);
                 $stmt->execute();
                 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            catch(Exception $e){
+            } catch (Exception $e) {
                 error_log($e->getMessage());
                 return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
             }
@@ -219,9 +219,10 @@ class DBH
         return $results;
     }
 
-    public static function editProduct($name, $quantity, $price, $description){
+    public static function editProduct($name, $quantity, $price, $description)
+    {
         $query = file_get_contents(__DIR__ . "/../sql/queries/edit_product.sql");
-        try{
+        try {
             $db = DBH::getDB();
             $stmt = $db->prepare($query);
             $stmt->bindValue(':name', $name);
@@ -229,48 +230,46 @@ class DBH
             $stmt->bindValue(':price', $price);
             $stmt->bindValue(':description', $description);
             $result = $stmt->execute();
-            if($result){
+            if ($result) {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
-        }
-        catch (Exception $e){
+        } catch (Exception $e) {
             error_log($e->getMessage());
             return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
         }
     }
 
-    public static function deleteFunction($id){
+    public static function deleteFunction($id)
+    {
         $query = file_get_contents(__DIR__ . "/../sql/queries/delete_product.sql");
-    try{
-        $db = DBH::getDB();
-        $stmt = $db->prepare($query);
-        $stmt->bindValue(':id', $id);
-        $result = $stmt->execute();
-        if($result){
-            return true;
-        }
-        else {
-            return false;
-        }
+        try {
+            $db = DBH::getDB();
+            $stmt = $db->prepare($query);
+            $stmt->bindValue(':id', $id);
+            $result = $stmt->execute();
+            if ($result) {
+                return true;
+            } else {
+                return false;
+            }
 
-    }   catch(Exception $e){
-        error_log($e->getMessage());
-        return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
-    }
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
     }
 
-    public static function getEmails(){
+    public static function getEmails()
+    {
         $query = file_get_contents(__DIR__ . "/../sql/queries/get_emails.sql");
         try {
             $db = DBH::getDB();
             $stmt = $db->prepare($query);
             $stmt->execute();
             $results = $stmt->fetchAll();
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             error_log($e->getMessage());
             return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
         }
@@ -307,78 +306,79 @@ class DBH
                 return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
             }
 
-        }
-        else{
+        } else {
             Common::flash('Email already in use');
         }
     }
 
-    public static function search($order, $sort, $thing){
+    public static function search($order, $sort, $thing)
+    {
         $query = "SELECT * FROM Products WHERE name like CONCAT('%', :thing, '%')
               ORDER BY $order $sort";
-            try {
-                $db = DBH::getDB();
-                $stmt = $db->prepare($query);
-                $stmt->bindValue(':thing', $thing);
-                $stmt->execute();
-                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } catch (Exception $e) {
-                error_log($e->getMessage());
-                return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
-            }
-            return $results;
+        try {
+            $db = DBH::getDB();
+            $stmt = $db->prepare($query);
+            $stmt->bindValue(':thing', $thing);
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
+        return $results;
+    }
+
+    public static function createReview($productID, $rating, $description)
+    {
+        $query = file_get_contents(__DIR__ . "/../sql/queries/create_review.sql");
+        try {
+            $db = DBH::getDB();
+            $stmt = $db->prepare($query);
+            $stmt->bindValue('productID', $productID);
+            $stmt->bindValue('rating', $rating);
+            $stmt->bindValue('description', $description);
+            $reviews = $stmt->execute();
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        }
+        if ($reviews) {
+            return true;
+        } else {
+            return false;
         }
 
-    public static function createReview($productID, $rating, $description){
-        $query = file_get_contents(__DIR__ . "/../sql/queries/create_review.sql");
-            try {
-                $db = DBH::getDB();
-                $stmt = $db->prepare($query);
-                $stmt->bindValue('productID', $productID);
-                $stmt->bindValue('rating', $rating);
-                $stmt->bindValue('description', $description);
-                $reviews = $stmt->execute();
-            } catch (Exception $e) {
-                error_log($e->getMessage());
-                return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+    }
+
+    public static function ifPurchased($id, $productID)
+    {
+        $count = 0;
+        $query = file_get_contents(__DIR__ . "/../sql/queries/get_previous_orders.sql");
+        try {
+            $db = DBH::getDB();
+            $stmt = $db->prepare($query);
+            $stmt->bindValue(':userID', $id);
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($results as $result) {
+                if (Common::get($result, "productID") == $productID) {
+                    $count++;
+                }
             }
-            if ($reviews) {
+            if ($count >= 1) {
                 return true;
             } else {
                 return false;
             }
 
-    }
-
-    public static function ifPurchased($id, $productID){
-        $count = 0;
-        $query = file_get_contents(__DIR__ . "/../sql/queries/get_previous_orders.sql");
-        try{
-        $db = DBH::getDB();
-        $stmt = $db->prepare($query);
-        $stmt->bindValue(':userID', $id);
-        $stmt->execute();
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        foreach($results as $result){
-            if(Common::get($result, "productID") == $productID){
-                $count++;
-            }
-        }
-        if($count >= 1){
-            return true;
-        }
-        else {
-            return false;
-        }
-
-    }
-    catch (Exception $e) {
-        error_log($e->getMessage());
-        return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
         }
     }
 
-    public static function getReviews($productID){
+    public static function getReviews($productID)
+    {
         $query = file_get_contents(__DIR__ . "/../sql/queries/get_reviews.sql");
         try {
             $db = DBH::getDB();
@@ -386,15 +386,15 @@ class DBH
             $stmt->bindValue(':productID', $productID);
             $stmt->execute();
             $results = $stmt->fetchAll();
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             error_log($e->getMessage());
             return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
         }
         return $results;
     }
 
-    public static function getAllOrders($filter, $sort, $search){
+    public static function getAllOrders($filter, $sort, $search)
+    {
         $query = "SELECT * FROM Orders ORDER BY $filter $sort";
         try {
             $db = DBH::getDB();
@@ -402,15 +402,15 @@ class DBH
             $stmt->bindValue(':thing', $search);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
-        catch (Exception $e){
+        } catch (Exception $e) {
             error_log($e->getMessage());
             return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
         }
         return $results;
     }
 
-    public static function getProfit(){
+    public static function getProfit()
+    {
         $query = file_get_contents(__DIR__ . "/../sql/queries/get_all_orders_name.sql");
         $profit = 0;
         try {
@@ -418,17 +418,36 @@ class DBH
             $stmt = $db->prepare($query);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            foreach($results as $result){
+            foreach ($results as $result) {
                 $profit += $result['price'];
             }
-    }
-    catch(Exception $e){
-        error_log($e->getMessage());
-        return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
         }
         return $profit;
     }
 
+    public static function resetPass($password, $cpassword, $id)
+    {
+        if ($cpassword == $password) {
+            $hash = password_hash($password, PASSWORD_BCRYPT);
+            $query = file_get_contents(__DIR__ . "/../sql/queries/update_password.sql");
+            try {
+                $db = DBH::getDB();
+                $stmt = $db->prepare($query);
+                $stmt->bindValue(':hash', $hash);
+                $stmt->bindValue(':userID', $id);
+                $result = $stmt->execute();
+            } catch (Exception $e) {
+                error_log($e->getMessage());
+                return DBH::response(NULL, 400, "DB Error: " . $e->getMessage());
 
+            }
+            return $result;
+        }
+
+
+    }
 }
 

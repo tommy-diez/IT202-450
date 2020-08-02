@@ -32,7 +32,6 @@ class Common
         }
     }
 
-
     public static function get_username()
     {
         $user = Common::get($_SESSION, "user", false);
@@ -119,11 +118,6 @@ class Common
     {
         $_SESSION['cart'] = array();
         header('Location: cart.php');
-    }
-
-    public static function createOrderID(){
-        $randnum = rand(1111111111,9999999999);
-        return $randnum;
     }
 
     public static function getPaidTotal($cart)

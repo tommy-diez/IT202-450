@@ -8,7 +8,6 @@ if(Common::is_logged_in()){
 <h1>Welcome, <?php echo $_SESSION['user']['first_name']; ?></h1>
 <h1>View your previous purchases below</h1>
 <br>
-<a href="edit_account.php"><h2>Would you like to edit your account?</h2></a>
 
 <?php
 $results = DBH::getPreviousOrders($_SESSION['user']['id']);
@@ -66,6 +65,8 @@ Common::flash('No previous orders');
         <input id="last_name" type="text" name="last_name" value="<?php echo Common::get($account, "last_name"); ?>">
         <input type="submit" name="edit_account" value="SUBMIT">
     </form>
+<br>
+<a href="edit_account.php?id=<?php echo $_SESSION['user']['id']; ?>">Would you like to reset your password? </a>
 <?php if(!empty($_POST['edit_account'])){
         $result = DBH::updateUserInfo($_POST['email'], $_POST['first_name'], $_POST['last_name'], $_SESSION['user']['id'], );
         if($result){
