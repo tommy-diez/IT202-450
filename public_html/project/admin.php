@@ -130,7 +130,7 @@ $orders = DBH::getAllOrders($filter, $sort, $search);
         </select>
         <label for="search" >Search: </label>
         <input id="search" type="text" name="search" placeholder="SEARCH" value="<?php echo $search; ?>">
-        <input type="submit" name="sort" value="SORT">
+        <input type="submit" name="SEARCH" value="SORT">
     </form>
     </html>
 <br>
@@ -158,7 +158,7 @@ $orders = DBH::getAllOrders($filter, $sort, $search);
     </tr>
     <?php endforeach; ?>
     <tr>
-        <?php echo DBH::getProfit(); ?>
+        Profit: <?php echo DBH::getProfit(); ?>
     </tr>
 
 </table>
