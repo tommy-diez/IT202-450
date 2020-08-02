@@ -6,18 +6,7 @@ if (Common::is_logged_in()){
 if (Common::getUserRole()){
 
 }
-$filter = 'created';
-if(isset($_POST['filter'])){
-    $filter = $_POST['filter'];
-}
-$sort = 'ASC';
-if(isset($_POST['sort'])){
-    $sort = $_POST['sort'];
-}
-$search = '';
-if(isset($_POST['search'])){
-    $search = $_POST['search'];
-}
+
 ?>
 
 <h1>Welcome admin, add a product below: </h1>
@@ -109,6 +98,18 @@ if(isset($_POST['search'])){
 ?>
 
 <?php
+$filter = 'created';
+if(isset($_POST['filter'])){
+    $filter = $_POST['filter'];
+}
+$sort = 'ASC';
+if(isset($_POST['sort'])){
+    $sort = $_POST['sort'];
+}
+$search = '';
+if(isset($_POST['search'])){
+    $search = $_POST['search'];
+}
 $orders = DBH::getAllOrders($filter, $sort, $search);
 ?>
 
