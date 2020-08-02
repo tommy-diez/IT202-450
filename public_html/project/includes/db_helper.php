@@ -394,11 +394,12 @@ class DBH
         return $results;
     }
 
-    public static function getAllOrders($filter, $sort){
+    public static function getAllOrders($filter, $sort, $search){
         $query = "SELECT * FROM Orders WHERE name like CONCAT('%', :thing, '%') ORDER BY $filter $sort";
         try {
             $db = DBH::getDB();
             $stmt = $db->prepare($query);
+            $stmt->bindValue(':thing', $search);
             $stmt->execute();
             $results = $stmt->fetchAll();
         }

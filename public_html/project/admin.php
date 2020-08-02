@@ -14,6 +14,10 @@ $sort = 'ASC';
 if(isset($_POST['sort'])){
     $sort = $_POST['sort'];
 }
+$search = '';
+if(isset($_POST['search'])){
+    $search = $_POST['search'];
+}
 ?>
 
 <h1>Welcome admin, add a product below: </h1>
@@ -117,12 +121,14 @@ $orders = DBH::getAllOrders($filter, $sort);
             <option value="ASC">Lowest to Highest</option>
             <option value="DESC">Highest to Lowest</option>
         </select>
-        <label for="by"
+        <label for="by">Filter: </label>
         <select id="by"name="filter">
             <option value="price">Price</option>
             <option value="quantity">Quantity</option>
             <option value="name">Name</option>
         </select>
+        <label for="search">Search: </label>
+        <input id="search" type="text" name="search">
         <input type="submit" name="sort" value="SORT">
     </form>
     </html>
