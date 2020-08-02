@@ -109,7 +109,7 @@ if(isset($_POST['search'])){
 ?>
 
 <?php
-$orders = DBH::getAllOrders($filter, $sort);
+$orders = DBH::getAllOrders($filter, $sort, $search);
 ?>
 
 <?php if(!empty($orders)) : ?>
