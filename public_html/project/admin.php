@@ -134,7 +134,7 @@ $orders = DBH::getAllOrders($filter, $sort, $search);
     </form>
     </html>
 <br>
-<table>
+<table border="2">
     <?php foreach ($orders as $order): ?>
     <tr>
         <th>OrderID</th>
@@ -147,14 +147,14 @@ $orders = DBH::getAllOrders($filter, $sort, $search);
         <th>PaidTotal</th>
     </tr>
     <tr>
-        <td><?php echo Common::get($order, "orderID"); ?></td>
+        <td><?php echo Common::get($order, "OrderID"); ?></td>
         <td><?php echo Common::get($order, "productID"); ?></td>
-        <td><?php echo Common::get($order, "Quantity"); ?></td>
-        <td><?php echo Common::get($order, "Price"); ?></td>
-        <td><?php echo Common::get($order, "Created"); ?></td>
-        <td><?php echo Common::get($order, "Modified"); ?></td>
-        <td><?php echo Common::get($order, "UserID"); ?></td>
-        <td><?php echo Common::get($order, "PaidTotal"); ?></td>
+        <td><?php echo Common::get($order, "quantity"); ?></td>
+        <td><?php echo Common::get($order, "price"); ?></td>
+        <td><?php echo Common::get($order, "created"); ?></td>
+        <td><?php echo Common::get($order, "modified"); ?></td>
+        <td><?php echo Common::get($order, "userID"); ?></td>
+        <td><?php echo Common::get($order, "paidTotal"); ?></td>
     </tr>
     <tr>
         <?php echo DBH::getProfit(); ?>
