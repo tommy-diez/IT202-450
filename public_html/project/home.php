@@ -7,11 +7,27 @@ ini_set("error_log", "/tmp/php-error.log");
 if(Common::is_logged_in()){
 
 }
+$search = "";
+if (isset($_POST['search'])) {
+    $search = $_POST['search'];
+}
+
+$order = 'price';
+if(isset($_POST['order'])){
+    $order = $_POST['order'];
+}
+
+$sort = "ASC";
+if(isset($_POST['sort'])){
+    $sort = $_POST['sort'];
+}
+
 ?>
 <div>
     <h1>Welcome to our ECommerce Site, <?php echo $_SESSION['user']['first_name']; ?></h1>
 </div>
 <?php
+/*
 $db = $common->getDB();
 $query = file_get_contents(__DIR__ . "/sql/queries/select_products.sql");
 if (isset($query) && !empty($query)){
@@ -28,6 +44,35 @@ if (isset($query) && !empty($query)){
 else{
     echo "No query";
 }
+*/
+?>
+<html>
+<head>
+</head>
+<body>
+    <form method="POST">
+        <input type="text" name="search" placeholder="SEARCH" value="<?php echo $search; ?>">
+        <br>
+        <h1>Order</h1>
+        <label for="sort">Ascending or Descending?: </label>
+        <select id="sort" name="sort">
+            <option value="ASC">Lowest to Highest</option>
+            <option value="DESC">Highest to Lowest</option>
+        </select>
+        <label for="by">By?: </label>
+        <select id="by" name="order">
+            <option value="price">Price</option>
+            <option value="quantity">Quantity</option>
+            <option value="name">Name</option>
+            <option value="created">Recently added</option>
+        </select>
+        <input type="submit" name="submit" value="SUBMIT">
+    </form>
+</body>
+</html>
+
+<?php
+$results = DBH::search($order, $sort, $search);
 ?>
 
 <?php if(isset($results)): ?>
