@@ -6,17 +6,11 @@ if(Common::is_logged_in()){
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
     $user = DBH::getUserInfo($id);
-}
-else {
-    Common::flash('Invalid Request');
-    header('Location: home.php');
-}
 
 ?>
-<? if(!empty($user)) :
-?>
+<? if(!empty($user)) : ?>
 <form>
-    <form>
+    <form method="POST">
         <label for="password">Password: </label>
         <input id="password" type="password" name="password">
         <label for="cpassword" id="cpassword">Confirm Password: </label>
@@ -31,10 +25,17 @@ if(!empty($_POST['pass_reset'])){
     $cpass = $_POST['cpassword'];
     $result = DBH::resetPass($pass, $cpass, $id);
     if($result){
-        Common::flash('Sucessfully updated password');
+        Common::flash('Successfully updated password');
         header('Location: account.php');
     }
 }
 ?>
 
 <?php endif; ?>
+<?php }
+
+else {
+Common::flash('Invalid Request');
+header('Location: home.php');
+}
+?>
