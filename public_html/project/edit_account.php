@@ -6,7 +6,7 @@ if(Common::is_logged_in()){
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
     $user = DBH::getUserInfo($id);
-
+}
 ?>
 <? if(!empty($user)) : ?>
 <form>
@@ -29,13 +29,12 @@ if(!empty($_POST['pass_reset'])){
         header('Location: account.php');
     }
 }
-?>
 
+?>
+<?php else:
+    Common::flash('Bad request');
+    header('Location: home.php'); ?>
 <?php endif; ?>
-<?php }
 
-else {
-Common::flash('Invalid Request');
-header('Location: home.php');
-}
-?>
+
+
