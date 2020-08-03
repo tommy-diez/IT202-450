@@ -3,7 +3,7 @@ include_once(__DIR__ . "/partial-pages/header.php");
 if(Common::is_logged_in()){
 
 }
-if(isset($_GET['id'])):  {
+if(isset($_GET['id'])) {
     $id = $_GET['id'];
 
 }
@@ -16,30 +16,20 @@ if(isset($_GET['id'])):  {
         <input type="submit" name="pass_reset" value="RESET">
     </form>
 <?php
-if(!empty($_POST['pass_reset'])){
+if(isset($_POST['pass_reset'])) {
     $pass = $_POST['password'];
     $cpass = $_POST['cpassword'];
-    if($pass == $cpass) {
+    if ($pass == $cpass) {
         $result = DBH::resetPass($pass, $cpass, $id);
+    } else {
+        echo "<p>New passwords must match</p>";
     }
-    else{
-        echo"<p>New passwords must match</p>";
-    }
-    if($result){
+    if ($result) {
         Common::flash('Successfully updated password');
         header('Location: account.php');
-    }
-    else{
-          Common::flash('Failed to reset password');
-          header('Location: account.php'); ?>
+    } else{
+        echo "<p>Failed to update pass</p>";
     }
 }
-
-?>
-<?php else:
-    Common::flash('Bad request');
-    header('Location: home.php'); ?>
-<?php endif; ?>
-
 
 
