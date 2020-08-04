@@ -65,6 +65,7 @@ else{
             <option value="quantity">Quantity</option>
             <option value="name">Name</option>
             <option value="created">Recently added</option>
+            <option value="amount_purchased">Popularity</option>
         </select>
         <input type="submit" name="submit" value="SUBMIT">
     </form>

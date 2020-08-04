@@ -314,7 +314,7 @@ class DBH
     public static function search($order, $sort, $thing)
     {
         $query = "SELECT * FROM Products WHERE name like CONCAT('%', :thing, '%')
-              ORDER BY $order $sort";
+              ORDER BY $order $sort LIMIT 3";
         try {
             $db = DBH::getDB();
             $stmt = $db->prepare($query);
