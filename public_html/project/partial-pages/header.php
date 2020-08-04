@@ -1,10 +1,8 @@
 <?php
 error_reporting(-1); // reports all errors
-ini_set("display_errors", "1"); // shows all errors
-ini_set("log_errors", 1);
-ini_set("error_log", "/tmp/php-error.log");
-require_once (__DIR__ . "/../includes/common.inc.php");
+
 $logged_in = Common::is_logged_in(false);
+$admin = Common::getUserRole(false);
 ?>
 
 <head>
@@ -14,11 +12,14 @@ $logged_in = Common::is_logged_in(false);
 </head>
 <div id="navbar" class="container-fluid bg-info">
     <div class="row">
-        <h1 class="col-md-4">EBiz </h1>
+        <h1 class="col-md-2">EBiz </h1>
         <?php if($logged_in): ?>
             <a class="col-md-2 nav-item" href="<?php echo Common::url_for("home"); ?>">Home</a>
             <a class="col-md-2 nav-item" href="<?php echo Common::url_for("cart"); ?>">My Cart</a>
             <a class="col-md-2 nav-item" href="<?php echo Common::url_for("account"); ?>">My Account</a>
+        <?php endif; ?>
+        <?php if($admin): ?>
+            <a class="col-md-2 nav-item" href="<?php echo Common::url_for("admin"); ?>"
         <?php endif; ?>
         <?php if(!$logged_in): ?>
             <a class="col-md-4 nav-item" href="<?php echo Common::url_for("login"); ?>">Login</a>

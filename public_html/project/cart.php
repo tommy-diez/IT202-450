@@ -1,8 +1,6 @@
 <?php
 include_once(__DIR__ . "/partial-pages/header.php");
-if(Common::is_logged_in()){
 
-}
 $cart = $_SESSION['cart'];
 var_dump($cart);
 ?>
@@ -52,6 +50,8 @@ var_dump($cart);
 <form method="POST">
     <input type="submit" name="order" value="PLACE ORDER">
 </form>
+    <?php else: ?>
+    <h1>Please register an account to order: <?php echo Common::url_for('register'); ?></h1>
 <?php endif; ?> 
 <?php if(isset($_POST['submit']) && !empty($_POST['submit'])){
         $i = $_POST['array_id'];
