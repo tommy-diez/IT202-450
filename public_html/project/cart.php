@@ -2,7 +2,7 @@
 include_once(__DIR__ . "/partial-pages/header.php");
 
 $cart = $_SESSION['cart'];
-var_dump($cart);
+//var_dump($cart);
 ?>
 <?php if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])): ?>
 <br>
