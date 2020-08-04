@@ -5,6 +5,8 @@ ini_set("display_errors", "1"); // shows all errors
 ini_set("log_errors", 1);
 ini_set("error_log", "/tmp/php-error.log");
 if(Common::is_logged_in()){
+
+}
 $logged_in = Common::is_logged_in(false);
 $admin = Common::getUserRole(false);
 ?>
@@ -43,6 +45,7 @@ $admin = Common::getUserRole(false);
     </div>
     <?php endforeach; ?>
     <?php endif; ?>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
