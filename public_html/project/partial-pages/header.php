@@ -1,6 +1,10 @@
 <?php
 error_reporting(-1); // reports all errors
-
+error_reporting(-1); // reports all errors
+ini_set("display_errors", "1"); // shows all errors
+ini_set("log_errors", 1);
+ini_set("error_log", "/tmp/php-error.log");
+if(Common::is_logged_in()){
 $logged_in = Common::is_logged_in(false);
 $admin = Common::getUserRole(false);
 ?>
