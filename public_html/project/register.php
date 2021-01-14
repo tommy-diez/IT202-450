@@ -6,8 +6,10 @@ include_once(__DIR__ . "/partial-pages/header.php");
     <form method="POST">
         <label for="first_name">First Name: </label>
         <input type="text" name="first_name" required>
+        <br>
         <label for="last_name">Last Name: </label>
         <input type="test" name="last_name">
+        <br>
         <label for="email">Email: </label>
         <input type="email" id="email" name="email" required>
         <br>
@@ -16,6 +18,7 @@ include_once(__DIR__ . "/partial-pages/header.php");
         <br>
         <label for="cpassword">Confirm Password: </label>
         <input type="password" id="cpassword" name="cpassword" required min="5">
+        <br>
         <input type="submit" name="register" value="SUBMIT">
     </form>
 </div>
