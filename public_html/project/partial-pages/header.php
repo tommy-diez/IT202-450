@@ -1,5 +1,6 @@
 <?php
 include(__DIR__ . '/../includes/common.inc.php');
+/*
 error_reporting(-1); // reports all errors
 error_reporting(-1); // reports all errors
 ini_set("display_errors", "1"); // shows all errors
